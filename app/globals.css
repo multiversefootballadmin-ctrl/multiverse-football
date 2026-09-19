@@ -1,9 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer utilities {
-  /* Remove a barra de rolagem cinza feia e mantém o scroll funcionando */
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
