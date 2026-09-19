@@ -1,5 +1,5 @@
 import './globals.css';
-import { LanguageProvider } from '@/lib/LanguageContext';
+import AutoTranslator from '@/components/AutoTranslator';
 import GlobalHeader from '@/components/GlobalHeader';
 
 export const metadata = {
@@ -11,10 +11,9 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark">
       <body className="bg-[#0E0F12] text-zinc-100 min-h-screen antialiased selection:bg-orange-500 selection:text-white">
-        <LanguageProvider>
-          <GlobalHeader />
-          {children}
-        </LanguageProvider>
+        <AutoTranslator />
+        <GlobalHeader />
+        {children}
       </body>
     </html>
   );
