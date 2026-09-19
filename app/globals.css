@@ -2,37 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --bg-obsidian-deep: #0B0E14;
-  --bg-obsidian-surface: #121820;
-  --border-subtle: #1E2633;
-  --accent-pitch-green: #00FF66;
-  --accent-gridiron-gold: #F59E0B;
-  --danger-red: #EF4444;
-}
-
-body {
-  background-color: var(--bg-obsidian-deep);
-  color: #F3F4F6;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  min-height: 100vh;
-}
-
-/* Utilitários para a estética de terminal militar/sala de guerra */
-.font-mono-nums {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-  font-variant-numeric: tabular-nums;
-}
-
-.surface-card {
-  background-color: var(--bg-obsidian-surface);
-  border: 1px solid var(--border-subtle);
-}
-/* Utilitário para sumir com barras de rolagem sem quebrar o scroll */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
+@layer utilities {
+  /* Remove a barra de rolagem cinza feia e mantém o scroll funcionando */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
