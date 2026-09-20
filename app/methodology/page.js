@@ -14,7 +14,6 @@ export default function MethodologyPage() {
           </h1>
         </header>
 
-        {/* ACT II: THE WHAT IF PARADOX */}
         <section className="space-y-6 border-l-4 border-orange-500 pl-6 md:pl-8">
           <h2 className="text-2xl font-black uppercase tracking-tight text-white">
             Act I: The "What If" Paradox
@@ -24,7 +23,6 @@ export default function MethodologyPage() {
           </div>
         </section>
 
-        {/* ACT III: THE METRIC DECODER */}
         <section className="space-y-6">
           <h2 className="text-2xl font-black uppercase tracking-tight text-white border-b border-zinc-800 pb-2">
             Act II: The Metric Decoder (Translating The Science)
@@ -49,7 +47,6 @@ export default function MethodologyPage() {
           </div>
         </section>
 
-        {/* ACT IV: THE TRANSLATION MATRIX */}
         <section className="space-y-6">
           <h2 className="text-2xl font-black uppercase tracking-tight text-white border-b border-zinc-800 pb-2">
             Act III: The Translation Matrix
@@ -58,7 +55,7 @@ export default function MethodologyPage() {
             <table className="w-full text-left border-collapse whitespace-nowrap text-sm">
               <thead>
                 <tr className="bg-[#0E0F12] font-mono text-zinc-500 uppercase tracking-widest text-[10px]">
-                  <th className="p-4 border-b border-zinc-800">Gridiron Dimension (NFL)</th>
+                  <th className="p-4 border-b border-zinc-800">NFL Dimension</th>
                   <th className="p-4 border-b border-zinc-800">Pitch Dimension (Soccer)</th>
                   <th className="p-4 border-b border-zinc-800">The Athletic Reality</th>
                 </tr>
@@ -76,7 +73,6 @@ export default function MethodologyPage() {
           </div>
         </section>
 
-        {/* ACT V: THE QUANTUM LEAP (WIF vs PPR) */}
         <section className="bg-[#121316] border border-orange-500/30 p-8 md:p-12 space-y-6 shadow-2xl relative overflow-hidden group">
           <div className="absolute top-0 right-0 w-64 h-64 bg-orange-500/5 blur-[80px] pointer-events-none"></div>
           <h2 className="text-2xl font-black uppercase tracking-tight text-white">
