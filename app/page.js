@@ -35,7 +35,6 @@ export default function HomePage() {
       <section className="relative w-full min-h-[90vh] pt-24 pb-20 flex items-center overflow-hidden flex-col justify-center">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
-        {/* Expressão de fundo gigante */}
         <div className="absolute top-1/4 left-0 w-full text-center overflow-hidden whitespace-nowrap opacity-5 pointer-events-none select-none flex flex-col gap-4">
           <span className="text-[12vw] font-black text-white uppercase leading-none">FIELD GENERAL</span>
           <span className="text-[12vw] font-black text-white uppercase leading-none">YARDS AFTER CATCH</span>
@@ -50,8 +49,8 @@ export default function HomePage() {
             </div>
             
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-white leading-[0.9]">
-              The Pitch meets <br />
-              <span className="text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]">The Gridiron.</span>
+              The World's Game meets <br />
+              <span className="text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]">America's Game.</span>
             </h1>
             
             <div className="bg-[#121316]/80 backdrop-blur-md border border-zinc-800 p-6 md:p-8 rounded-xl shadow-2xl max-w-3xl mx-auto mt-6">
@@ -71,7 +70,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* O Tradutor de Atletas (Agora centralizado) */}
           <div className="w-full max-w-2xl mt-8">
             <div className="bg-[#121316] border border-zinc-800 shadow-2xl overflow-hidden flex flex-col">
               <div className="bg-zinc-900/90 p-2 border-b border-zinc-800 flex gap-2">

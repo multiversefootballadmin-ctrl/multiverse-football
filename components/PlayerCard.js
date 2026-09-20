@@ -4,12 +4,12 @@ import Link from 'next/link';
 
 export const getArchetypeStyles = (archetype) => {
   switch(archetype) {
-    case 'QB': return { color: 'text-red-400', bg: 'bg-red-500/10', border: 'border-red-500/30', hover: 'hover:border-red-500/70', glow: 'bg-red-500', icon: '🎯' };
-    case 'RB': return { color: 'text-emerald-400', bg: 'bg-emerald-500/10', border: 'border-emerald-500/30', hover: 'hover:border-emerald-500/70', glow: 'bg-emerald-500', icon: '🏃‍♂️' };
-    case 'WR': return { color: 'text-blue-400', bg: 'bg-blue-500/10', border: 'border-blue-500/30', hover: 'hover:border-blue-500/70', glow: 'bg-blue-500', icon: '⚡' };
-    case 'TE': return { color: 'text-amber-500', bg: 'bg-amber-500/10', border: 'border-amber-500/30', hover: 'hover:border-amber-500/70', glow: 'bg-amber-500', icon: '🛡️' };
-    case 'DEF': return { color: 'text-purple-400', bg: 'bg-purple-500/10', border: 'border-purple-500/30', hover: 'hover:border-purple-500/70', glow: 'bg-purple-500', icon: '🧱' };
-    default: return { color: 'text-zinc-400', bg: 'bg-zinc-500/10', border: 'border-zinc-500/30', hover: 'hover:border-zinc-500/70', glow: 'bg-zinc-500', icon: '🏈' };
+    case 'QB': return { badgeBg: 'bg-red-600', badgeText: 'text-white', border: 'border-red-500', glow: 'bg-red-500', icon: '🎯', textAccent: 'text-red-500' };
+    case 'RB': return { badgeBg: 'bg-emerald-600', badgeText: 'text-white', border: 'border-emerald-500', glow: 'bg-emerald-500', icon: '🏃‍♂️', textAccent: 'text-emerald-500' };
+    case 'WR': return { badgeBg: 'bg-blue-600', badgeText: 'text-white', border: 'border-blue-500', glow: 'bg-blue-500', icon: '⚡', textAccent: 'text-blue-500' };
+    case 'TE': return { badgeBg: 'bg-amber-500', badgeText: 'text-black', border: 'border-amber-400', glow: 'bg-amber-500', icon: '🛡️', textAccent: 'text-amber-500' };
+    case 'DEF': return { badgeBg: 'bg-purple-600', badgeText: 'text-white', border: 'border-purple-500', glow: 'bg-purple-500', icon: '🧱', textAccent: 'text-purple-400' };
+    default: return { badgeBg: 'bg-zinc-600', badgeText: 'text-white', border: 'border-zinc-500', glow: 'bg-zinc-500', icon: '🏈', textAccent: 'text-zinc-300' };
   }
 };
 
@@ -19,20 +19,20 @@ export default function PlayerCard({ target }) {
   return (
     <Link 
       href={`/players/${target.id}`}
-      className={`group relative bg-[#121316] border ${styles.border} ${styles.hover} transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between overflow-hidden`}
+      className={`group relative bg-[#121316] border border-zinc-800 hover:${styles.border} transition-all duration-300 hover:-translate-y-1 shadow-lg flex flex-col justify-between overflow-hidden`}
     >
-      <div className={`absolute top-0 right-0 w-32 h-32 ${styles.glow} opacity-0 group-hover:opacity-10 blur-[60px] transition-opacity duration-500 pointer-events-none`}></div>
+      <div className={`absolute top-0 right-0 w-32 h-32 ${styles.glow} opacity-0 group-hover:opacity-15 blur-[50px] transition-opacity duration-500 pointer-events-none`}></div>
 
       <div className="p-5 flex flex-col h-full z-10">
         <div className="flex items-start justify-between mb-4">
-          <span className={`px-2 py-1 border ${styles.border} ${styles.color} ${styles.bg} font-mono font-bold text-[10px] tracking-widest uppercase flex items-center gap-1.5`}>
+          <span className={`px-2.5 py-1 ${styles.badgeBg} ${styles.badgeText} font-mono font-black text-[10px] tracking-widest uppercase flex items-center gap-1.5 shadow-md`}>
             {styles.icon} {target.archetype === 'DEF' ? 'D/ST' : target.archetype}
           </span>
           <div className="text-right">
             <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block leading-none mb-1">
               WIF SCORE
             </span>
-            <span className={`text-3xl font-black font-mono text-white group-hover:${styles.color} transition-colors leading-none`}>
+            <span className={`text-3xl font-black font-mono text-white group-hover:${styles.textAccent} transition-colors leading-none`}>
               {target.wif_score}
             </span>
           </div>
@@ -40,7 +40,7 @@ export default function PlayerCard({ target }) {
 
         <div className="flex items-center gap-4 mb-5">
           <div className="overflow-hidden">
-            <h3 className={`text-lg font-black text-white uppercase tracking-tighter truncate group-hover:${styles.color} transition-colors`}>
+            <h3 className={`text-lg font-black text-white uppercase tracking-tighter truncate group-hover:${styles.textAccent} transition-colors`}>
               {target.name}
             </h3>
             <p className="text-[10px] font-mono text-zinc-400 tracking-widest uppercase truncate mt-0.5">
@@ -50,7 +50,7 @@ export default function PlayerCard({ target }) {
         </div>
 
         <div className="bg-[#0E0F12] border border-zinc-800 p-2.5 mb-4 font-mono">
-          <span className={`text-[9px] ${styles.color} uppercase font-bold tracking-widest block mb-0.5`}>
+          <span className={`text-[9px] ${styles.textAccent} uppercase font-bold tracking-widest block mb-0.5`}>
             CLASS BRIDGE
           </span>
           <span className="truncate block text-white text-[10px] uppercase tracking-wider">
