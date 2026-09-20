@@ -70,8 +70,9 @@ export default function HomePage() {
           <span className="text-white">MULTIVERSE</span> <span className="text-orange-500">FOOTBALL</span>
         </div>
         <nav className="hidden md:flex space-x-8 font-mono text-xs font-bold tracking-widest text-zinc-400">
-          <Link href="/rankings" className="hover:text-orange-400 transition-colors">WAR ROOM</Link>
-          <Link href="/methodology" className="hover:text-orange-400 transition-colors">THE METHOD</Link>
+         <Link href="/rankings" className="hover:text-orange-400 transition-colors">WAR ROOM</Link>
+<Link href="/playbook" className="hover:text-orange-400 transition-colors">PLAYBOOK</Link>
+<Link href="/methodology" className="hover:text-orange-400 transition-colors">{isPt ? "METODOLOGIA" : "THE METHOD"}</Link>
           <Link href="/about" className="hover:text-orange-400 transition-colors">ORIGIN</Link>
         </nav>
       </header>
