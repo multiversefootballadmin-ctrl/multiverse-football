@@ -1,122 +1,84 @@
 'use client';
 
-import Link from 'next/link';
-
 export default function MethodologyPage() {
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header Section */}
-      <div className="mb-12 border-b border-zinc-800 pb-8">
-        <div className="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/30 text-orange-400 font-mono text-xs font-semibold rounded-full mb-4">
-          SYSTEM ARCHITECTURE // MULTIVERSE SCANNER
-        </div>
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
-          TRANSLATING SOCCER TELEMETRY INTO NFL ARCHETYPES
-        </h1>
-        <p className="text-zinc-400 max-w-3xl text-sm sm:text-base leading-relaxed">
-          Our projection engine operates like a multiverse scanner. We isolate a player's kinematic signature, spatial manipulation, and explosive power to find their exact tactical variant on the gridiron.
-        </p>
-      </div>
-
-      {/* Section 01: Core Philosophy */}
-      <section className="mb-12">
-        <div className="bg-[#121318] border border-zinc-800/80 rounded-2xl p-6 sm:p-8">
-          <div className="text-orange-500 font-mono text-xs font-bold uppercase tracking-wider mb-2">
-            SECTION 01 // SUPERHERO EQUIVALENCE
-          </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-white mb-4">
-            CROSS-SPORT DIMENSIONAL VARIANTS
-          </h2>
-          <p className="text-zinc-300 text-sm leading-relaxed mb-6">
-            Traditional cross-sport comparisons rely on superficial narratives. Multiverse Football digs into the DNA of movement. Just as a superhero's core abilities adapt to different realities, we map how a soccer athlete's physical dominance translates into NFL leverage under high spatial compression.
+    <div className="min-h-screen bg-[#0D110E] text-[#F3F1E7] font-sans pb-32">
+      <div className="max-w-6xl mx-auto px-6 pt-24 space-y-16">
+        
+        <header className="border-b border-[#0B3D2E] pb-8">
+          <h1 className="text-5xl font-black uppercase tracking-tighter text-white mb-4">
+            The WIF Score <span className="text-[#E8B923]">Engine</span>
+          </h1>
+          <p className="text-[#9AAFA8] font-mono text-sm max-w-2xl leading-relaxed">
+            SYSTEM ARCHITECTURE // Translating kinematic signatures across dimensions. This is not loose fantasy. This is pure statistical cross-talk.
           </p>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-4">
-              <div className="text-cyan-400 font-mono text-xs font-bold mb-1">
-                THE PLAYMAKER // QUARTERBACK VISION
-              </div>
-              <p className="text-zinc-400 text-xs leading-relaxed">
-                Key passes into compressed spaces become high-stakes 3rd & Short conversions. We measure the ability to process chaos, manipulate defensive gravity, and deliver precision strikes.
-              </p>
-            </div>
-            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-4">
-              <div className="text-emerald-400 font-mono text-xs font-bold mb-1">
-                THE WINGER // WIDE RECEIVER BURST
-              </div>
-              <p className="text-zinc-400 text-xs leading-relaxed">
-                Explosive burst on the flanks translates directly to vertical threats and route separation. Speed and territory gain are universal languages across both dimensions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+        </header>
 
-      {/* Section 02: WIF Rating Architecture */}
-      <section className="mb-12">
-        <div className="bg-[#121318] border border-zinc-800/80 rounded-2xl p-6 sm:p-8">
-          <div className="text-orange-500 font-mono text-xs font-bold uppercase tracking-wider mb-2">
-            SECTION 02 // MULTIDIMENSIONAL ALGORITHM
-          </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-white mb-4">
-            02 // THE PROPRIETARY WIF RATING ARCHITECTURE
+        {/* Translation Weights */}
+        <section className="space-y-8">
+          <h2 className="text-2xl font-black uppercase text-white border-l-4 border-[#E8B923] pl-4">
+            Positional Translation Weights
           </h2>
-          <p className="text-zinc-300 text-sm leading-relaxed mb-6">
-            The WIF (War Impact Factor) is our power-scaling index. Rather than assigning arbitrary video-game numbers, WIF assesses an athlete's net impact on win-probability through multi-dimensional modeling:
+          <p className="text-[#9AAFA8] max-w-3xl">
+            Each athlete is evaluated across specific spatial and physical attributes. Their highest normalized score determines their true NFL archetype.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5">
-              <h3 className="text-orange-400 font-mono text-sm font-bold mb-2">
-                A. Expected Production Impact
-              </h3>
-              <p className="text-zinc-400 text-xs leading-relaxed">
-                Measures dangerous chance creation and direct finishing efficiency normalized against league quality and game state.
-              </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 font-mono text-sm">
+            {/* QB Card */}
+            <div className="bg-[#0a0d0b] border border-[#1a241f] p-6 space-y-4 hover:border-[#E8B923]/50 transition-colors">
+              <div className="text-4xl font-black text-[#E8B923]">QB</div>
+              <div className="text-white font-bold pb-2 border-b border-[#1a241f]">FIELD GENERAL</div>
+              <ul className="space-y-2 text-[#9AAFA8]">
+                <li className="flex justify-between"><span>Vision & Creation</span> <span className="text-white">40%</span></li>
+                <li className="flex justify-between"><span>Long Pass Accuracy</span> <span className="text-white">30%</span></li>
+                <li className="flex justify-between"><span>Composure (Under Pressure)</span> <span className="text-white">20%</span></li>
+                <li className="flex justify-between"><span>Direct Finishing</span> <span className="text-white">10%</span></li>
+              </ul>
             </div>
 
-            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5">
-              <h3 className="text-orange-400 font-mono text-sm font-bold mb-2">
-                B. Progressive Line-Breaking Velocity
-              </h3>
-              <p className="text-zinc-400 text-xs leading-relaxed">
-                Evaluates passes and carries that successfully puncture intermediate defensive shells and gain territory.
-              </p>
+            {/* RB Card */}
+            <div className="bg-[#0a0d0b] border border-[#1a241f] p-6 space-y-4 hover:border-[#E8B923]/50 transition-colors">
+              <div className="text-4xl font-black text-[#E8B923]">RB</div>
+              <div className="text-white font-bold pb-2 border-b border-[#1a241f]">GROUND & POUND</div>
+              <ul className="space-y-2 text-[#9AAFA8]">
+                <li className="flex justify-between"><span>Burst & Acceleration</span> <span className="text-white">35%</span></li>
+                <li className="flex justify-between"><span>Short-Space Dribble</span> <span className="text-white">30%</span></li>
+                <li className="flex justify-between"><span>Physical Duels</span> <span className="text-white">20%</span></li>
+                <li className="flex justify-between"><span>Direct Finishing</span> <span className="text-white">15%</span></li>
+              </ul>
             </div>
 
-            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5">
-              <h3 className="text-orange-400 font-mono text-sm font-bold mb-2">
-                C. Physical Leverage & Contact Index
-              </h3>
-              <p className="text-zinc-400 text-xs leading-relaxed">
-                Assesses contested duel success rates, recovery speed under physical challenge, and second-ball wins.
-              </p>
-            </div>
-
-            <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-5">
-              <h3 className="text-orange-400 font-mono text-sm font-bold mb-2">
-                D. Ball Protection & Disruption Ratio
-              </h3>
-              <p className="text-zinc-400 text-xs leading-relaxed">
-                Calculates turnover resistance in tight areas and defensive stoppage efficiency per active possession.
-              </p>
+            {/* WR Card */}
+            <div className="bg-[#0a0d0b] border border-[#1a241f] p-6 space-y-4 hover:border-[#E8B923]/50 transition-colors">
+              <div className="text-4xl font-black text-[#E8B923]">WR</div>
+              <div className="text-white font-bold pb-2 border-b border-[#1a241f]">VERTICAL THREAT</div>
+              <ul className="space-y-2 text-[#9AAFA8]">
+                <li className="flex justify-between"><span>Top Speed (Open Space)</span> <span className="text-white">40%</span></li>
+                <li className="flex justify-between"><span>Finishing & xG</span> <span className="text-white">25%</span></li>
+                <li className="flex justify-between"><span>Aerial Duels (Possession)</span> <span className="text-white">20%</span></li>
+                <li className="flex justify-between"><span>Separation (Dribble)</span> <span className="text-white">15%</span></li>
+              </ul>
             </div>
           </div>
+        </section>
 
-          <div className="bg-orange-500/10 border border-orange-500/30 rounded-xl p-4 text-xs font-mono text-orange-300">
-            <span className="font-bold">ℹ Proprietary Weighting Architecture:</span> Non-linear normalization prevents raw volume inflation. High-volume, low-impact actions are discounted in favor of decisive phase transitions.
+        {/* Scoring System & Multiplier */}
+        <section className="bg-[#0B3D2E]/10 border border-[#0B3D2E] p-8 space-y-6">
+          <h2 className="text-2xl font-black uppercase text-white">The Rarity Multiplier (1.75x)</h2>
+          <div className="text-[#9AAFA8] space-y-4 leading-relaxed">
+            <p>
+              In traditional PPR formats, a Touchdown is worth 6 points. However, a goal in soccer is statistically rarer than a touchdown in the NFL.
+            </p>
+            <p>
+              By tracking historical league averages (~2.69 goals per soccer game vs ~4.69 TDs per NFL game), we established a mathematical rarity multiplier of <strong>1.75x</strong>. 
+            </p>
+            <div className="bg-[#0D110E] p-4 font-mono text-[#E8B923] inline-block border border-[#1a241f]">
+              Score = (Base TD Points × 1.75) × Opponent Difficulty Factor
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Navigation Footer */}
-      <div className="flex items-center justify-between pt-6 border-t border-zinc-800 font-mono text-xs">
-        <Link href="/" className="text-zinc-400 hover:text-white transition">
-          ← BACK TO HOME
-        </Link>
-        <Link href="/rankings" className="px-4 py-2 bg-orange-600 hover:bg-orange-500 text-white font-bold rounded-lg transition">
-          ENTER WAR ROOM →
-        </Link>
       </div>
-    </main>
+    </div>
   );
 }
