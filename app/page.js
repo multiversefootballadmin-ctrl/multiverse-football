@@ -15,6 +15,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-20">
       
+      {/* HERO SECTION */}
       <section className="relative w-full min-h-[90vh] pt-24 pb-20 flex items-center overflow-hidden flex-col justify-center border-b border-zinc-900">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
@@ -54,49 +55,145 @@ export default function HomePage() {
               <Link href="/rankings" className="bg-orange-600 hover:bg-orange-500 text-white font-black uppercase tracking-widest px-10 py-5 text-sm transition-all shadow-[0_0_25px_rgba(249,115,22,0.4)]">
                 Enter The War Room
               </Link>
-              <Link href="/scouting" className="bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-bold uppercase tracking-widest px-10 py-5 text-sm transition-all">
-                See The Translations
+              <Link href="/methodology" className="bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-bold uppercase tracking-widest px-10 py-5 text-sm transition-all">
+                Decode The Matrix
               </Link>
             </div>
           </div>
         </div>
       </section>
 
+      {/* ARCHETYPE QUICK-CARDS (MULTIVERSE REDESIGN) */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-4">Archetype Quick-Cards</h2>
-          <p className="text-zinc-500 font-mono text-xs uppercase tracking-widest">Every warrior has a role across both dimensions.</p>
+          <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-4">The Archetype Translation</h2>
+          <p className="text-zinc-500 font-mono text-xs uppercase tracking-widest">How pitch roles map to gridiron reality.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
-          <div className="bg-[#121316] border-t-2 border-red-500 p-6 shadow-lg hover:-translate-y-1 transition-transform">
-            <h3 className="font-black text-white text-xl uppercase mb-1">QB</h3>
-            <p className="text-red-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-3">The Field General</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">The master distributor. Dictates tempo, reads defensive shells, and engineers scoring drives.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
+          {/* QB Card */}
+          <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-red-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-black text-white text-2xl uppercase">QB</h3>
+              <span className="text-red-500 text-2xl opacity-50 group-hover:opacity-100 transition-opacity">🎯</span>
+            </div>
+            <p className="text-red-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-4">The Field General</p>
+            
+            <div className="bg-[#0E0F12] border border-zinc-800 p-3 mb-4 rounded-sm">
+              <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest">
+                <span className="text-zinc-400">⚽ Playmaker</span>
+                <span className="text-zinc-600">➔</span>
+                <span className="text-white font-bold">🏈 Pocket Passer</span>
+              </div>
+            </div>
+            
+            <p className="text-xs text-zinc-400 leading-relaxed mb-6 flex-grow">The master distributor. Dictates tempo, reads defensive shells, and engineers scoring drives through elite spatial vision.</p>
+            
+            <div className="border-t border-zinc-800 pt-3">
+              <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest block mb-1">Core Metric Translation</span>
+              <span className="text-zinc-200 font-mono text-[10px] uppercase font-bold tracking-widest">Key Passes ➔ Pass Yds</span>
+            </div>
           </div>
-          <div className="bg-[#121316] border-t-2 border-emerald-500 p-6 shadow-lg hover:-translate-y-1 transition-transform">
-            <h3 className="font-black text-white text-xl uppercase mb-1">RB</h3>
-            <p className="text-emerald-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-3">The Ground Weapon</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">The interior converter. Absorbs contact in high-density danger zones and punches the ball across.</p>
+
+          {/* RB Card */}
+          <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-emerald-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-black text-white text-2xl uppercase">RB</h3>
+              <span className="text-emerald-500 text-2xl opacity-50 group-hover:opacity-100 transition-opacity">🏃‍♂️</span>
+            </div>
+            <p className="text-emerald-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-4">The Ground Weapon</p>
+            
+            <div className="bg-[#0E0F12] border border-zinc-800 p-3 mb-4 rounded-sm">
+              <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest">
+                <span className="text-zinc-400">⚽ Target Striker</span>
+                <span className="text-zinc-600">➔</span>
+                <span className="text-white font-bold">🏈 Power Back</span>
+              </div>
+            </div>
+            
+            <p className="text-xs text-zinc-400 leading-relaxed mb-6 flex-grow">The interior converter. Absorbs physical contact in high-density danger zones and punches the ball across the goal line.</p>
+            
+            <div className="border-t border-zinc-800 pt-3">
+              <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest block mb-1">Core Metric Translation</span>
+              <span className="text-zinc-200 font-mono text-[10px] uppercase font-bold tracking-widest">Box Shots ➔ Rush TDs</span>
+            </div>
           </div>
-          <div className="bg-[#121316] border-t-2 border-blue-500 p-6 shadow-lg hover:-translate-y-1 transition-transform">
-            <h3 className="font-black text-white text-xl uppercase mb-1">WR</h3>
-            <p className="text-blue-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-3">The Vertical Separator</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">The boundary threat. Isolates defenders 1v1, stretches secondaries, and dominates YAC.</p>
+
+          {/* WR Card */}
+          <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-blue-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-black text-white text-2xl uppercase">WR</h3>
+              <span className="text-blue-500 text-2xl opacity-50 group-hover:opacity-100 transition-opacity">⚡</span>
+            </div>
+            <p className="text-blue-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-4">The Vertical Separator</p>
+            
+            <div className="bg-[#0E0F12] border border-zinc-800 p-3 mb-4 rounded-sm">
+              <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest">
+                <span className="text-zinc-400">⚽ Wide Winger</span>
+                <span className="text-zinc-600">➔</span>
+                <span className="text-white font-bold">🏈 Deep Threat</span>
+              </div>
+            </div>
+            
+            <p className="text-xs text-zinc-400 leading-relaxed mb-6 flex-grow">The boundary weapon. Isolates defenders 1v1, stretches defensive lines vertically, and dominates yards after contact.</p>
+            
+            <div className="border-t border-zinc-800 pt-3">
+              <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest block mb-1">Core Metric Translation</span>
+              <span className="text-zinc-200 font-mono text-[10px] uppercase font-bold tracking-widest">Take-ons ➔ YAC</span>
+            </div>
           </div>
-          <div className="bg-[#121316] border-t-2 border-amber-500 p-6 shadow-lg hover:-translate-y-1 transition-transform">
-            <h3 className="font-black text-white text-xl uppercase mb-1">TE</h3>
-            <p className="text-amber-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-3">The Hybrid Anchor</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">The tactical connector. Wins aerial duels, sets the physical tone, and moves intermediate chains.</p>
+
+          {/* TE Card */}
+          <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-amber-500 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-black text-white text-2xl uppercase">TE</h3>
+              <span className="text-amber-500 text-2xl opacity-50 group-hover:opacity-100 transition-opacity">🛡️</span>
+            </div>
+            <p className="text-amber-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-4">The Hybrid Anchor</p>
+            
+            <div className="bg-[#0E0F12] border border-zinc-800 p-3 mb-4 rounded-sm">
+              <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest">
+                <span className="text-zinc-400">⚽ Box-to-Box</span>
+                <span className="text-zinc-600">➔</span>
+                <span className="text-white font-bold">🏈 Chain Mover</span>
+              </div>
+            </div>
+            
+            <p className="text-xs text-zinc-400 leading-relaxed mb-6 flex-grow">The tactical connector. Wins aerial duels, sets the physical tone in the trenches, and moves intermediate chains reliably.</p>
+            
+            <div className="border-t border-zinc-800 pt-3">
+              <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest block mb-1">Core Metric Translation</span>
+              <span className="text-zinc-200 font-mono text-[10px] uppercase font-bold tracking-widest">Aerials Won ➔ Rec Yds</span>
+            </div>
           </div>
-          <div className="bg-[#121316] border-t-2 border-purple-500 p-6 shadow-lg hover:-translate-y-1 transition-transform">
-            <h3 className="font-black text-white text-xl uppercase mb-1">DEF</h3>
-            <p className="text-purple-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-3">The Territorial Lock</p>
-            <p className="text-xs text-zinc-400 leading-relaxed">The collective wall. Denies operating space, forces catastrophic turnovers, and preserves clean sheets.</p>
+
+          {/* DEF Card */}
+          <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-purple-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="font-black text-white text-2xl uppercase">DEF</h3>
+              <span className="text-purple-500 text-2xl opacity-50 group-hover:opacity-100 transition-opacity">🧱</span>
+            </div>
+            <p className="text-purple-500 font-mono text-[10px] font-bold uppercase tracking-widest mb-4">The Territorial Lock</p>
+            
+            <div className="bg-[#0E0F12] border border-zinc-800 p-3 mb-4 rounded-sm">
+              <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest">
+                <span className="text-zinc-400">⚽ Defensive Line</span>
+                <span className="text-zinc-600">➔</span>
+                <span className="text-white font-bold">🏈 D/ST Unit</span>
+              </div>
+            </div>
+            
+            <p className="text-xs text-zinc-400 leading-relaxed mb-6 flex-grow">The collective wall. Denies operating space, forces catastrophic turnovers, and guarantees end-zone preservation.</p>
+            
+            <div className="border-t border-zinc-800 pt-3">
+              <span className="text-zinc-600 font-mono text-[9px] uppercase tracking-widest block mb-1">Core Metric Translation</span>
+              <span className="text-zinc-200 font-mono text-[10px] uppercase font-bold tracking-widest">Clean Sheet ➔ Shutout</span>
+            </div>
           </div>
         </div>
       </section>
 
+      {/* TOP 5 PODIUM TEASER */}
       <section className="bg-[#0a0b0d] py-24 border-y border-zinc-900">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center space-y-2 mb-12">
