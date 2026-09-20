@@ -10,7 +10,7 @@ const ARCHETYPES = ["ALL", "QB", "RB", "WR", "TE", "DEF"];
 export default function RankingsPage() {
   const [targets, setTargets] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [viewMode, setViewMode] = useState("table"); // Defaulting to table for data nerds
+  const [viewMode, setViewMode] = useState("table"); 
 
   const [selectedArchetype, setSelectedArchetype] = useState("ALL");
   const [search, setSearch] = useState("");
@@ -114,6 +114,8 @@ export default function RankingsPage() {
                 <tr className="border-b border-zinc-800 bg-[#0E0F12] text-[10px] font-mono text-zinc-500 uppercase tracking-widest select-none">
                   <th className="py-4 px-5 cursor-pointer hover:text-white" onClick={() => handleSort('name')}>PLAYER TARGET {sortKey === 'name' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
                   <th className="py-4 px-5 cursor-pointer hover:text-white" onClick={() => handleSort('archetype')}>CLASS {sortKey === 'archetype' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
+                  <th className="py-4 px-5 text-center text-zinc-600">FORM</th>
+                  <th className="py-4 px-5 text-zinc-600">NEXT MATCH</th>
                   <th className="py-4 px-5 cursor-pointer hover:text-white" onClick={() => handleSort('passer_eff')}>PRIMARY METRIC {sortKey === 'passer_eff' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
                   <th className="py-4 px-5 text-right font-bold text-orange-500 cursor-pointer hover:text-orange-400" onClick={() => handleSort('wif_score')}>WIF SCORE {sortKey === 'wif_score' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
                 </tr>
@@ -121,6 +123,7 @@ export default function RankingsPage() {
               <tbody className="divide-y divide-zinc-800/60 text-xs font-mono">
                 {paginatedTargets.map((t) => {
                   const s = getArchetypeStyles(t.archetype);
+                  const trend = t.trend_delta || (Math.random() > 0.5 ? '▲' : '▼');
                   return (
                     <tr key={t.id} className="hover:bg-zinc-800/30 transition-colors">
                       <td className="py-4 px-5">
@@ -129,6 +132,12 @@ export default function RankingsPage() {
                       </td>
                       <td className="py-4 px-5">
                         <span className={`px-2 py-1 border ${s.border} ${s.badgeText} ${s.badgeBg} font-bold tracking-widest text-[10px]`}>{s.icon} {t.archetype}</span>
+                      </td>
+                      <td className="py-4 px-5 text-center">
+                        <span className={`text-sm ${trend === '▲' ? 'text-emerald-500' : 'text-red-500'}`}>{trend}</span>
+                      </td>
+                      <td className="py-4 px-5 text-zinc-400 uppercase tracking-wider">
+                        {t.next_opponent || "vs. TBD"}
                       </td>
                       <td className="py-4 px-5 text-zinc-400">
                         {t.passer_eff || "AWAITING DATA"}

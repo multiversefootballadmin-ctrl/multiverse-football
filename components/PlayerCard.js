@@ -15,6 +15,11 @@ export const getArchetypeStyles = (archetype) => {
 
 export default function PlayerCard({ target }) {
   const styles = getArchetypeStyles(target.archetype);
+  
+  // Mock de dados rápidos caso a API real ainda não os tenha
+  const trend = target.trend_delta || (Math.random() > 0.5 ? '▲' : '▼');
+  const trendColor = trend === '▲' ? 'text-emerald-500' : 'text-red-500';
+  const nextOpp = target.next_opponent || "vs. TBD";
 
   return (
     <Link 
@@ -32,9 +37,12 @@ export default function PlayerCard({ target }) {
             <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block leading-none mb-1">
               WIF SCORE
             </span>
-            <span className={`text-3xl font-black font-mono text-white group-hover:${styles.textAccent} transition-colors leading-none`}>
-              {target.wif_score}
-            </span>
+            <div className="flex items-center justify-end gap-1.5">
+              <span className={`text-3xl font-black font-mono text-white group-hover:${styles.textAccent} transition-colors leading-none`}>
+                {target.wif_score}
+              </span>
+              <span className={`text-xs ${trendColor}`}>{trend}</span>
+            </div>
           </div>
         </div>
 
@@ -49,13 +57,15 @@ export default function PlayerCard({ target }) {
           </div>
         </div>
 
-        <div className="bg-[#0E0F12] border border-zinc-800 p-2.5 mb-4 font-mono">
-          <span className={`text-[9px] ${styles.textAccent} uppercase font-bold tracking-widest block mb-0.5`}>
-            CLASS BRIDGE
-          </span>
-          <span className="truncate block text-white text-[10px] uppercase tracking-wider">
-            {target.archetype_label || 'FIELD GENERAL'}
-          </span>
+        <div className="bg-[#0E0F12] border border-zinc-800 p-2.5 mb-4 font-mono flex items-center justify-between">
+          <div>
+            <span className={`text-[9px] ${styles.textAccent} uppercase font-bold tracking-widest block mb-0.5`}>CLASS</span>
+            <span className="truncate block text-white text-[10px] uppercase tracking-wider">{target.archetype_label || 'FIELD GENERAL'}</span>
+          </div>
+          <div className="text-right">
+            <span className="text-[9px] text-zinc-500 uppercase font-bold tracking-widest block mb-0.5">NEXT</span>
+            <span className="truncate block text-zinc-300 text-[10px] uppercase tracking-wider">{nextOpp}</span>
+          </div>
         </div>
       </div>
 

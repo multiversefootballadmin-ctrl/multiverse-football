@@ -5,11 +5,11 @@ import { getArchetypeStyles } from '@/components/PlayerCard';
 
 export default function HomePage() {
   const top5 = [
-    { id: "kdb", rank: 1, name: "K. De Bruyne", team: "Man City", archetype: "QB", score: "94.2", trend: "▲" },
-    { id: "vini", rank: 2, name: "V. Júnior", team: "Real Madrid", archetype: "WR", score: "91.8", trend: "▲" },
-    { id: "haaland", rank: 3, name: "E. Haaland", team: "Man City", archetype: "RB", score: "89.5", trend: "▼" },
-    { id: "rodri", rank: 4, name: "Rodri", team: "Man City", archetype: "TE", score: "88.1", trend: "-" },
-    { id: "saliba", rank: 5, name: "W. Saliba", team: "Arsenal", archetype: "DEF", score: "86.7", trend: "▲" }
+    { id: "kdb", rank: 1, name: "K. De Bruyne", team: "Man City", archetype: "QB", score: "94.2", trend: "▲", next: "vs MAD" },
+    { id: "vini", rank: 2, name: "V. Júnior", team: "Real Madrid", archetype: "WR", score: "91.8", trend: "▲", next: "@ MCI" },
+    { id: "haaland", rank: 3, name: "E. Haaland", team: "Man City", archetype: "RB", score: "89.5", trend: "▼", next: "vs MAD" },
+    { id: "rodri", rank: 4, name: "Rodri", team: "Man City", archetype: "TE", score: "88.1", trend: "-", next: "vs MAD" },
+    { id: "saliba", rank: 5, name: "W. Saliba", team: "Arsenal", archetype: "DEF", score: "86.7", trend: "▲", next: "@ TOT" }
   ];
 
   return (
@@ -129,7 +129,11 @@ export default function HomePage() {
                             {s.icon} {player.archetype}
                           </span>
                         </div>
-                        <span className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{player.team}</span>
+                        <div className="flex items-center gap-3">
+                          <span className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{player.team}</span>
+                          <span className="text-zinc-700 font-mono text-[10px]">•</span>
+                          <span className="text-zinc-400 font-mono text-[10px] uppercase tracking-widest">NEXT: {player.next}</span>
+                        </div>
                       </div>
                     </div>
                     
