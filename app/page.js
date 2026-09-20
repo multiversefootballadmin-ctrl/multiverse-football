@@ -15,7 +15,6 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-20">
       
-      {/* HERO SECTION */}
       <section className="relative w-full min-h-[90vh] pt-24 pb-20 flex items-center overflow-hidden flex-col justify-center border-b border-zinc-900">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
@@ -55,15 +54,14 @@ export default function HomePage() {
               <Link href="/rankings" className="bg-orange-600 hover:bg-orange-500 text-white font-black uppercase tracking-widest px-10 py-5 text-sm transition-all shadow-[0_0_25px_rgba(249,115,22,0.4)]">
                 Enter The War Room
               </Link>
-              <Link href="/methodology" className="bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-bold uppercase tracking-widest px-10 py-5 text-sm transition-all">
-                Decode The Matrix
+              <Link href="/scouting" className="bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-bold uppercase tracking-widest px-10 py-5 text-sm transition-all">
+                See The Translations
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ARCHETYPE QUICK-CARDS */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-4">Archetype Quick-Cards</h2>
@@ -99,132 +97,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CASE STUDIES: THE TRANSLATION IN ACTION */}
-      <section className="bg-gradient-to-b from-[#0E0F12] to-[#0a0b0d] py-20 border-t border-zinc-900">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16 space-y-4">
-            <span className="text-xs font-mono text-orange-500 font-bold tracking-widest uppercase">The Translation in Action</span>
-            <h2 className="text-3xl md:text-5xl font-black uppercase tracking-tight text-white">Case Studies</h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto font-light leading-relaxed">
-              Still trying to wrap your head around the math? Let's strip away the formulas and look at legendary individual performances translated into the Multiverse.
-            </p>
-          </div>
-
-          <div className="space-y-16">
-            
-            {/* PITCH TO POCKET */}
-            <div>
-              <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-wider mb-8 border-l-4 border-orange-500 pl-4">
-                01. Pitch to Pocket <span className="text-zinc-500 font-light text-base">(Soccer ➔ NFL)</span>
-              </h3>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Case 1 */}
-                <div className="bg-[#121316] border border-zinc-800 p-6 shadow-xl relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-full h-1 bg-red-500"></div>
-                  <div className="mb-4">
-                    <span className="bg-red-600 text-white font-mono text-[10px] font-black uppercase tracking-widest px-2 py-1">🎯 QB</span>
-                    <h4 className="text-lg font-black text-white uppercase tracking-tight mt-3">The Masterclass</h4>
-                  </div>
-                  <p className="text-sm text-zinc-400 font-light mb-4 leading-relaxed">
-                    <strong className="text-zinc-200">What you saw:</strong> A legendary midfielder delivering 2 Assists, 8 Key Passes, and shattering defensive lines with 90% pass accuracy in a Champions League knockout.
-                  </p>
-                  <div className="bg-[#0E0F12] p-4 border border-zinc-800">
-                    <span className="text-orange-500 font-mono text-[10px] font-bold uppercase tracking-widest block mb-1">WIF Engine Translation:</span>
-                    <p className="text-sm text-white font-medium">A Franchise Quarterback throwing for 350+ yards and 3 Touchdowns, surgically dissecting a Cover 2 shell on 3rd down.</p>
-                  </div>
-                </div>
-
-                {/* Case 2 */}
-                <div className="bg-[#121316] border border-zinc-800 p-6 shadow-xl relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-full h-1 bg-emerald-500"></div>
-                  <div className="mb-4">
-                    <span className="bg-emerald-600 text-white font-mono text-[10px] font-black uppercase tracking-widest px-2 py-1">🏃‍♂️ RB</span>
-                    <h4 className="text-lg font-black text-white uppercase tracking-tight mt-3">The Physical Haul</h4>
-                  </div>
-                  <p className="text-sm text-zinc-400 font-light mb-4 leading-relaxed">
-                    <strong className="text-zinc-200">What you saw:</strong> A colossal striker bullying center-backs for a 5-goal haul, converting every high-xG chance inside the 6-yard box.
-                  </p>
-                  <div className="bg-[#0E0F12] p-4 border border-zinc-800">
-                    <span className="text-orange-500 font-mono text-[10px] font-bold uppercase tracking-widest block mb-1">WIF Engine Translation:</span>
-                    <p className="text-sm text-white font-medium">A Power Running Back punching in 4 Goal-Line Touchdowns, rushing for 150+ yards with elite broken-tackle efficiency.</p>
-                  </div>
-                </div>
-
-                {/* Case 3 */}
-                <div className="bg-[#121316] border border-zinc-800 p-6 shadow-xl relative overflow-hidden group">
-                  <div className="absolute top-0 right-0 w-full h-1 bg-blue-500"></div>
-                  <div className="mb-4">
-                    <span className="bg-blue-600 text-white font-mono text-[10px] font-black uppercase tracking-widest px-2 py-1">⚡ WR</span>
-                    <h4 className="text-lg font-black text-white uppercase tracking-tight mt-3">The Boundary Burner</h4>
-                  </div>
-                  <p className="text-sm text-zinc-400 font-light mb-4 leading-relaxed">
-                    <strong className="text-zinc-200">What you saw:</strong> An explosive winger registering 6 successful take-ons, isolating fullbacks 1v1, and scoring after a 40-yard solo sprint.
-                  </p>
-                  <div className="bg-[#0E0F12] p-4 border border-zinc-800">
-                    <span className="text-orange-500 font-mono text-[10px] font-bold uppercase tracking-widest block mb-1">WIF Engine Translation:</span>
-                    <p className="text-sm text-white font-medium">A WR1 securing 120+ Yards After Catch (YAC) and a deep vertical Touchdown after burning press coverage on the outside.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* GRIDIRON TO PITCH */}
-            <div>
-              <h3 className="text-xl md:text-2xl font-black text-white uppercase tracking-wider mb-8 border-l-4 border-zinc-700 pl-4">
-                02. Gridiron to Pitch <span className="text-zinc-500 font-light text-base">(NFL ➔ Soccer)</span>
-              </h3>
-              
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                {/* Case 1 */}
-                <div className="bg-[#0E0F12] border border-zinc-800/60 p-6 relative overflow-hidden group">
-                  <div className="mb-4">
-                    <h4 className="text-lg font-black text-white uppercase tracking-tight">The 4th Quarter Comeback</h4>
-                  </div>
-                  <p className="text-sm text-zinc-400 font-light mb-4 leading-relaxed">
-                    <strong className="text-zinc-300">NFL Reality:</strong> A star QB erases a 10-point deficit in the final 5 minutes with 3 Passing TDs under heavy pressure blitzes.
-                  </p>
-                  <div className="bg-[#121316] p-4 border border-zinc-800/50 border-l-2 border-l-red-500">
-                    <span className="text-zinc-500 font-mono text-[10px] font-bold uppercase tracking-widest block mb-1">Soccer Equivalent:</span>
-                    <p className="text-sm text-zinc-300 font-medium">A #10 Playmaker erasing a 2-0 deficit in the 85th minute, breaking lines with perfectly weighted through-balls (xA) against a high press.</p>
-                  </div>
-                </div>
-
-                {/* Case 2 */}
-                <div className="bg-[#0E0F12] border border-zinc-800/60 p-6 relative overflow-hidden group">
-                  <div className="mb-4">
-                    <h4 className="text-lg font-black text-white uppercase tracking-tight">The 200-Yard Bulldozer</h4>
-                  </div>
-                  <p className="text-sm text-zinc-400 font-light mb-4 leading-relaxed">
-                    <strong className="text-zinc-300">NFL Reality:</strong> A physical running back dragging defenders for 200 Rushing Yards, punishing the defensive line between the tackles.
-                  </p>
-                  <div className="bg-[#121316] p-4 border border-zinc-800/50 border-l-2 border-l-emerald-500">
-                    <span className="text-zinc-500 font-mono text-[10px] font-bold uppercase tracking-widest block mb-1">Soccer Equivalent:</span>
-                    <p className="text-sm text-zinc-300 font-medium">A massive Target Man physically bullying two center-backs in the penalty area for a bruising hat-trick built entirely on hold-up play.</p>
-                  </div>
-                </div>
-
-                {/* Case 3 */}
-                <div className="bg-[#0E0F12] border border-zinc-800/60 p-6 relative overflow-hidden group">
-                  <div className="mb-4">
-                    <h4 className="text-lg font-black text-white uppercase tracking-tight">The Press Beater</h4>
-                  </div>
-                  <p className="text-sm text-zinc-400 font-light mb-4 leading-relaxed">
-                    <strong className="text-zinc-300">NFL Reality:</strong> An elite receiver securing 150 Receiving Yards by consistently beating man-to-man press coverage off the line of scrimmage.
-                  </p>
-                  <div className="bg-[#121316] p-4 border border-zinc-800/50 border-l-2 border-l-blue-500">
-                    <span className="text-zinc-500 font-mono text-[10px] font-bold uppercase tracking-widest block mb-1">Soccer Equivalent:</span>
-                    <p className="text-sm text-zinc-300 font-medium">A quick-footed Winger isolating the fullback, completing multiple rapid 1v1 dribbles, and serving unguardable crosses into the box.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-      </section>
-
-      {/* TOP 5 PODIUM TEASER */}
       <section className="bg-[#0a0b0d] py-24 border-y border-zinc-900">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center space-y-2 mb-12">
