@@ -6,6 +6,83 @@ import { useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { useLanguage } from '@/lib/LanguageContext';
 
+// Componente PositionalEmblem extraído para fora para melhor performance no React
+const PositionalEmblem = ({ position }) => {
+  const config = {
+    QB: { 
+      color: '#F97316', 
+      icon: (
+        <g>
+          <circle cx="12" cy="12" r="10" />
+          <line x1="12" y1="2" x2="12" y2="22" />
+          <line x1="2" y1="12" x2="22" y2="12" />
+          <circle cx="12" cy="12" r="3" fill="#F97316" className="opacity-50" />
+        </g>
+      ) 
+    },
+    WR: { 
+      color: '#0EA5E9', 
+      icon: <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" /> 
+    },
+    RB: { 
+      color: '#10B981', 
+      icon: (
+        <g>
+          <polyline points="13 17 18 12 13 7" />
+          <polyline points="6 17 11 12 6 7" />
+        </g>
+      ) 
+    },
+    TE: { 
+      color: '#8B5CF6', 
+      icon: (
+        <g>
+          <polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5" />
+          <circle cx="12" cy="12" r="3" />
+        </g>
+      ) 
+    },
+    DEF: { 
+      color: '#EF4444', 
+      icon: (
+        <g>
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+          <line x1="9" y1="9" x2="15" y2="15" />
+          <line x1="15" y1="9" x2="9" y2="15" />
+        </g>
+      ) 
+    },
+  };
+
+  const { color, icon } = config[position] || { 
+    color: '#A1A1AA', 
+    icon: <circle cx="12" cy="12" r="8" strokeDasharray="4 4" /> 
+  };
+
+  return (
+    <div className="w-full h-full bg-[#121316] flex items-center justify-center relative overflow-hidden group">
+      <div 
+        className="absolute inset-0 opacity-10 transition-opacity duration-500 group-hover:opacity-20" 
+        style={{ backgroundColor: color }} 
+      />
+      <svg 
+        width="45%" 
+        height="45%" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        stroke={color} 
+        strokeWidth="1.5" 
+        strokeLinecap="round" 
+        strokeLinejoin="round" 
+        className="opacity-90 transition-transform duration-300 group-hover:scale-110"
+        style={{ filter: `drop-shadow(0px 0px 8px ${color}40)` }}
+      >
+        {icon}
+      </svg>
+    </div>
+  );
+};
+
 export default function PlayerProfilePage() {
   const params = useParams();
   const { lang, t } = useLanguage();
@@ -94,15 +171,11 @@ export default function PlayerProfilePage() {
           </Link>
         </div>
 
-        {/* Header do Perfil com Avatar */}
+        {/* Header do Perfil com Emblema SVG em vez de Foto */}
         <div className="bg-[#16171B] border border-zinc-800 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl">
           <div className="flex items-center gap-5">
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-zinc-900 border border-zinc-700 overflow-hidden shrink-0 shadow-lg">
-              <img 
-                src={`https://ui-avatars.com/api/?name=${encodeURIComponent(target.name)}&background=18191E&color=F97316&size=200&bold=true`}
-                alt={target.name}
-                className="w-full h-full object-cover"
-              />
+              <PositionalEmblem position={target.archetype} />
             </div>
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">

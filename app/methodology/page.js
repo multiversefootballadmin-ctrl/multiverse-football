@@ -8,13 +8,13 @@ export default function MethodologyPage() {
       {/* Header Section */}
       <div className="mb-12 border-b border-zinc-800 pb-8">
         <div className="inline-block px-3 py-1 bg-orange-500/10 border border-orange-500/30 text-orange-400 font-mono text-xs font-semibold rounded-full mb-4">
-          SYSTEM ARCHITECTURE // AUDITED METRICS
+          SYSTEM ARCHITECTURE // MULTIVERSE SCANNER
         </div>
         <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white mb-4">
           TRANSLATING SOCCER TELEMETRY INTO NFL ARCHETYPES
         </h1>
         <p className="text-zinc-400 max-w-3xl text-sm sm:text-base leading-relaxed">
-          Multiverse Football converts multi-dimensional spatial tracking data, expected possession value (EPV), and high-intensity physical stress into NFL-equivalent positional leverage.
+          Our projection engine operates like a multiverse scanner. We isolate a player's kinematic signature, spatial manipulation, and explosive power to find their exact tactical variant on the gridiron.
         </p>
       </div>
 
@@ -22,29 +22,29 @@ export default function MethodologyPage() {
       <section className="mb-12">
         <div className="bg-[#121318] border border-zinc-800/80 rounded-2xl p-6 sm:p-8">
           <div className="text-orange-500 font-mono text-xs font-bold uppercase tracking-wider mb-2">
-            SECTION 01 // FOUNDATIONAL MAPPING
+            SECTION 01 // SUPERHERO EQUIVALENCE
           </div>
           <h2 className="text-xl sm:text-2xl font-bold text-white mb-4">
-            CROSS-SPORT SYSTEMIC EQUIVALENCE
+            CROSS-SPORT DIMENSIONAL VARIANTS
           </h2>
           <p className="text-zinc-300 text-sm leading-relaxed mb-6">
-            Traditional cross-sport comparisons rely on superficial narratives. Our projection engine isolates kinematic signatures, positional leverage, and explosive acceleration profiles under high spatial compression.
+            Traditional cross-sport comparisons rely on superficial narratives. Multiverse Football digs into the DNA of movement. Just as a superhero's core abilities adapt to different realities, we map how a soccer athlete's physical dominance translates into NFL leverage under high spatial compression.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-4">
               <div className="text-cyan-400 font-mono text-xs font-bold mb-1">
-                3RD & SHORT // HIGH-STAKES CONVERSION
+                THE PLAYMAKER // QUARTERBACK VISION
               </div>
               <p className="text-zinc-400 text-xs leading-relaxed">
-                High-leverage pressure situations. Key passes into compressed spaces, physical ground duels under rush, and rapid turnovers.
+                Key passes into compressed spaces become high-stakes 3rd & Short conversions. We measure the ability to process chaos, manipulate defensive gravity, and deliver precision strikes.
               </p>
             </div>
             <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-4">
               <div className="text-emerald-400 font-mono text-xs font-bold mb-1">
-                RED ZONE // GOAL-LINE EFFICIENCY
+                THE WINGER // WIDE RECEIVER BURST
               </div>
               <p className="text-zinc-400 text-xs leading-relaxed">
-                Inside the penalty box (final 18 yards). High-probability scoring conversions (Touchdowns) balanced against collective defensive stops.
+                Explosive burst on the flanks translates directly to vertical threats and route separation. Speed and territory gain are universal languages across both dimensions.
               </p>
             </div>
           </div>
@@ -61,7 +61,7 @@ export default function MethodologyPage() {
             02 // THE PROPRIETARY WIF RATING ARCHITECTURE
           </h2>
           <p className="text-zinc-300 text-sm leading-relaxed mb-6">
-            The WIF (War Impact Factor) is an engineered 0.0 to 30.0 composite index. Rather than assigning arbitrary video-game numbers, WIF assesses an athlete's net impact on win-probability through multi-dimensional modeling:
+            The WIF (War Impact Factor) is our power-scaling index. Rather than assigning arbitrary video-game numbers, WIF assesses an athlete's net impact on win-probability through multi-dimensional modeling:
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
