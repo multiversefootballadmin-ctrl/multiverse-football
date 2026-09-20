@@ -9,7 +9,7 @@ import PlayerCard from '@/components/PlayerCard';
 const ARCHETYPES = ["ALL", "QB", "RB", "WR", "TE", "DEF"];
 
 export default function RankingsPage() {
-  const { lang, t } = useLanguage();
+const { lang, t } = useLanguage() || { lang: 'en', t: {} };
 
   const [targets, setTargets] = useState([]);
   const [syncMeta, setSyncMeta] = useState({ 
