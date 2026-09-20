@@ -12,19 +12,21 @@ export default function RootLayout({ children }) {
       <body className="bg-[#0E0F12] text-zinc-100 font-sans selection:bg-orange-500 selection:text-white flex flex-col min-h-screen">
         
         {/* MENU GLOBAL RESPONSIVO */}
-        <header className="sticky top-0 w-full z-50 px-4 sm:px-6 py-4 flex flex-col sm:flex-row justify-between items-center border-b border-zinc-800/60 bg-[#0E0F12]/95 backdrop-blur-md gap-4 shadow-xl">
+        <header className="sticky top-0 w-full z-50 px-4 sm:px-6 py-4 flex flex-col xl:flex-row justify-between items-center border-b border-zinc-800/60 bg-[#0E0F12]/95 backdrop-blur-md gap-4 shadow-xl">
           <div className="font-black text-xl md:text-2xl tracking-tighter uppercase shrink-0">
             <Link href="/">
               <span className="text-white">MULTIVERSE</span> <span className="text-orange-500">FOOTBALL</span>
             </Link>
           </div>
           
-          <nav className="flex items-center gap-4 sm:gap-6 font-mono text-[10px] sm:text-xs font-bold tracking-widest text-zinc-400 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0 no-scrollbar justify-center sm:justify-end">
+          <nav className="flex items-center gap-4 sm:gap-6 font-mono text-[10px] sm:text-xs font-bold tracking-widest text-zinc-400 overflow-x-auto w-full xl:w-auto pb-1 xl:pb-0 no-scrollbar justify-center xl:justify-end">
             <Link href="/rankings" className="hover:text-orange-400 transition-colors whitespace-nowrap">WAR ROOM</Link>
             <Link href="/playbook" className="hover:text-orange-400 transition-colors whitespace-nowrap">PLAYBOOK</Link>
             <Link href="/scouting" className="hover:text-orange-400 transition-colors whitespace-nowrap">SCOUTING</Link>
-            <Link href="/methodology" className="hover:text-orange-400 transition-colors whitespace-nowrap">THE METHOD</Link>
-            <Link href="/glossary" className="text-orange-500 font-black whitespace-nowrap">GLOSSARY</Link>
+            <Link href="/methodology" className="hover:text-orange-400 transition-colors whitespace-nowrap">METHODOLOGY</Link>
+            <Link href="/glossary" className="hover:text-orange-400 transition-colors whitespace-nowrap">GLOSSARY</Link>
+            <Link href="/whitepaper" className="hover:text-orange-400 transition-colors whitespace-nowrap">WHITEPAPER</Link>
+            <Link href="/about" className="hover:text-orange-400 transition-colors whitespace-nowrap">ORIGIN</Link>
           </nav>
         </header>
 
@@ -49,8 +51,7 @@ export default function RootLayout({ children }) {
             <div>
               <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">The War Room</h4>
               <ul className="space-y-2 font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                <li><Link href="/rankings" className="hover:text-orange-400 transition-colors">Global Draft Board</Link></li>
-                <li><Link href="/rankings" className="hover:text-orange-400 transition-colors">Positional Ladders</Link></li>
+                <li><Link href="/rankings" className="hover:text-orange-400 transition-colors">War Room (Rankings)</Link></li>
                 <li className="flex items-center gap-2 text-zinc-700 cursor-not-allowed">Franchise Power Index <span className="text-[9px] bg-zinc-800 text-zinc-500 px-1">SOON</span></li>
               </ul>
             </div>
@@ -58,18 +59,18 @@ export default function RootLayout({ children }) {
             <div>
               <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">Knowledge Base</h4>
               <ul className="space-y-2 font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                <li><Link href="/playbook" className="hover:text-orange-400 transition-colors">The Playbook (Archetypes)</Link></li>
-                <li><Link href="/scouting" className="hover:text-orange-400 transition-colors">Scouting Reports</Link></li>
-                <li><Link href="/methodology" className="hover:text-orange-400 transition-colors">The Methodology</Link></li>
-                <li><Link href="/glossary" className="hover:text-orange-400 transition-colors">The Dictionary (101)</Link></li>
+                <li><Link href="/playbook" className="hover:text-orange-400 transition-colors">Playbook (Archetypes)</Link></li>
+                <li><Link href="/scouting" className="hover:text-orange-400 transition-colors">Scouting (Reports)</Link></li>
+                <li><Link href="/methodology" className="hover:text-orange-400 transition-colors">Methodology (WIF Engine)</Link></li>
+                <li><Link href="/glossary" className="hover:text-orange-400 transition-colors">Glossary (Dictionary)</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">Ecosystem</h4>
               <ul className="space-y-2 font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                <li><Link href="/about" className="hover:text-orange-400 transition-colors">The Origin</Link></li>
-                <li><Link href="/whitepaper" className="hover:text-orange-400 transition-colors">Investor Whitepaper</Link></li>
+                <li><Link href="/about" className="hover:text-orange-400 transition-colors">Origin (Our Story)</Link></li>
+                <li><Link href="/whitepaper" className="hover:text-orange-400 transition-colors">Whitepaper (Investors)</Link></li>
                 <li className="flex items-center gap-2 text-zinc-700 cursor-not-allowed">Collision Lab <span className="text-[9px] bg-zinc-800 text-zinc-500 px-1">SOON</span></li>
               </ul>
             </div>
