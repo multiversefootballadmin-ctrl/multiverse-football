@@ -65,12 +65,8 @@ export default function AboutPage() {
             <div className="flex flex-col items-center text-center space-y-4">
               <div className="w-36 h-36 md:w-44 md:h-44 rounded-3xl overflow-hidden ring-4 ring-orange-500/30 shadow-2xl bg-zinc-900">
                 <img
-                  src="https://media.licdn.com/dms/image/v2/D5603AQGlR2m_F5Y6-Q/profile-displayphoto-shrink_800_800/B56ZRjO_T3GwAc-/0/1736780072044?e=1748476800&v=beta&t=H3-qO072d6Q4Q4"
+                  src="/me.jpg"
                   alt="Alexandre Pacheco"
-                  onError={(e) => {
-                    e.target.onerror = null;
-                    e.target.src = "https://ui-avatars.com/api/?name=Alexandre+Pacheco&background=F97316&color=FFFFFF&size=200&bold=true";
-                  }}
                   className="w-full h-full object-cover"
                 />
               </div>
