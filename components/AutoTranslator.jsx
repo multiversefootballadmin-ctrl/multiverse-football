@@ -12,6 +12,7 @@ export default function AutoTranslator() {
             pageLanguage: 'en',
             includedLanguages: 'en,pt',
             autoDisplay: false,
+            layout: window.google.translate.TranslateElement.InlineLayout.SIMPLE,
           },
           'google_translate_element'
         );
@@ -21,15 +22,16 @@ export default function AutoTranslator() {
 
   return (
     <>
-      <div id="google_translate_element" className="hidden" />
+      <div id="google_translate_element" className="fixed bottom-0 left-0 opacity-0 pointer-events-none -z-50" />
       <Script
-        src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+        src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
         strategy="afterInteractive"
       />
       <style jsx global>{`
         .goog-te-banner-frame.skiptranslate,
         iframe.skiptranslate,
-        .goog-te-banner-frame {
+        .goog-te-banner-frame,
+        #goog-gt-tt {
           display: none !important;
         }
         body {
@@ -42,6 +44,11 @@ export default function AutoTranslator() {
         .goog-text-highlight {
           background-color: transparent !important;
           border: none !important;
+          box-shadow: none !important;
+        }
+        font {
+          background-color: transparent !important;
+          box-shadow: none !important;
         }
       `}</style>
     </>
