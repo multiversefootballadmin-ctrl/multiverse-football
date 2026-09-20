@@ -35,29 +35,42 @@ export default function HomePage() {
       <section className="relative w-full min-h-[90vh] pt-24 pb-20 flex items-center overflow-hidden flex-col justify-center">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
+        {/* Marca d'água no fundo para imersão */}
         <div className="absolute top-1/4 left-0 w-full text-center overflow-hidden whitespace-nowrap opacity-5 pointer-events-none select-none flex flex-col gap-4">
-          <span className="text-[12vw] font-black text-white uppercase leading-none">FIELD GENERAL</span>
-          <span className="text-[12vw] font-black text-white uppercase leading-none">YARDS AFTER CATCH</span>
+          <span className="text-[12vw] font-black text-white uppercase leading-none">UNIVERSAL TRUTH</span>
+          <span className="text-[12vw] font-black text-white uppercase leading-none">SPORTING DIMENSION</span>
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 w-full flex flex-col items-center text-center gap-10">
           
           <div className="space-y-6">
+            
+            {/* O Crachá Fluente */}
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border-l-2 border-orange-500 text-orange-400 font-mono text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(249,115,22,0.2)]">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-              Welcome to the Multiverse
+              Fluent in Both Footballs ⚽🏈
             </div>
             
+            {/* O Título de Impacto */}
             <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-white leading-[0.9]">
-              The World's Game meets <br />
-              <span className="text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]">America's Game.</span>
+              Crossing the <br />
+              <span className="text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]">Sporting Dimension.</span>
             </h1>
             
+            {/* O Bloco de Texto Explicativo e o Punchline */}
             <div className="bg-[#121316]/80 backdrop-blur-md border border-zinc-800 p-6 md:p-8 rounded-xl shadow-2xl max-w-3xl mx-auto mt-6">
-              <p className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed">
-                <strong className="text-white">What happens when elite Soccer ⚽ stars are drafted into American Football 🏈?</strong> <br/>
-                No opinions. No guesswork. We translate real kinematic data and match situations into true NFL archetypes using our proprietary WIF Score.
+              <p className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed mb-4">
+                <strong className="text-white">What if the pitch became the pocket?</strong> Drop elite Soccer ⚽ stars into the NFL 🏈 reality. 
               </p>
+              <p className="text-base sm:text-lg text-zinc-400 font-light leading-relaxed mb-6">
+                No opinions. Just raw data mathematically translated through the proprietary WIF Score.
+              </p>
+              
+              <div className="border-t border-zinc-800 pt-5 mt-2">
+                <span className="text-orange-500 font-black tracking-widest uppercase text-sm sm:text-base drop-shadow-md">
+                  TWO CODES. ONE UNIVERSAL TRUTH.
+                </span>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
@@ -70,6 +83,7 @@ export default function HomePage() {
             </div>
           </div>
 
+          {/* O Tradutor de Atletas Interativo */}
           <div className="w-full max-w-2xl mt-8">
             <div className="bg-[#121316] border border-zinc-800 shadow-2xl overflow-hidden flex flex-col">
               <div className="bg-zinc-900/90 p-2 border-b border-zinc-800 flex gap-2">
