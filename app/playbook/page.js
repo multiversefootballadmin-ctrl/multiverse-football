@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export default function PlaybookPage() {
-  const { lang, setLang } = useLanguage() || { lang: 'pt', setLang: () => {} };
+  const languageContext = useLanguage();
+  const lang = languageContext?.lang || 'en';
+  const setLang = languageContext?.setLang || function() {};
   const isPt = lang === 'pt';
 
-  // Estados do formulário comunitário
   const [soccerTerm, setSoccerTerm] = useState('');
   const [nflTerm, setNflTerm] = useState('');
   const [userHandle, setUserHandle] = useState('');
@@ -29,7 +30,7 @@ export default function PlaybookPage() {
   const metricMappings = [
     {
       id: "pass_td",
-      soccerTitle: isPt ? "Assistência Direta para Gol" : "Direct Goal Assist",
+      soccerTitle: "Direct Goal Assist",
       soccerDesc: isPt ? "O passe decisivo que coloca o companheiro na cara da rede sem intermediários." : "The decisive pass putting a teammate directly through on goal.",
       nflTitle: "Passing Touchdown (TD) 🏈",
       nflDesc: isPt ? "O lançamento perfeito que cruza a endzone e garante 6 pontos imediatos." : "The scoring strike finding an open receiver in the endzone for 6 points.",
@@ -37,7 +38,7 @@ export default function PlaybookPage() {
     },
     {
       id: "broken_tackle",
-      soccerTitle: isPt ? "Drible Curto / 1x1 Vencido" : "1v1 Dribble Won",
+      soccerTitle: "1v1 Dribble Won",
       soccerDesc: isPt ? "Desequilibrar o marcador individual e manter o controle da posse sob pressão." : "Beating a defender in tight quarters while keeping progressive control.",
       nflTitle: "Broken Tackle 🏈",
       nflDesc: isPt ? "Absorver o contato físico, quebrar o plano do defensor e seguir em frente." : "Resisting physical contact, discarding defenders, and keeping drive alive.",
@@ -45,7 +46,7 @@ export default function PlaybookPage() {
     },
     {
       id: "yac",
-      soccerTitle: isPt ? "Arrancada em Campo Aberto" : "Open-Field Sprint",
+      soccerTitle: "Open-Field Sprint",
       soccerDesc: isPt ? "Condução em alta velocidade explorando o espaço vazio nas costas da zaga." : "High-speed progression into unoccupied space behind defensive lines.",
       nflTitle: "Yards After Catch (YAC) 🏈",
       nflDesc: isPt ? "Jardas conquistadas na corrida explosiva após receber e dominar o passe." : "Explosive yardage gained running after securing possession.",
@@ -53,7 +54,7 @@ export default function PlaybookPage() {
     },
     {
       id: "red_zone",
-      soccerTitle: isPt ? "Invasão da Grande Área" : "Penalty Box Penetration",
+      soccerTitle: "Penalty Box Penetration",
       soccerDesc: isPt ? "Zona crítica onde as defesas afunilam e o índice de conversão decide partidas." : "The critical space where defensive lines compress and games are won.",
       nflTitle: "Red Zone Efficiency 🏈",
       nflDesc: isPt ? "As últimas 20 jardas antes da endzone: espaço reduzido e combate corpo a corpo." : "Final 20 yards before the endzone: tight coverage and physical leverage.",
@@ -61,7 +62,7 @@ export default function PlaybookPage() {
     },
     {
       id: "clean_sheet",
-      soccerTitle: isPt ? "Clean Sheet (Baliza Zerada)" : "Clean Sheet",
+      soccerTitle: "Clean Sheet",
       soccerDesc: isPt ? "90 minutos sem sofrer gols, controlando chutes no alvo e bolas aéreas." : "Zero goals conceded over 90 minutes through discipline and aerial control.",
       nflTitle: "D/ST Shutout & Turnovers 🏈",
       nflDesc: isPt ? "A unidade defensiva travando o adversário, forçando perdas de bola e zerando o rival." : "Defensive unit stifling opponent drives and forcing turnovers.",
@@ -71,31 +72,31 @@ export default function PlaybookPage() {
 
   const culturalMappings = [
     {
-      soccer: isPt ? "Gol de empate aos 49 do 2º tempo ⚽" : "90th-minute stoppage equalizer ⚽",
-      nfl: isPt ? "Hail Mary no estouro do relógio 🏈" : "Hail Mary pass as time expires 🏈",
+      soccer: "90th-minute stoppage equalizer ⚽",
+      nfl: "Hail Mary pass as time expires 🏈",
       context: isPt ? "O desespero total transformado em milagre no último lance da partida." : "Pure desperation turned into a miracle on the final snap."
     },
     {
-      soccer: isPt ? "Camisa 10 clássico cadenciador ⚽" : "Classic No. 10 Playmaker ⚽",
-      nfl: isPt ? "Pocket Passer (Field General) 🏈" : "Pocket Passer (Field General) 🏈",
-      context: isPt ? "Pouca correria, mas processamento espacial instantâneo e passe milimétrico." : "Minimal running, elite spatial processing, and pinpoint arm accuracy."
+      soccer: "Classic No. 10 Playmaker ⚽",
+      nfl: "Pocket Passer (Field General) 🏈",
+      context: isPt ? "Processamento espacial instantâneo e passe milimétrico." : "Elite spatial processing and pinpoint arm accuracy."
     },
     {
-      soccer: isPt ? "Ponta driblador veloz ⚽" : "Explosive Winger ⚽",
-      nfl: isPt ? "Deep Threat Wide Receiver 🏈" : "Deep Threat Wide Receiver 🏈",
-      context: isPt ? "O terror da linha defensiva: queima marcadores na aceleração e estica o campo." : "The secondary's nightmare: blowing past safeties to stretch the field."
+      soccer: "Explosive Winger ⚽",
+      nfl: "Deep Threat Wide Receiver 🏈",
+      context: isPt ? "O terror da defesa: queima marcadores na aceleração e estica o campo." : "The secondary's nightmare: blowing past safeties to stretch the field."
     },
     {
-      soccer: isPt ? "Zagueiro xerife imponência física ⚽" : "Commanding Center-Back ⚽",
-      nfl: isPt ? "Middle Linebacker (Líder da Defesa) 🏈" : "Middle Linebacker (Defensive Captain) 🏈",
-      context: isPt ? "O cara que lê a jogada antes de todo mundo e impõe respeito no contato físico." : "The quarterback of the defense who diagnoses run schemes and punishes runners."
+      soccer: "Commanding Center-Back ⚽",
+      nfl: "Middle Linebacker (Defensive Captain) 🏈",
+      context: isPt ? "O cara que lê a jogada antes de todo mundo e impõe respeito físico." : "The quarterback of the defense who diagnoses schemes and punishes runners."
     }
   ];
 
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans selection:bg-orange-500 selection:text-white pb-24">
       
-      {/* HEADER NAVEGAÇÃO */}
+      {/* HEADER PADRÃO (Termos em Inglês, intocáveis) */}
       <header className="sticky top-0 w-full z-50 px-6 py-5 flex justify-between items-center border-b border-zinc-800/60 bg-[#0E0F12]/90 backdrop-blur-md">
         <div className="font-black text-xl md:text-2xl tracking-tighter uppercase">
           <Link href="/">
@@ -107,20 +108,19 @@ export default function PlaybookPage() {
           <nav className="hidden md:flex space-x-6 font-mono text-xs font-bold tracking-widest text-zinc-400">
             <Link href="/rankings" className="hover:text-orange-400 transition-colors">WAR ROOM</Link>
             <Link href="/playbook" className="text-orange-500 font-black">PLAYBOOK</Link>
-            <Link href="/methodology" className="hover:text-orange-400 transition-colors">{isPt ? "METODOLOGIA" : "THE METHOD"}</Link>
-            <Link href="/about" className="hover:text-orange-400 transition-colors">{isPt ? "MANIFESTO" : "ORIGIN"}</Link>
+            <Link href="/methodology" className="hover:text-orange-400 transition-colors">THE METHOD</Link>
+            <Link href="/about" className="hover:text-orange-400 transition-colors">ORIGIN</Link>
           </nav>
 
-          {/* Seletor PT / EN */}
           <div className="flex items-center border border-zinc-800 bg-zinc-900 p-1 font-mono text-xs">
             <button 
-              onClick={() => setLang && setLang('pt')} 
+              onClick={() => setLang('pt')} 
               className={`px-2 py-1 transition-colors ${isPt ? 'bg-orange-600 text-white font-bold' : 'text-zinc-500 hover:text-zinc-200'}`}
             >
               PT
             </button>
             <button 
-              onClick={() => setLang && setLang('en')} 
+              onClick={() => setLang('en')} 
               className={`px-2 py-1 transition-colors ${!isPt ? 'bg-orange-600 text-white font-bold' : 'text-zinc-500 hover:text-zinc-200'}`}
             >
               EN
@@ -140,8 +140,8 @@ export default function PlaybookPage() {
           </h1>
           <p className="text-zinc-400 text-base md:text-lg font-light leading-relaxed">
             {isPt 
-              ? "Dois esportes mundiais com códigos diferentes. Aqui você encontra o guia de tradução: como as ações do Futebol ⚽ se transformam nos conceitos táticos do Futebol Americano 🏈 e nas pontuações do nosso Fantasy Game."
-              : "Two global sports driven by distinct codes. Here is the official translation bridge: how soccer ⚽ events map directly into American football 🏈 mechanics and fantasy scoring."}
+              ? "Dois esportes mundiais com códigos diferentes. Aqui você encontra o guia de tradução: como as ações do Soccer ⚽ se transformam nos conceitos táticos do American Football 🏈 e nas pontuações do nosso Fantasy Game."
+              : "Two global sports driven by distinct codes. Here is the official translation bridge: how Soccer ⚽ events map directly into American Football 🏈 mechanics and fantasy scoring."}
           </p>
         </div>
 
@@ -165,19 +165,17 @@ export default function PlaybookPage() {
                 </div>
 
                 <div className="grid grid-cols-1 gap-4 font-mono">
-                  {/* Origem Soccer */}
                   <div className="bg-zinc-900/90 border-l-2 border-emerald-500 p-3.5 space-y-1">
                     <span className="text-[10px] uppercase tracking-wider text-emerald-400 font-bold block">
-                      {isPt ? "Futebol ⚽ Origem" : "Soccer ⚽ Origin"}
+                      Soccer ⚽ Origin
                     </span>
                     <h3 className="text-sm font-bold text-white font-sans">{m.soccerTitle}</h3>
                     <p className="text-xs text-zinc-400 font-sans font-light leading-relaxed">{m.soccerDesc}</p>
                   </div>
 
-                  {/* Destino NFL */}
                   <div className="bg-zinc-900/90 border-l-2 border-orange-500 p-3.5 space-y-1">
                     <span className="text-[10px] uppercase tracking-wider text-orange-400 font-bold block">
-                      {isPt ? "NFL 🏈 Destino" : "NFL 🏈 Variant"}
+                      NFL 🏈 Variant
                     </span>
                     <h3 className="text-sm font-bold text-white font-sans">{m.nflTitle}</h3>
                     <p className="text-xs text-zinc-400 font-sans font-light leading-relaxed">{m.nflDesc}</p>
@@ -214,31 +212,31 @@ export default function PlaybookPage() {
           </div>
         </section>
 
-        {/* SEÇÃO 3: ENVIO COMUNITÁRIO (FEEDBACK DO FÃ) */}
+        {/* SEÇÃO 3: ENVIO COMUNITÁRIO */}
         <section className="bg-gradient-to-br from-[#121316] to-[#181a1f] border border-orange-500/30 p-8 md:p-12 space-y-8 shadow-2xl">
           <div className="max-w-2xl space-y-2">
             <span className="text-xs font-mono text-orange-400 font-bold uppercase tracking-widest">
-              {isPt ? "Cruzamento Colaborativo" : "Community Incursion"}
+              Community Incursion
             </span>
             <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight text-white">
               {isPt ? "Encontrou outra ponte? Mande para nós." : "Spotted another equivalent? Submit your bridge."}
             </h2>
             <p className="text-xs md:text-sm text-zinc-400 font-light leading-relaxed">
               {isPt 
-                ? "Qual termo, lance ou perfil de atleta de futebol tem uma alma gêmea na NFL que ainda não colocamos aqui? Compartilhe sua visão de fã bilíngue."
-                : "Which soccer player profile, tactic, or moment has an undeniable NFL counterpart we missed? Share your bilingual observation."}
+                ? "Qual termo, lance ou perfil de atleta de Soccer tem uma alma gêmea na NFL que ainda não colocamos aqui? Compartilhe sua visão."
+                : "Which Soccer player profile, tactic, or moment has an undeniable NFL counterpart we missed? Share your observation."}
             </p>
           </div>
 
           {submitted ? (
             <div className="p-4 bg-emerald-950/60 border border-emerald-500 text-emerald-400 font-mono text-xs uppercase tracking-widest">
-              ✓ {isPt ? "Cruzamento recebido! Nossa equipe tática vai avaliar a inclusão." : "Bridge received! Telemetry scouts will audit your proposal."}
+              ✓ {isPt ? "Cruzamento recebido! Nossa equipe vai avaliar a inclusão." : "Bridge received! Telemetry scouts will audit your proposal."}
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <div>
                 <label className="block text-[10px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5">
-                  {isPt ? "Termo no Futebol ⚽" : "Soccer Term ⚽"}
+                  Soccer Term ⚽
                 </label>
                 <input 
                   type="text" 
@@ -252,7 +250,7 @@ export default function PlaybookPage() {
 
               <div>
                 <label className="block text-[10px] font-mono text-zinc-400 uppercase tracking-widest mb-1.5">
-                  {isPt ? "Equivalente na NFL 🏈" : "NFL Equivalent 🏈"}
+                  NFL Equivalent 🏈
                 </label>
                 <input 
                   type="text" 
