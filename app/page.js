@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/lib/LanguageContext';
 
 export default function HomePage() {
-  const { lang, t } = useLanguage();
+const { lang, t } = useLanguage() || { lang: 'en', t: {} };
   const isPt = lang === 'pt';
 
   const tickerItems = [
