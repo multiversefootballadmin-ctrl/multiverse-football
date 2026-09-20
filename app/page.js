@@ -2,15 +2,8 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { useLanguage } from '@/lib/LanguageContext';
 
 export default function HomePage() {
-  // Correção definitiva do Bug do Botão de Idioma
-  const languageContext = useLanguage();
-  const lang = languageContext?.lang || 'en';
-  const setLang = languageContext?.setLang || function() {};
-  const isPt = lang === 'pt';
-
   const [activeAthlete, setActiveAthlete] = useState(0);
   const [showNflVariant, setShowNflVariant] = useState(false);
 
@@ -68,43 +61,10 @@ export default function HomePage() {
   const current = athletes[activeAthlete];
 
   return (
-    <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans selection:bg-orange-500 selection:text-white">
+    <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-20">
       
-      {/* HEADER PADRÃO (Termos em Inglês, intocáveis) */}
-      <header className="absolute top-0 w-full z-50 px-6 py-6 flex justify-between items-center border-b border-zinc-800/40 bg-[#0E0F12]/80 backdrop-blur-md">
-        <div className="font-black text-xl md:text-2xl tracking-tighter uppercase">
-          <Link href="/">
-            <span className="text-white">MULTIVERSE</span> <span className="text-orange-500">FOOTBALL</span>
-          </Link>
-        </div>
-        
-        <div className="flex items-center gap-6">
-          <nav className="hidden md:flex space-x-6 font-mono text-xs font-bold tracking-widest text-zinc-400">
-            <Link href="/rankings" className="hover:text-orange-400 transition-colors">WAR ROOM</Link>
-            <Link href="/playbook" className="hover:text-orange-400 transition-colors">PLAYBOOK</Link>
-            <Link href="/methodology" className="hover:text-orange-400 transition-colors">THE METHOD</Link>
-            <Link href="/about" className="hover:text-orange-400 transition-colors">ORIGIN</Link>
-          </nav>
-
-          <div className="flex items-center border border-zinc-800 bg-zinc-900 p-1 font-mono text-xs">
-            <button 
-              onClick={() => setLang('pt')} 
-              className={`px-2 py-1 transition-colors ${isPt ? 'bg-orange-600 text-white font-bold' : 'text-zinc-500 hover:text-zinc-200'}`}
-            >
-              PT
-            </button>
-            <button 
-              onClick={() => setLang('en')} 
-              className={`px-2 py-1 transition-colors ${!isPt ? 'bg-orange-600 text-white font-bold' : 'text-zinc-500 hover:text-zinc-200'}`}
-            >
-              EN
-            </button>
-          </div>
-        </div>
-      </header>
-
       {/* HERO SECTION */}
-      <section className="relative w-full min-h-screen pt-32 pb-20 flex items-center overflow-hidden">
+      <section className="relative w-full min-h-[90vh] pt-12 pb-20 flex items-center overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-6 w-full flex flex-col lg:flex-row items-center gap-12 lg:gap-16">
@@ -112,21 +72,15 @@ export default function HomePage() {
           <div className="flex-1 space-y-6 text-left">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border-l-2 border-orange-500 text-orange-400 font-mono text-xs font-bold tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-              {isPt ? "Telemetria Esportiva Cruzada" : "Cross-Sport Telemetry"}
+              Cross-Sport Telemetry
             </div>
             
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter text-white leading-[0.95]">
-              {isPt ? (
-                <>Os quadrinhos têm o multiverso. <br /><span className="text-orange-500">Nós temos os dados.</span></>
-              ) : (
-                <>Comic books have the multiverse. <br /><span className="text-orange-500">We have the data.</span></>
-              )}
+              Comic books have the multiverse. <br /><span className="text-orange-500">We have the data.</span>
             </h1>
             
             <p className="text-base sm:text-lg text-zinc-400 max-w-xl font-light leading-relaxed">
-              {isPt 
-                ? "O que acontece se atletas de elite do Futebol ⚽ competissem na realidade do Futebol Americano 🏈? Sem achismos. Nós traduzimos atributos reais de jogo em arquétipos da NFL através do WIF Score."
-                : "What happens when elite Soccer ⚽ stars are dropped into American Football 🏈? No guesses. We map real game attributes into true NFL archetypes using the WIF Score."}
+              What happens when elite Soccer ⚽ stars are dropped into American Football 🏈? No guesses. We map real game attributes into true NFL archetypes using the WIF Score.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 pt-2">
@@ -134,12 +88,11 @@ export default function HomePage() {
                 Enter The War Room
               </Link>
               <Link href="/methodology" className="bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-bold uppercase tracking-widest px-8 py-4 text-xs transition-all text-center">
-                {isPt ? "Entenda o Cálculo" : "See The Math"}
+                See The Math
               </Link>
             </div>
           </div>
 
-          {/* O Tradutor de Atletas */}
           <div className="flex-1 w-full max-w-md">
             <div className="bg-[#121316] border border-zinc-800 shadow-2xl overflow-hidden flex flex-col">
               
@@ -158,10 +111,10 @@ export default function HomePage() {
               <div className={`p-8 h-80 flex flex-col justify-between bg-gradient-to-b ${current.color} transition-all duration-500 border-b border-zinc-800/80`}>
                 <div className="flex justify-between items-start">
                   <span className="font-mono text-xs font-bold tracking-widest uppercase px-2.5 py-1 bg-black/40 border border-white/10 text-zinc-300">
-                    {showNflVariant ? "Dimension: NFL 🏈" : "Dimension: Soccer ⚽"}
+                    {showNflVariant ? "Reality: NFL 🏈" : "Origin: Soccer ⚽"}
                   </span>
                   <span className={`font-mono text-xs font-black uppercase tracking-widest ${current.accent}`}>
-                    {showNflVariant ? "NFL VARIANT" : "ORIGIN"}
+                    {showNflVariant ? "NFL VARIANT" : "ORIGINAL"}
                   </span>
                 </div>
 
@@ -192,9 +145,7 @@ export default function HomePage() {
                 onClick={() => setShowNflVariant(!showNflVariant)}
                 className={`w-full py-4 px-6 font-mono font-black uppercase tracking-widest text-xs transition-colors flex items-center justify-center gap-2 ${showNflVariant ? 'bg-zinc-800 text-zinc-300 hover:bg-zinc-700' : 'bg-orange-600 text-white hover:bg-orange-500'}`}
               >
-                {showNflVariant 
-                  ? (isPt ? "← Voltar ao Soccer ⚽" : "← Revert to Soccer ⚽")
-                  : (isPt ? "Traduzir para a NFL 🏈 →" : "Translate to NFL 🏈 →")}
+                {showNflVariant ? "← Revert to Soccer ⚽" : "Translate to NFL 🏈 →"}
               </button>
             </div>
           </div>
@@ -209,16 +160,10 @@ export default function HomePage() {
             The Bilingual Fan
           </span>
           <h2 className="text-2xl sm:text-4xl font-black text-white uppercase tracking-tight leading-tight">
-            {isPt ? (
-              <>Você não vê apenas um passe de meio-campo. <br /><span className="text-orange-500">Você vê um Quarterback lendo a defesa.</span></>
-            ) : (
-              <>You don't just see a midfield pass. <br /><span className="text-orange-500">You see a Quarterback scanning the secondary.</span></>
-            )}
+            You don't just see a midfield pass. <br /><span className="text-orange-500">You see a Quarterback scanning the secondary.</span>
           </h2>
           <p className="text-zinc-400 font-light leading-relaxed text-base sm:text-lg max-w-3xl mx-auto">
-            {isPt
-              ? "Para quem cresceu respirando Soccer ⚽ e se apaixonou pelo xadrez tático do American Football 🏈. O Multiverse Football cruza as métricas dos dois códigos através de cálculos auditados."
-              : "Built for fans who breathe global Soccer ⚽ and the tactical warfare of American Football 🏈. Multiverse Football bridges the telemetry of both codes through situational impact data."}
+            Built for fans who breathe global Soccer ⚽ and the tactical warfare of American Football 🏈. Multiverse Football bridges the telemetry of both codes through situational impact data.
           </p>
         </div>
       </section>
