@@ -6,7 +6,6 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { getArchetypeStyles } from '@/components/PlayerCard';
 
-// Função para gerar dados simulados realistas baseados na posição até termos a API real
 const generateMockTelemetry = (archetype) => {
   const logs = [
     { date: "Oct 18, 2026", opp: "vs. MAD", soccer: "1 Goal, 4 Take-ons", nfl: "1 Rush TD, 48 YAC", wif: "22.4" },
@@ -90,7 +89,6 @@ export default function PlayerProfile() {
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-24">
       
-      {/* PROFILE HERO */}
       <section className={`relative w-full pt-16 pb-12 border-b ${styles.border} bg-[#121316] overflow-hidden`}>
         <div className={`absolute inset-0 ${styles.glow} opacity-[0.03] blur-[100px] pointer-events-none`}></div>
         
@@ -128,7 +126,6 @@ export default function PlayerProfile() {
         </div>
       </section>
 
-      {/* THE DIMENSIONAL BOXSCORE */}
       <section className="max-w-6xl mx-auto px-6 pt-16">
         <div className="mb-8 flex items-center justify-between border-b border-zinc-800 pb-3">
           <h2 className="text-2xl font-black uppercase tracking-tight text-white">
@@ -138,11 +135,10 @@ export default function PlayerProfile() {
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Soccer Origin Box */}
           <div className="bg-[#121316] border border-zinc-800 shadow-xl overflow-hidden">
             <div className="bg-[#0E0F12] p-4 border-b border-zinc-800 flex items-center gap-3">
               <span className="text-xl">⚽</span>
-              <h3 className="font-mono text-sm font-bold uppercase tracking-widest text-zinc-300">Pitch Telemetry (Origin)</h3>
+              <h3 className="font-mono text-sm font-bold uppercase tracking-widest text-zinc-300">Native Soccer Production [Reality]</h3>
             </div>
             <div className="p-6 space-y-6">
               {mockData.soccer.map((stat, idx) => (
@@ -154,11 +150,10 @@ export default function PlayerProfile() {
             </div>
           </div>
 
-          {/* NFL Translation Box */}
           <div className="bg-[#121316] border border-orange-500/30 shadow-[0_0_20px_rgba(249,115,22,0.05)] overflow-hidden">
             <div className="bg-[#0E0F12] p-4 border-b border-zinc-800 flex items-center gap-3">
               <span className="text-xl">🏈</span>
-              <h3 className="font-mono text-sm font-bold uppercase tracking-widest text-orange-500">Gridiron Output (Translated)</h3>
+              <h3 className="font-mono text-sm font-bold uppercase tracking-widest text-orange-500">WIF Projection [Multiverse]</h3>
             </div>
             <div className="p-6 space-y-6">
               {mockData.nfl.map((stat, idx) => (
@@ -172,7 +167,6 @@ export default function PlayerProfile() {
         </div>
       </section>
 
-      {/* GAME LOG / RECENT INCURSIONS */}
       <section className="max-w-6xl mx-auto px-6 pt-16">
         <div className="mb-6 flex items-center justify-between border-b border-zinc-800 pb-3">
           <h2 className="text-xl font-black uppercase tracking-tight text-white">

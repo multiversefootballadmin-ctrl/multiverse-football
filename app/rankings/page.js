@@ -7,6 +7,18 @@ import PlayerCard, { getArchetypeStyles } from '@/components/PlayerCard';
 
 const ARCHETYPES = ["ALL", "QB", "RB", "WR", "TE", "DEF"];
 
+// Helper provisório para a "Ponte" no modo Tabela
+const getBridgeMock = (archetype) => {
+  switch(archetype) {
+    case 'QB': return { soccer: '3.2 xA', nfl: '312 Pass Yds' };
+    case 'WR': return { soccer: '4.8 Take-ons', nfl: '84 YAC' };
+    case 'RB': return { soccer: '0.9 xG', nfl: '1.2 Rush TDs' };
+    case 'TE': return { soccer: '4.5 Aerials', nfl: '56 Rec Yds' };
+    case 'DEF': return { soccer: '6 Tackles', nfl: '2 Sacks' };
+    default: return { soccer: '64 Touches', nfl: '120 Total Yds' };
+  }
+};
+
 export default function RankingsPage() {
   const [targets, setTargets] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -60,7 +72,6 @@ export default function RankingsPage() {
           </h1>
         </div>
         
-        {/* SEARCH & FILTERS BAR */}
         <div className="bg-[#121316] border border-zinc-800 p-5 shadow-xl space-y-5">
           <div className="relative">
             <span className="absolute inset-y-0 left-4 flex items-center text-zinc-500 font-mono text-lg">🔍</span>
@@ -98,7 +109,6 @@ export default function RankingsPage() {
           </div>
         </div>
 
-        {/* RESULTS AREA */}
         {loading ? (
           <div className="py-32 text-center text-zinc-500 font-mono text-sm tracking-widest uppercase animate-pulse">
             Syncing Telemetry Databanks...
@@ -115,8 +125,7 @@ export default function RankingsPage() {
                   <th className="py-4 px-5 cursor-pointer hover:text-white" onClick={() => handleSort('name')}>PLAYER TARGET {sortKey === 'name' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
                   <th className="py-4 px-5 cursor-pointer hover:text-white" onClick={() => handleSort('archetype')}>CLASS {sortKey === 'archetype' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
                   <th className="py-4 px-5 text-center text-zinc-600">FORM</th>
-                  <th className="py-4 px-5 text-zinc-600">NEXT MATCH</th>
-                  <th className="py-4 px-5 cursor-pointer hover:text-white" onClick={() => handleSort('passer_eff')}>PRIMARY METRIC {sortKey === 'passer_eff' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
+                  <th className="py-4 px-5 text-zinc-300">TELEMETRY TRANSLATION BRIDGE (SOCCER ➔ NFL)</th>
                   <th className="py-4 px-5 text-right font-bold text-orange-500 cursor-pointer hover:text-orange-400" onClick={() => handleSort('wif_score')}>WIF SCORE {sortKey === 'wif_score' && (sortDirection === 'asc' ? '↑' : '↓')}</th>
                 </tr>
               </thead>
@@ -124,6 +133,7 @@ export default function RankingsPage() {
                 {paginatedTargets.map((t) => {
                   const s = getArchetypeStyles(t.archetype);
                   const trend = t.trend_delta || (Math.random() > 0.5 ? '▲' : '▼');
+                  const bridge = getBridgeMock(t.archetype);
                   return (
                     <tr key={t.id} className="hover:bg-zinc-800/30 transition-colors">
                       <td className="py-4 px-5">
@@ -136,11 +146,10 @@ export default function RankingsPage() {
                       <td className="py-4 px-5 text-center">
                         <span className={`text-sm ${trend === '▲' ? 'text-emerald-500' : 'text-red-500'}`}>{trend}</span>
                       </td>
-                      <td className="py-4 px-5 text-zinc-400 uppercase tracking-wider">
-                        {t.next_opponent || "vs. TBD"}
-                      </td>
-                      <td className="py-4 px-5 text-zinc-400">
-                        {t.passer_eff || "AWAITING DATA"}
+                      <td className="py-4 px-5 text-zinc-300 font-mono text-[10px] uppercase tracking-widest">
+                        <span className="bg-[#0E0F12] border border-zinc-800 px-2 py-1"><span className="text-zinc-500 mr-1">⚽</span> {bridge.soccer}</span>
+                        <span className="mx-3 text-orange-500 font-bold">➔</span>
+                        <span className="bg-[#0E0F12] border border-orange-500/30 px-2 py-1"><span className="text-zinc-500 mr-1">🏈</span> {bridge.nfl}</span>
                       </td>
                       <td className="py-4 px-5 text-right font-black text-white text-base bg-[#0E0F12]/50">{t.wif_score}</td>
                     </tr>
@@ -151,7 +160,6 @@ export default function RankingsPage() {
           </div>
         )}
 
-        {/* PAGINATION */}
         {!loading && processedTargets.length > 0 && (
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-[10px] uppercase tracking-widest text-zinc-500 pt-4">
             <div>

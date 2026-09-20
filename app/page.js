@@ -5,17 +5,16 @@ import { getArchetypeStyles } from '@/components/PlayerCard';
 
 export default function HomePage() {
   const top5 = [
-    { id: "kdb", rank: 1, name: "K. De Bruyne", team: "Man City", archetype: "QB", score: "94.2", trend: "▲", next: "vs MAD" },
-    { id: "vini", rank: 2, name: "V. Júnior", team: "Real Madrid", archetype: "WR", score: "91.8", trend: "▲", next: "@ MCI" },
-    { id: "haaland", rank: 3, name: "E. Haaland", team: "Man City", archetype: "RB", score: "89.5", trend: "▼", next: "vs MAD" },
-    { id: "rodri", rank: 4, name: "Rodri", team: "Man City", archetype: "TE", score: "88.1", trend: "-", next: "vs MAD" },
-    { id: "saliba", rank: 5, name: "W. Saliba", team: "Arsenal", archetype: "DEF", score: "86.7", trend: "▲", next: "@ TOT" }
+    { id: "kdb", rank: 1, name: "K. De Bruyne", team: "Man City", archetype: "QB", score: "94.2", trend: "▲", next: "vs MAD", statLine: "⚽ 3.2 xA ➔ 🏈 280 Pass Yds" },
+    { id: "vini", rank: 2, name: "V. Júnior", team: "Real Madrid", archetype: "WR", score: "91.8", trend: "▲", next: "@ MCI", statLine: "⚽ 4.8 Take-ons ➔ 🏈 84 YAC" },
+    { id: "haaland", rank: 3, name: "E. Haaland", team: "Man City", archetype: "RB", score: "89.5", trend: "▼", next: "vs MAD", statLine: "⚽ 0.9 xG ➔ 🏈 1.5 Rush TDs" },
+    { id: "rodri", rank: 4, name: "Rodri", team: "Man City", archetype: "TE", score: "88.1", trend: "-", next: "vs MAD", statLine: "⚽ 4.5 Aerials ➔ 🏈 56 Rec Yds" },
+    { id: "saliba", rank: 5, name: "W. Saliba", team: "Arsenal", archetype: "DEF", score: "86.7", trend: "▲", next: "@ TOT", statLine: "⚽ 6 Tackles ➔ 🏈 2 Sacks" }
   ];
 
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-20">
       
-      {/* HERO SECTION */}
       <section className="relative w-full min-h-[90vh] pt-24 pb-20 flex items-center overflow-hidden flex-col justify-center border-b border-zinc-900">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
@@ -63,7 +62,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ARCHETYPE QUICK-CARDS */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-4">Archetype Quick-Cards</h2>
@@ -99,7 +97,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TOP 5 PODIUM TEASER */}
       <section className="bg-[#0a0b0d] py-24 border-y border-zinc-900">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center space-y-2 mb-12">
@@ -129,16 +126,16 @@ export default function HomePage() {
                             {s.icon} {player.archetype}
                           </span>
                         </div>
-                        <div className="flex items-center gap-3">
-                          <span className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{player.team}</span>
-                          <span className="text-zinc-700 font-mono text-[10px]">•</span>
-                          <span className="text-zinc-400 font-mono text-[10px] uppercase tracking-widest">NEXT: {player.next}</span>
+                        <div className="flex items-center gap-3 mt-1">
+                          <span className="text-zinc-400 font-mono text-[10px] uppercase tracking-widest font-bold bg-zinc-900 px-2 py-0.5 border border-zinc-800">
+                            {player.statLine}
+                          </span>
                         </div>
                       </div>
                     </div>
                     
-                    <div className="text-right flex items-center gap-4">
-                      <span className={`sm:hidden px-2 py-0.5 ${s.badgeBg} ${s.badgeText} font-mono font-black text-[10px] tracking-widest uppercase shadow-sm`}>
+                    <div className="text-right flex flex-col items-end gap-2">
+                      <span className={`sm:hidden px-2 py-0.5 ${s.badgeBg} ${s.badgeText} font-mono font-black text-[10px] tracking-widest uppercase shadow-sm mb-1`}>
                         {player.archetype}
                       </span>
                       <div>
