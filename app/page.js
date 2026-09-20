@@ -1,9 +1,44 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { getArchetypeStyles } from '@/components/PlayerCard';
 
+// MOCK GLOBAL INDEX (O cérebro da nossa barra de pesquisa na Home)
+const globalSearchIndex = [
+  { term: "Kevin De Bruyne", type: "Player", subtitle: "QB • Man City", url: "/players/kdb" },
+  { term: "Vinícius Júnior", type: "Player", subtitle: "WR • Real Madrid", url: "/players/vini" },
+  { term: "Erling Haaland", type: "Player", subtitle: "RB • Man City", url: "/players/haaland" },
+  { term: "Rodri", type: "Player", subtitle: "TE • Man City", url: "/players/rodri" },
+  { term: "William Saliba", type: "Player", subtitle: "DEF • Arsenal", url: "/players/saliba" },
+  { term: "WIF Score", type: "Concept", subtitle: "Multiverse Methodology", url: "/methodology" },
+  { term: "xG (Expected Goals)", type: "Glossary", subtitle: "Soccer Metric", url: "/glossary" },
+  { term: "YAC (Yards After Catch)", type: "Glossary", subtitle: "NFL Metric", url: "/glossary" },
+  { term: "Quarterback (QB)", type: "Playbook", subtitle: "The Field General", url: "/playbook" },
+  { term: "Lionel Messi", type: "Scouting", subtitle: "Historical 5-Goal Haul", url: "/scouting" },
+  { term: "Patrick Mahomes", type: "Scouting", subtitle: "Super Bowl Overtime", url: "/scouting" },
+  { term: "Draft Board", type: "App", subtitle: "Global Rankings", url: "/rankings" },
+];
+
 export default function HomePage() {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  // Lógica da Busca Inteligente
+  const handleSearch = (e) => {
+    const val = e.target.value;
+    setSearchQuery(val);
+    if (val.length > 1) {
+      const results = globalSearchIndex.filter(item => 
+        item.term.toLowerCase().includes(val.toLowerCase()) || 
+        item.subtitle.toLowerCase().includes(val.toLowerCase())
+      );
+      setSearchResults(results.slice(0, 5)); // Limitando a 5 resultados rápidos
+    } else {
+      setSearchResults([]);
+    }
+  };
+
   const top5 = [
     { id: "kdb", rank: 1, name: "K. De Bruyne", team: "Man City", archetype: "QB", score: "94.2", trend: "▲", next: "vs MAD", statLine: "⚽ 3.2 xA ➔ 🏈 280 Pass Yds" },
     { id: "vini", rank: 2, name: "V. Júnior", team: "Real Madrid", archetype: "WR", score: "91.8", trend: "▲", next: "@ MCI", statLine: "⚽ 4.8 Take-ons ➔ 🏈 84 YAC" },
@@ -15,7 +50,7 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-20">
       
-      {/* HERO SECTION */}
+      {/* HERO SECTION WITH SEARCH */}
       <section className="relative w-full min-h-[90vh] pt-24 pb-20 flex items-center overflow-hidden flex-col justify-center border-b border-zinc-900">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
@@ -25,7 +60,8 @@ export default function HomePage() {
         </div>
         
         <div className="relative z-10 max-w-5xl mx-auto px-6 w-full flex flex-col items-center text-center gap-10">
-          <div className="space-y-6">
+          <div className="space-y-6 w-full max-w-4xl">
+            
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border-l-2 border-orange-500 text-orange-400 font-mono text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(249,115,22,0.2)]">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
               Fluent in Both Footballs ⚽🏈
@@ -36,42 +72,51 @@ export default function HomePage() {
               <span className="text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]">Sporting Dimension.</span>
             </h1>
             
-            <div className="bg-[#121316]/80 backdrop-blur-md border border-zinc-800 p-6 md:p-8 rounded-xl shadow-2xl max-w-3xl mx-auto mt-6">
-              <p className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed mb-4">
-                <strong className="text-white">What if the Laws of Sports Were Rewritten?</strong> Pop culture mastered the multiverse, but we built the statistical bridge.
-              </p>
-              <p className="text-base sm:text-lg text-zinc-400 font-light leading-relaxed mb-6">
-                Drop elite Soccer ⚽ stars into the NFL 🏈 reality. No opinions. Just raw kinematic data mathematically translated through the proprietary WIF Score engine.
-              </p>
-              
-              <div className="border-t border-zinc-800 pt-5 mt-2">
-                <span className="text-orange-500 font-black tracking-widest uppercase text-sm sm:text-base drop-shadow-md">
-                  TWO CODES. ONE UNIVERSAL TRUTH.
-                </span>
+            <p className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mt-6">
+              Drop elite Soccer ⚽ stars into the NFL 🏈 reality. No opinions. Just raw kinematic data mathematically translated through the proprietary WIF Score engine.
+            </p>
+
+            {/* GLOBAL SEARCH BAR */}
+            <div className="relative w-full max-w-2xl mx-auto mt-10">
+              <div className="relative flex items-center">
+                <span className="absolute left-6 text-2xl text-zinc-500">🔍</span>
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={handleSearch}
+                  placeholder="SEARCH PLAYERS, GLOSSARY, OR REPORTS..."
+                  className="w-full bg-[#121316] border-2 border-zinc-700 hover:border-orange-500/50 focus:border-orange-500 pl-16 pr-6 py-5 text-sm md:text-lg font-black text-white placeholder-zinc-600 focus:outline-none uppercase tracking-widest transition-all shadow-2xl rounded-full"
+                />
               </div>
+
+              {/* SEARCH DROPDOWN RESULTS */}
+              {searchResults.length > 0 && (
+                <div className="absolute top-full left-0 w-full mt-2 bg-[#121316] border border-zinc-700 shadow-2xl rounded-xl overflow-hidden z-50 text-left">
+                  {searchResults.map((result, idx) => (
+                    <Link key={idx} href={result.url} className="flex items-center justify-between p-4 hover:bg-zinc-800 transition-colors border-b border-zinc-800/50 last:border-0 group">
+                      <div>
+                        <h4 className="font-black text-white text-base group-hover:text-orange-400 transition-colors uppercase tracking-wider">{result.term}</h4>
+                        <p className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest mt-1">{result.subtitle}</p>
+                      </div>
+                      <span className="text-[10px] font-mono font-bold bg-zinc-800 text-zinc-300 px-2 py-1 uppercase tracking-widest rounded-sm">{result.type}</span>
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
-            <div className="flex flex-col sm:flex-row justify-center gap-4 pt-6">
-              <Link href="/rankings" className="bg-orange-600 hover:bg-orange-500 text-white font-black uppercase tracking-widest px-10 py-5 text-sm transition-all shadow-[0_0_25px_rgba(249,115,22,0.4)]">
-                Enter The War Room
-              </Link>
-              <Link href="/methodology" className="bg-zinc-900 border border-zinc-700 hover:border-zinc-500 text-zinc-300 font-bold uppercase tracking-widest px-10 py-5 text-sm transition-all">
-                Decode The Matrix
-              </Link>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* ARCHETYPE QUICK-CARDS (MULTIVERSE REDESIGN) */}
+      {/* ARCHETYPE QUICK-CARDS */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight text-white mb-4">The Archetype Translation</h2>
-          <p className="text-zinc-500 font-mono text-xs uppercase tracking-widest">How pitch roles map to gridiron reality.</p>
+          <p className="text-zinc-500 font-mono text-xs uppercase tracking-widest">How pitch roles map to pocket reality.</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
-          {/* QB Card */}
           <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-red-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-black text-white text-2xl uppercase">QB</h3>
@@ -95,7 +140,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* RB Card */}
           <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-emerald-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-black text-white text-2xl uppercase">RB</h3>
@@ -119,7 +163,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* WR Card */}
           <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-blue-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-black text-white text-2xl uppercase">WR</h3>
@@ -143,7 +186,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* TE Card */}
           <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-amber-500 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-black text-white text-2xl uppercase">TE</h3>
@@ -167,7 +209,6 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* DEF Card */}
           <div className="bg-[#121316] border border-zinc-800 border-t-4 border-t-purple-600 p-5 shadow-xl hover:-translate-y-1 transition-transform flex flex-col h-full group">
             <div className="flex items-center justify-between mb-4">
               <h3 className="font-black text-white text-2xl uppercase">DEF</h3>
