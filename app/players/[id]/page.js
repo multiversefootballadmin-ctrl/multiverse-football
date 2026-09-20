@@ -6,7 +6,7 @@ import { useParams } from 'next/navigation';
 import { supabase } from '@/lib/supabase';
 import { useLanguage } from '@/lib/LanguageContext';
 
-// Componente PositionalEmblem extraído para fora para melhor performance no React
+// Função de Emblema isolada para otimização de performance
 const PositionalEmblem = ({ position }) => {
   const config = {
     QB: { 
@@ -171,7 +171,7 @@ export default function PlayerProfilePage() {
           </Link>
         </div>
 
-        {/* Header do Perfil com Emblema SVG em vez de Foto */}
+        {/* Header do Perfil com Avatar SVG Futurista */}
         <div className="bg-[#16171B] border border-zinc-800 rounded-3xl p-6 md:p-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-2xl">
           <div className="flex items-center gap-5">
             <div className="w-20 h-20 md:w-24 md:h-24 rounded-2xl bg-zinc-900 border border-zinc-700 overflow-hidden shrink-0 shadow-lg">
