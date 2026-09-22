@@ -16,87 +16,70 @@ const globalSearchIndex = [
   { term: "YAC (Yards After Catch)", type: "Glossary", subtitle: "NFL Metric", url: "/glossary" },
 ];
 
-// DADOS DA CALCULADORA POR ARQUÉTIPO
-const calculatorConfigs = {
-  QB: {
-    name: "Playmaker", nfl: "Quarterback",
-    sliders: [
-      { id: "QB_passes", label: "⚽ Key Passes", max: 8, defaultVal: 3, ptPerUnit: 1.0, translation: "🏈 25 Pass Yds" },
-      { id: "QB_assists", label: "⚽ Assists", max: 3, defaultVal: 1, ptPerUnit: 4.0, translation: "🏈 1 Passing TD" },
-      { id: "QB_prog", label: "⚽ Prog. Passes", max: 15, defaultVal: 5, ptPerUnit: 0.5, translation: "🏈 1st Down Conv." }
-    ]
-  },
-  RB: {
-    name: "Target Striker", nfl: "Power Back",
-    sliders: [
-      { id: "RB_shots", label: "⚽ Box Shots", max: 8, defaultVal: 4, ptPerUnit: 1.5, translation: "🏈 15 Rushing Yds" },
-      { id: "RB_goals", label: "⚽ Goals Scored", max: 4, defaultVal: 1, ptPerUnit: 6.0, translation: "🏈 1 Rushing TD" },
-      { id: "RB_takeons", label: "⚽ Take-ons", max: 6, defaultVal: 2, ptPerUnit: 1.0, translation: "🏈 Broken Tackle" }
-    ]
-  },
-  WR: {
-    name: "Wide Winger", nfl: "Deep Threat",
-    sliders: [
-      { id: "WR_takeons", label: "⚽ Take-ons Won", max: 10, defaultVal: 4, ptPerUnit: 1.5, translation: "🏈 15 Yds After Catch" },
-      { id: "WR_goals", label: "⚽ Goals Scored", max: 3, defaultVal: 1, ptPerUnit: 6.0, translation: "🏈 1 Receiving TD" },
-      { id: "WR_crosses", label: "⚽ Succ. Crosses", max: 8, defaultVal: 2, ptPerUnit: 1.0, translation: "🏈 10 Receiving Yds" }
-    ]
-  },
-  TE: {
-    name: "Box-to-Box", nfl: "Hybrid Anchor",
-    sliders: [
-      { id: "TE_aerials", label: "⚽ Aerials Won", max: 10, defaultVal: 5, ptPerUnit: 1.0, translation: "🏈 10 Contested Yds" },
-      { id: "TE_tackles", label: "⚽ Def. Tackles", max: 6, defaultVal: 3, ptPerUnit: 1.0, translation: "🏈 Block / Stop" },
-      { id: "TE_goals", label: "⚽ Goals Scored", max: 2, defaultVal: 0, ptPerUnit: 6.0, translation: "🏈 1 Receiving TD" }
-    ]
-  },
-  DEF: {
-    name: "Backline", nfl: "D/ST Unit",
-    sliders: [
-      { id: "DEF_clean", label: "⚽ Clean Sheet", max: 1, defaultVal: 1, ptPerUnit: 10.0, translation: "🏈 0-Point Shutout" },
-      { id: "DEF_tackles", label: "⚽ Tackles/Clearances", max: 12, defaultVal: 6, ptPerUnit: 0.5, translation: "🏈 0.5 Sacks" },
-      { id: "DEF_turnovers", label: "⚽ Turnovers Won", max: 5, defaultVal: 2, ptPerUnit: 2.0, translation: "🏈 1 Takeaway (INT/Fum)" }
-    ]
-  }
-};
-
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // Calculadora State
-  const [activeArch, setActiveArch] = useState("QB");
-  const [calcValues, setCalcValues] = useState({
-    QB_passes: 3, QB_assists: 1, QB_prog: 5,
-    RB_shots: 4, RB_goals: 1, RB_takeons: 2,
-    WR_takeons: 4, WR_goals: 1, WR_crosses: 2,
-    TE_aerials: 5, TE_tackles: 3, TE_goals: 0,
-    DEF_clean: 1, DEF_tackles: 6, DEF_turnovers: 2
-  });
+  // Estados da Calculadora Universal
+  const [calcGoals, setCalcGoals] = useState(0);
+  const [calcPasses, setCalcPasses] = useState(5);
+  const [calcTakeOns, setCalcTakeOns] = useState(2);
+  const [calcTackles, setCalcTackles] = useState(1);
 
-  const handleSliderChange = (id, value) => {
-    setCalcValues(prev => ({ ...prev, [id]: Number(value) }));
-  };
+  // PESOS DA CALCULADORA (WIF Score Realtime)
+  const ptsPerGoal = 6.0;
+  const ptsPerPass = 1.0; // Ex: 1 Key Pass = 10 Pass Yds (1 pt)
+  const ptsPerTakeOn = 1.0; // Ex: 1 Take-on = 10 YAC (1 pt)
+  const ptsPerTackle = 1.5; // Ex: 1 Tackle = 1 Sack/Stop (1.5 pts)
 
-  // Cálculo do WIF Score para a aba ativa
-  const currentConfig = calculatorConfigs[activeArch];
-  const totalWifScore = currentConfig.sliders.reduce((total, slider) => {
-    return total + (calcValues[slider.id] * slider.ptPerUnit);
-  }, 0);
+  const wifScoreCalc = (calcGoals * ptsPerGoal) + (calcPasses * ptsPerPass) + (calcTakeOns * ptsPerTakeOn) + (calcTackles * ptsPerTackle);
 
-  // Avaliação Dinâmica (The Veredict)
-  let evaluation = { title: "", desc: "", color: "" };
-  if (totalWifScore < 10) {
-    evaluation = { title: "BENCH WARMER", desc: "A quiet game. Not enough impact to make a difference on the fantasy slate.", color: "text-zinc-500" };
-  } else if (totalWifScore < 18) {
-    evaluation = { title: "SOLID STARTER", desc: "Reliable output. Equivalent to a QB throwing for 250 yards and 1 TD.", color: "text-blue-400" };
-  } else if (totalWifScore < 25) {
-    evaluation = { title: "PRO BOWL LEVEL", desc: "Game-winning performance. Dominant metrics across all dimensions.", color: "text-emerald-400" };
+  // MOTOR DE DETECÇÃO DE ARQUÉTIPO
+  let detectedArch = "UNDEFINED";
+  let archColor = "text-zinc-500";
+  let archBg = "bg-zinc-900";
+  
+  // Analisa qual é o traço dominante da performance
+  const passWeight = calcPasses * 1.5;
+  const takeOnWeight = calcTakeOns * 1.5;
+  const tackleWeight = calcTackles * 2.0;
+  const goalWeight = calcGoals * 3.0;
+  const maxTrait = Math.max(passWeight, takeOnWeight, tackleWeight, goalWeight);
+
+  if (maxTrait === 0) {
+    detectedArch = "UNKNOWN ROLE";
+    archColor = "text-zinc-500";
+    archBg = "bg-zinc-900/50";
+  } else if (maxTrait === passWeight) {
+    detectedArch = "🎯 QB (FIELD GENERAL)";
+    archColor = "text-red-500";
+    archBg = "bg-red-500/10 border-red-500/30";
+  } else if (maxTrait === takeOnWeight) {
+    detectedArch = "⚡ WR (VERTICAL THREAT)";
+    archColor = "text-blue-500";
+    archBg = "bg-blue-500/10 border-blue-500/30";
+  } else if (maxTrait === goalWeight) {
+    detectedArch = "🏃‍♂️ RB (GROUND WEAPON)";
+    archColor = "text-emerald-500";
+    archBg = "bg-emerald-500/10 border-emerald-500/30";
   } else {
-    evaluation = { title: "MVP / HALL OF FAME", desc: "A slate-breaking game! Think prime Patrick Mahomes or a Derrick Henry 200-yard day.", color: "text-orange-500" };
+    detectedArch = "🧱 DEF (TERRITORIAL LOCK)";
+    archColor = "text-purple-400";
+    archBg = "bg-purple-500/10 border-purple-500/30";
   }
 
-  // Lógica de Busca
+  // AVALIAÇÃO DE DESEMPENHO (O Veredito)
+  let evaluation = { title: "", desc: "" };
+  if (wifScoreCalc < 8) {
+    evaluation = { title: "BENCH WARMER", desc: "A quiet game. Not enough impact to make a difference on the fantasy slate." };
+  } else if (wifScoreCalc < 16) {
+    evaluation = { title: "SOLID STARTER", desc: "Reliable output. Consistent production helping move the chains." };
+  } else if (wifScoreCalc < 24) {
+    evaluation = { title: "PRO BOWL LEVEL", desc: "A game-winning performance. Dominant metrics that dictate the result." };
+  } else {
+    evaluation = { title: "MVP / HALL OF FAME", desc: "A slate-breaking game! Think prime Patrick Mahomes or a Derrick Henry 200-yard day." };
+  }
+
   const handleSearch = (e) => {
     const val = e.target.value;
     setSearchQuery(val);
@@ -180,65 +163,84 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* INTERACTIVE WIF CALCULATOR BY ARCHETYPE */}
+          {/* INTERACTIVE WIF CALCULATOR - DYNAMIC DISCOVERY */}
           <div className="bg-[#121316]/90 backdrop-blur-md border border-zinc-800 p-6 sm:p-8 rounded-2xl shadow-2xl relative">
             <div className="absolute -top-3 -right-3 bg-orange-500 text-white font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
               Live Engine Demo
             </div>
             
-            <div className="mb-6">
-              <h3 className="text-2xl font-black text-white uppercase tracking-tight">The WIF Calculator</h3>
-              <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-1">Select a role to see how actions translate.</p>
+            <div className="mb-8">
+              <h3 className="text-2xl font-black text-white uppercase tracking-tight">Build a Player</h3>
+              <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-1">Shape a performance below. The Multiverse will automatically detect the NFL role and fantasy value.</p>
             </div>
 
-            {/* ARCHETYPE TABS */}
-            <div className="flex flex-wrap gap-2 mb-6 border-b border-zinc-800 pb-4">
-              {Object.keys(calculatorConfigs).map((arch) => (
-                <button
-                  key={arch}
-                  onClick={() => setActiveArch(arch)}
-                  className={`px-3 py-1.5 text-[10px] font-mono font-bold tracking-widest uppercase transition-all rounded-sm ${activeArch === arch ? 'bg-orange-600 text-white shadow-md' : 'bg-[#0E0F12] border border-zinc-800 text-zinc-500 hover:text-white'}`}
-                >
-                  {arch}
-                </button>
-              ))}
-            </div>
-
-            {/* DYNAMIC SLIDERS */}
+            {/* UNIVERSAL SLIDERS */}
             <div className="space-y-6">
-              {currentConfig.sliders.map((slider) => (
-                <div key={slider.id}>
-                  <div className="flex justify-between items-end mb-2">
-                    <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">{slider.label}</label>
-                    <span className="text-orange-500 font-black text-lg">{calcValues[slider.id]}{slider.max === 1 && slider.id.includes("clean") ? (calcValues[slider.id] === 1 ? ' (YES)' : ' (NO)') : ''}</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0" 
-                    max={slider.max} 
-                    value={calcValues[slider.id]} 
-                    onChange={(e) => handleSliderChange(slider.id, e.target.value)} 
-                    className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" 
-                  />
-                  <div className="flex justify-between mt-1 text-[10px] font-mono uppercase tracking-widest">
-                    <span className="text-zinc-600">Translates to:</span>
-                    <span className="text-zinc-400">{slider.translation} <span className="text-orange-500 font-bold">({slider.ptPerUnit.toFixed(1)} pt)</span></span>
-                  </div>
+              
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Goals Scored</label>
+                  <span className="text-orange-500 font-black text-lg">{calcGoals}</span>
                 </div>
-              ))}
+                <input type="range" min="0" max="4" value={calcGoals} onChange={(e) => setCalcGoals(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono uppercase tracking-widest">
+                  <span className="text-zinc-600">Translates to:</span>
+                  <span className="text-zinc-400">🏈 {calcGoals} Touchdowns <span className="text-orange-500 font-bold">({(calcGoals * ptsPerGoal).toFixed(1)} pt)</span></span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Key Passes & Assists</label>
+                  <span className="text-orange-500 font-black text-lg">{calcPasses}</span>
+                </div>
+                <input type="range" min="0" max="15" value={calcPasses} onChange={(e) => setCalcPasses(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono uppercase tracking-widest">
+                  <span className="text-zinc-600">Translates to:</span>
+                  <span className="text-zinc-400">🏈 Pass Yards & TDs <span className="text-orange-500 font-bold">({(calcPasses * ptsPerPass).toFixed(1)} pt)</span></span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Successful Take-ons</label>
+                  <span className="text-orange-500 font-black text-lg">{calcTakeOns}</span>
+                </div>
+                <input type="range" min="0" max="15" value={calcTakeOns} onChange={(e) => setCalcTakeOns(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono uppercase tracking-widest">
+                  <span className="text-zinc-600">Translates to:</span>
+                  <span className="text-zinc-400">🏈 YAC (Yds After Catch) <span className="text-orange-500 font-bold">({(calcTakeOns * ptsPerTakeOn).toFixed(1)} pt)</span></span>
+                </div>
+              </div>
+
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Defensive Tackles</label>
+                  <span className="text-orange-500 font-black text-lg">{calcTackles}</span>
+                </div>
+                <input type="range" min="0" max="15" value={calcTackles} onChange={(e) => setCalcTackles(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono uppercase tracking-widest">
+                  <span className="text-zinc-600">Translates to:</span>
+                  <span className="text-zinc-400">🏈 Sacks & Stops <span className="text-orange-500 font-bold">({(calcTackles * ptsPerTackle).toFixed(1)} pt)</span></span>
+                </div>
+              </div>
+
             </div>
 
-            {/* SCORE & EVALUATION */}
+            {/* DYNAMIC EVALUATION BOX */}
             <div className="mt-8 pt-6 border-t border-zinc-800">
               <div className="flex items-center justify-between mb-4">
                 <span className="text-sm font-mono font-bold text-zinc-400 uppercase tracking-widest">Total WIF Score</span>
-                <span className="text-4xl font-black text-white">{totalWifScore.toFixed(1)}</span>
+                <span className="text-4xl font-black text-white">{wifScoreCalc.toFixed(1)}</span>
               </div>
               
-              <div className="bg-[#0E0F12] border border-zinc-800 p-4 rounded-md">
-                <span className="text-[9px] font-mono text-zinc-500 uppercase tracking-widest block mb-1">Scout Evaluation</span>
-                <h4 className={`font-black uppercase tracking-tight text-lg mb-1 ${evaluation.color}`}>{evaluation.title}</h4>
-                <p className="text-xs text-zinc-400 font-light leading-relaxed">{evaluation.desc}</p>
+              <div className={`border p-4 rounded-md transition-colors duration-500 ${archBg}`}>
+                <div className="flex justify-between items-start mb-2">
+                  <span className="text-[9px] font-mono text-zinc-400 uppercase tracking-widest">Scout Evaluation</span>
+                  <span className={`text-[10px] font-mono font-black uppercase tracking-widest ${archColor}`}>{detectedArch}</span>
+                </div>
+                <h4 className="font-black text-white uppercase tracking-tight text-lg mb-1">{evaluation.title}</h4>
+                <p className="text-xs text-zinc-300 font-light leading-relaxed">{evaluation.desc}</p>
               </div>
             </div>
 
