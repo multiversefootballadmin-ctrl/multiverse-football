@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { getArchetypeStyles } from '@/components/PlayerCard';
 
-// MOCK GLOBAL INDEX (O cérebro da nossa barra de pesquisa na Home)
+// MOCK GLOBAL INDEX (Busca)
 const globalSearchIndex = [
   { term: "Kevin De Bruyne", type: "Player", subtitle: "QB • Man City", url: "/players/kdb" },
   { term: "Vinícius Júnior", type: "Player", subtitle: "WR • Real Madrid", url: "/players/vini" },
@@ -14,17 +14,21 @@ const globalSearchIndex = [
   { term: "WIF Score", type: "Concept", subtitle: "Multiverse Methodology", url: "/methodology" },
   { term: "xG (Expected Goals)", type: "Glossary", subtitle: "Soccer Metric", url: "/glossary" },
   { term: "YAC (Yards After Catch)", type: "Glossary", subtitle: "NFL Metric", url: "/glossary" },
-  { term: "Quarterback (QB)", type: "Playbook", subtitle: "The Field General", url: "/playbook" },
-  { term: "Lionel Messi", type: "Scouting", subtitle: "Historical 5-Goal Haul", url: "/scouting" },
-  { term: "Patrick Mahomes", type: "Scouting", subtitle: "Super Bowl Overtime", url: "/scouting" },
-  { term: "Draft Board", type: "App", subtitle: "Global Rankings", url: "/rankings" },
 ];
 
 export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // Lógica da Busca Inteligente
+  // Estados da Calculadora Interativa
+  const [calcGoals, setCalcGoals] = useState(1);
+  const [calcPasses, setCalcPasses] = useState(3);
+  const [calcTakeOns, setCalcTakeOns] = useState(2);
+  const [calcTackles, setCalcTackles] = useState(1);
+
+  // Lógica simples de WIF Score para a calculadora visual
+  const wifScoreCalc = (calcGoals * 6.0) + (calcPasses * 0.8) + (calcTakeOns * 1.0) + (calcTackles * 1.0);
+
   const handleSearch = (e) => {
     const val = e.target.value;
     setSearchQuery(val);
@@ -33,7 +37,7 @@ export default function HomePage() {
         item.term.toLowerCase().includes(val.toLowerCase()) || 
         item.subtitle.toLowerCase().includes(val.toLowerCase())
       );
-      setSearchResults(results.slice(0, 5)); // Limitando a 5 resultados rápidos
+      setSearchResults(results.slice(0, 5));
     } else {
       setSearchResults([]);
     }
@@ -50,34 +54,30 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-20">
       
-      {/* HERO SECTION WITH SEARCH */}
-      <section className="relative w-full min-h-[90vh] pt-24 pb-20 flex items-center overflow-hidden flex-col justify-center border-b border-zinc-900">
+      {/* HERO SECTION WITH SEARCH & CALCULATOR */}
+      <section className="relative w-full min-h-[95vh] pt-20 pb-16 flex items-center overflow-hidden flex-col justify-center border-b border-zinc-900">
         <div className="absolute inset-0 z-0 opacity-10" style={{ backgroundImage: 'linear-gradient(#27272a 1px, transparent 1px), linear-gradient(90deg, #27272a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
         
-        <div className="absolute top-1/4 left-0 w-full text-center overflow-hidden whitespace-nowrap opacity-5 pointer-events-none select-none flex flex-col gap-4">
-          <span className="text-[12vw] font-black text-white uppercase leading-none">SPORTING DIMENSION</span>
-          <span className="text-[12vw] font-black text-white uppercase leading-none">UNIVERSAL TRUTH</span>
-        </div>
-        
-        <div className="relative z-10 max-w-5xl mx-auto px-6 w-full flex flex-col items-center text-center gap-10">
-          <div className="space-y-6 w-full max-w-4xl">
-            
+        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          
+          {/* TEXT & SEARCH */}
+          <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border-l-2 border-orange-500 text-orange-400 font-mono text-xs font-bold tracking-widest uppercase shadow-[0_0_15px_rgba(249,115,22,0.2)]">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-              Fluent in Both Footballs ⚽🏈
+              Powered by the WIF Engine
             </div>
             
-            <h1 className="text-5xl sm:text-7xl lg:text-8xl font-black uppercase tracking-tighter text-white leading-[0.9]">
-              Crossing the <br />
-              <span className="text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]">Sporting Dimension.</span>
+            <h1 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter text-white leading-[0.9]">
+              THE CROSS-SPORT <br className="hidden sm:block" />
+              <span className="text-orange-500 drop-shadow-[0_0_30px_rgba(249,115,22,0.4)]">FANTASY ENGINE.</span>
             </h1>
             
-            <p className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto mt-6">
-              Drop elite Soccer ⚽ stars into the NFL 🏈 reality. No opinions. Just raw kinematic data mathematically translated through the proprietary WIF Score engine.
+            <p className="text-lg sm:text-xl text-zinc-300 font-light leading-relaxed max-w-xl mt-4">
+              We turn global soccer stats into NFL fantasy points. Meet the <strong className="text-white">WIF Score</strong>: the only algorithm that lets you draft Messi ⚽ and Mahomes 🏈 on the same scale. No opinions, just pure stats translated across dimensions.
             </p>
 
             {/* GLOBAL SEARCH BAR */}
-            <div className="relative w-full max-w-2xl mx-auto mt-10">
+            <div className="relative w-full max-w-xl mt-8">
               <div className="relative flex items-center">
                 <span className="absolute left-6 text-2xl text-zinc-500">🔍</span>
                 <input
@@ -85,11 +85,11 @@ export default function HomePage() {
                   value={searchQuery}
                   onChange={handleSearch}
                   placeholder="SEARCH PLAYERS, GLOSSARY, OR REPORTS..."
-                  className="w-full bg-[#121316] border-2 border-zinc-700 hover:border-orange-500/50 focus:border-orange-500 pl-16 pr-6 py-5 text-sm md:text-lg font-black text-white placeholder-zinc-600 focus:outline-none uppercase tracking-widest transition-all shadow-2xl rounded-full"
+                  className="w-full bg-[#121316] border-2 border-zinc-700 hover:border-orange-500/50 focus:border-orange-500 pl-16 pr-6 py-4 text-sm md:text-base font-black text-white placeholder-zinc-600 focus:outline-none uppercase tracking-widest transition-all shadow-2xl rounded-full"
                 />
               </div>
 
-              {/* SEARCH DROPDOWN RESULTS */}
+              {/* SEARCH DROPDOWN */}
               {searchResults.length > 0 && (
                 <div className="absolute top-full left-0 w-full mt-2 bg-[#121316] border border-zinc-700 shadow-2xl rounded-xl overflow-hidden z-50 text-left">
                   {searchResults.map((result, idx) => (
@@ -104,8 +104,89 @@ export default function HomePage() {
                 </div>
               )}
             </div>
-
+            
+            <div className="flex gap-4 pt-4">
+              <Link href="/rankings" className="bg-orange-600 hover:bg-orange-500 text-white font-black uppercase tracking-widest px-8 py-4 text-sm transition-all shadow-[0_0_25px_rgba(249,115,22,0.4)]">
+                Enter The War Room
+              </Link>
+            </div>
           </div>
+
+          {/* INTERACTIVE WIF CALCULATOR */}
+          <div className="bg-[#121316]/90 backdrop-blur-md border border-zinc-800 p-6 sm:p-8 rounded-2xl shadow-2xl relative">
+            <div className="absolute -top-3 -right-3 bg-orange-500 text-white font-black text-[10px] uppercase tracking-widest px-3 py-1 rounded-full shadow-lg">
+              Live Demo
+            </div>
+            <div className="border-b border-zinc-800 pb-4 mb-6">
+              <h3 className="text-2xl font-black text-white uppercase tracking-tight">The WIF Calculator</h3>
+              <p className="text-xs font-mono text-zinc-400 uppercase tracking-widest mt-1">See how soccer actions convert to points.</p>
+            </div>
+
+            <div className="space-y-5">
+              {/* SLIDER 1 */}
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Goals Scored</label>
+                  <span className="text-orange-500 font-black text-lg">{calcGoals}</span>
+                </div>
+                <input type="range" min="0" max="4" value={calcGoals} onChange={(e) => setCalcGoals(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                  <span>Converts to:</span>
+                  <span>{calcGoals} Touchdowns (6 pts ea)</span>
+                </div>
+              </div>
+
+              {/* SLIDER 2 */}
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Key Passes</label>
+                  <span className="text-orange-500 font-black text-lg">{calcPasses}</span>
+                </div>
+                <input type="range" min="0" max="10" value={calcPasses} onChange={(e) => setCalcPasses(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                  <span>Converts to:</span>
+                  <span>{calcPasses * 20} Pass Yds (0.8 pts ea)</span>
+                </div>
+              </div>
+
+              {/* SLIDER 3 */}
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Successful Take-ons</label>
+                  <span className="text-orange-500 font-black text-lg">{calcTakeOns}</span>
+                </div>
+                <input type="range" min="0" max="10" value={calcTakeOns} onChange={(e) => setCalcTakeOns(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                  <span>Converts to:</span>
+                  <span>{calcTakeOns * 10} YAC (1 pt ea)</span>
+                </div>
+              </div>
+
+              {/* SLIDER 4 */}
+              <div>
+                <div className="flex justify-between items-end mb-2">
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Defensive Tackles</label>
+                  <span className="text-orange-500 font-black text-lg">{calcTackles}</span>
+                </div>
+                <input type="range" min="0" max="10" value={calcTackles} onChange={(e) => setCalcTackles(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <div className="flex justify-between mt-1 text-[10px] font-mono text-zinc-500 uppercase tracking-widest">
+                  <span>Converts to:</span>
+                  <span>{calcTackles} Sacks/Stops (1 pt ea)</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 bg-[#0E0F12] border border-zinc-700 p-4 rounded-xl flex items-center justify-between">
+              <span className="text-sm font-mono font-bold text-zinc-400 uppercase tracking-widest">Total WIF Score</span>
+              <span className="text-4xl font-black text-white">{wifScoreCalc.toFixed(1)}</span>
+            </div>
+            <div className="text-center mt-3">
+               <Link href="/methodology" className="text-[10px] font-mono text-zinc-500 hover:text-orange-400 uppercase tracking-widest transition-colors">
+                  Understand the full math →
+               </Link>
+            </div>
+          </div>
+
         </div>
       </section>
 
@@ -238,9 +319,9 @@ export default function HomePage() {
       <section className="bg-[#0a0b0d] py-24 border-y border-zinc-900">
         <div className="max-w-4xl mx-auto px-6">
           <div className="text-center space-y-2 mb-12">
-            <span className="text-xs font-mono text-orange-500 font-bold tracking-widest uppercase">Live Telemetry</span>
+            <span className="text-xs font-mono text-orange-500 font-bold tracking-widest uppercase">Live WIF Leaderboard</span>
             <h2 className="text-3xl sm:text-5xl font-black text-white uppercase tracking-tight">Top-5 MVP Podium</h2>
-            <p className="text-zinc-500 font-mono text-xs uppercase tracking-widest pt-2">Composite WIF performers across all dimensions.</p>
+            <p className="text-zinc-500 font-mono text-xs uppercase tracking-widest pt-2">Composite WIF performers across all global leagues.</p>
           </div>
           
           <div className="bg-[#121316] border border-zinc-800 shadow-2xl overflow-hidden">
