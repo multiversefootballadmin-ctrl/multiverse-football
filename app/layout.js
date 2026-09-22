@@ -1,3 +1,4 @@
+import Navbar from '../components/Navbar';
 import Link from 'next/link';
 import './globals.css';
 
@@ -11,48 +12,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className="bg-[#0E0F12] text-zinc-100 font-sans selection:bg-orange-500 selection:text-white flex flex-col min-h-screen">
         
-        {/* MENU GLOBAL COM ÍCONES E SEPARADORES */}
-        <header className="sticky top-0 w-full z-50 px-4 sm:px-6 py-4 flex flex-col xl:flex-row justify-between items-center border-b border-zinc-800/60 bg-[#0E0F12]/95 backdrop-blur-md gap-4 shadow-xl">
-          <div className="font-black text-xl md:text-2xl tracking-tighter uppercase shrink-0">
-            <Link href="/">
-              <span className="text-white">MULTIVERSE</span> <span className="text-orange-500">FOOTBALL</span>
-            </Link>
-          </div>
-          
-          <nav className="flex items-center gap-3 sm:gap-4 font-mono text-[10px] sm:text-xs font-bold tracking-widest text-zinc-400 overflow-x-auto w-full xl:w-auto pb-1 xl:pb-0 no-scrollbar justify-center xl:justify-end">
-            <Link href="/rankings" className="hover:text-orange-400 transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>📊</span> WAR ROOM
-            </Link>
-            <span className="text-zinc-700">|</span>
-            <Link href="/games" className="text-orange-400 hover:text-orange-300 font-black transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>🎲</span> GAMES
-            </Link>
-            <span className="text-zinc-700">|</span>
-            <Link href="/playbook" className="hover:text-orange-400 transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>📖</span> PLAYBOOK
-            </Link>
-            <span className="text-zinc-700">|</span>
-            <Link href="/scouting" className="hover:text-orange-400 transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>🔍</span> SCOUTING
-            </Link>
-            <span className="text-zinc-700">|</span>
-            <Link href="/methodology" className="hover:text-orange-400 transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>📐</span> METHODOLOGY
-            </Link>
-            <span className="text-zinc-700">|</span>
-            <Link href="/glossary" className="hover:text-orange-400 transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>📚</span> GLOSSARY
-            </Link>
-            <span className="text-zinc-700">|</span>
-            <Link href="/whitepaper" className="hover:text-orange-400 transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>📄</span> WHITEPAPER
-            </Link>
-            <span className="text-zinc-700">|</span>
-            <Link href="/about" className="hover:text-orange-400 transition-colors whitespace-nowrap flex items-center gap-1.5">
-              <span>⚡</span> ORIGIN
-            </Link>
-          </nav>
-        </header>
+        <Navbar />
 
         <main className="flex-grow">
           {children}
@@ -65,7 +25,7 @@ export default function RootLayout({ children }) {
                 <span className="text-white">MULTIVERSE</span> <span className="text-orange-500">FOOTBALL</span>
               </div>
               <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                Converting real soccer stats into NFL fantasy points. Clear metrics, cross-sport scoring.
+                Converting soccer stats into NFL fantasy points. Clear metrics, cross-sport scoring.
               </p>
             </div>
 
