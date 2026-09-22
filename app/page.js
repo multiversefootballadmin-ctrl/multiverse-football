@@ -20,21 +20,21 @@ export default function HomePage() {
   const [searchQuery, setSearchQuery] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // Estados da Calculadora Universal
+  // Estados da Calculadora Universal (Focada no Ataque/Produção Individual)
   const [calcGoals, setCalcGoals] = useState(0);
   const [calcPasses, setCalcPasses] = useState(5);
   const [calcTakeOns, setCalcTakeOns] = useState(2);
-  const [calcTackles, setCalcTackles] = useState(1);
+  const [calcCarries, setCalcCarries] = useState(1);
 
   // PESOS DA CALCULADORA (WIF Score Realtime)
   const ptsPerGoal = 6.0;
-  const ptsPerPass = 1.0; // Ex: 1 Key Pass = 10 Pass Yds (1 pt)
-  const ptsPerTakeOn = 1.0; // Ex: 1 Take-on = 10 YAC (1 pt)
-  const ptsPerTackle = 1.5; // Ex: 1 Tackle = 1 Sack/Stop (1.5 pts)
+  const ptsPerPass = 1.0; // Ex: Mix de Key Passes e Assists
+  const ptsPerTakeOn = 1.0; // Ex: Dribles convertidos em YAC
+  const ptsPerCarry = 1.0; // Ex: Conduções progressivas convertidas em Rush Yards
 
-  const wifScoreCalc = (calcGoals * ptsPerGoal) + (calcPasses * ptsPerPass) + (calcTakeOns * ptsPerTakeOn) + (calcTackles * ptsPerTackle);
+  const wifScoreCalc = (calcGoals * ptsPerGoal) + (calcPasses * ptsPerPass) + (calcTakeOns * ptsPerTakeOn) + (calcCarries * ptsPerCarry);
 
-  // MOTOR DE DETECÇÃO DE ARQUÉTIPO
+  // MOTOR DE DETECÇÃO DE ARQUÉTIPO (Sem Defesa Individual)
   let detectedArch = "UNDEFINED";
   let archColor = "text-zinc-500";
   let archBg = "bg-zinc-900";
@@ -42,9 +42,9 @@ export default function HomePage() {
   // Analisa qual é o traço dominante da performance
   const passWeight = calcPasses * 1.5;
   const takeOnWeight = calcTakeOns * 1.5;
-  const tackleWeight = calcTackles * 2.0;
+  const carryWeight = calcCarries * 1.5;
   const goalWeight = calcGoals * 3.0;
-  const maxTrait = Math.max(passWeight, takeOnWeight, tackleWeight, goalWeight);
+  const maxTrait = Math.max(passWeight, takeOnWeight, carryWeight, goalWeight);
 
   if (maxTrait === 0) {
     detectedArch = "UNKNOWN ROLE";
@@ -58,14 +58,14 @@ export default function HomePage() {
     detectedArch = "⚡ WR (VERTICAL THREAT)";
     archColor = "text-blue-500";
     archBg = "bg-blue-500/10 border-blue-500/30";
-  } else if (maxTrait === goalWeight) {
+  } else if (maxTrait === carryWeight) {
     detectedArch = "🏃‍♂️ RB (GROUND WEAPON)";
     archColor = "text-emerald-500";
     archBg = "bg-emerald-500/10 border-emerald-500/30";
   } else {
-    detectedArch = "🧱 DEF (TERRITORIAL LOCK)";
-    archColor = "text-purple-400";
-    archBg = "bg-purple-500/10 border-purple-500/30";
+    detectedArch = "🛡️ TE (RED ZONE ANCHOR)";
+    archColor = "text-amber-500";
+    archBg = "bg-amber-500/10 border-amber-500/30";
   }
 
   // AVALIAÇÃO DE DESEMPENHO (O Veredito)
@@ -215,13 +215,13 @@ export default function HomePage() {
 
               <div>
                 <div className="flex justify-between items-end mb-2">
-                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Defensive Tackles</label>
-                  <span className="text-orange-500 font-black text-lg">{calcTackles}</span>
+                  <label className="text-xs font-mono font-bold text-zinc-300 uppercase tracking-widest">⚽ Progressive Carries</label>
+                  <span className="text-orange-500 font-black text-lg">{calcCarries}</span>
                 </div>
-                <input type="range" min="0" max="15" value={calcTackles} onChange={(e) => setCalcTackles(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
+                <input type="range" min="0" max="15" value={calcCarries} onChange={(e) => setCalcCarries(Number(e.target.value))} className="w-full accent-orange-500 h-2 bg-zinc-800 rounded-lg appearance-none cursor-pointer" />
                 <div className="flex justify-between mt-1 text-[10px] font-mono uppercase tracking-widest">
                   <span className="text-zinc-600">Translates to:</span>
-                  <span className="text-zinc-400">🏈 Sacks & Stops <span className="text-orange-500 font-bold">({(calcTackles * ptsPerTackle).toFixed(1)} pt)</span></span>
+                  <span className="text-zinc-400">🏈 Rushing Yards <span className="text-orange-500 font-bold">({(calcCarries * ptsPerCarry).toFixed(1)} pt)</span></span>
                 </div>
               </div>
 
