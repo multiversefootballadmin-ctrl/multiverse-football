@@ -20,34 +20,34 @@ export default function AboutPage() {
 
       <div className="space-y-8 text-zinc-300 font-light text-base sm:text-lg leading-relaxed">
         <p>
-          It starts the same way for all of us. You grew up watching global soccer. You know the weight of a number 10 jersey and the tension of a tournament knockout match.
+          It starts the same way for all of us. You grew up watching global soccer. You know the weight of a number 10 jersey and the tension of a Champions League knockout match.
         </p>
 
         <p>
-          Along the line, you discovered Sunday afternoons with the NFL. You fell in love with the tactical drive, high stakes, and fantasy competition. Soon your routine was divided: soccer matches in the morning, NFL RedZone in the afternoon.
+          But somewhere along the line, you discovered Sunday afternoons. You fell in love with the tactical drive, high stakes, and deep statistical analysis of the NFL. Soon your routine was divided: Premier League matches in the morning, NFL RedZone in the afternoon.
         </p>
 
         <div className="border-l-4 border-orange-500 pl-6 py-2 my-8 bg-zinc-900/40 rounded-r-lg">
           <h2 className="text-white font-black text-xl sm:text-2xl uppercase tracking-tight">
-            ONCE YOU UNDERSTAND BOTH RULEBOOKS, YOU REALIZE ELITE ATHLETIC DOMINANCE IS A UNIVERSAL LANGUAGE.
+            ELITE ATHLETIC DOMINANCE IS A UNIVERSAL LANGUAGE. WE JUST NEEDED THE RIGHT DICTIONARY.
           </h2>
         </div>
 
         <p>
-          You don't just see a midfielder passing a ball anymore—you see a <strong className="text-red-400 font-semibold">Quarterback</strong> reading the field. You don't just see a winger beating his marker—you see a <strong className="text-blue-400 font-semibold">Wide Receiver</strong> creating vertical separation. You don't just see a physical striker holding off defenders in the box—you see a <strong className="text-emerald-400 font-semibold">Running Back</strong> breaking tackles near the goal line.
+          You don't just see a midfielder passing a ball anymore—you see a <strong className="text-red-400 font-semibold">Quarterback</strong> moving the chains. You don't just see a winger beating his marker—you see a <strong className="text-blue-400 font-semibold">Wide Receiver</strong> racking up Yards After Catch. You don't just see a physical striker holding off defenders—you see a <strong className="text-emerald-400 font-semibold">Running Back</strong> demanding Red Zone touches.
         </p>
 
         <p>
-          <strong className="text-white font-semibold">Multiverse Football</strong> was built for fans who love both games. We didn't want endless debates without proof. We built the mathematical model to score them together.
+          <strong className="text-white font-semibold">Multiverse Football</strong> was born from this exact realization. We didn't want endless cross-sport debates in the pub. We wanted proof. When we realized that advanced soccer telemetry—like npxG and xAG—perfectly mirrored the predictive analytics used by NFL front offices, the path was clear. We built a dual-engine mathematical model to score both worlds on one definitive scale.
         </p>
       </div>
 
       <div className="mt-14 pt-8 border-t border-zinc-800 flex flex-wrap gap-4 justify-between items-center">
-        <Link href="/rankings" className="text-xs font-mono uppercase tracking-widest text-orange-400 hover:text-white transition-colors">
-          Explore the War Room →
+        <Link href="/xwif" className="text-xs font-mono uppercase tracking-widest text-purple-400 hover:text-white transition-colors">
+          Explore Predictive Analytics →
         </Link>
-        <Link href="/games" className="text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-          Try the 17-0 Game →
+        <Link href="/methodology" className="text-xs font-mono uppercase tracking-widest text-orange-400 hover:text-white transition-colors">
+          Read the Standard Rules →
         </Link>
       </div>
 

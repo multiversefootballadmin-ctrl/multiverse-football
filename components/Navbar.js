@@ -14,6 +14,7 @@ export default function Navbar() {
     { name: 'PLAYBOOK', href: '/playbook', icon: '📖' },
     { name: 'SCOUTING', href: '/scouting', icon: '🔍' },
     { name: 'METHODOLOGY', href: '/methodology', icon: '📐' },
+    { name: 'xWIF', href: '/xwif', icon: '🔮' },
     { name: 'GLOSSARY', href: '/glossary', icon: '📚' },
     { name: 'WHITEPAPER', href: '/whitepaper', icon: '📄' },
     { name: 'ORIGIN', href: '/about', icon: '⚡' },
