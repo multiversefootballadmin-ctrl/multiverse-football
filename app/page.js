@@ -1,32 +1,35 @@
 import Link from 'next/link';
 
 export default function HomePage() {
-  const trendingUp = [
-    { name: "Vinícius Júnior", role: "WR • Real Madrid", wif: "24.8", change: "+1.8M", startPct: "98%" },
-    { name: "Erling Haaland", role: "RB • Man City", wif: "26.2", change: "+1.2M", startPct: "100%" },
-    { name: "Cole Palmer", role: "QB • Chelsea", wif: "22.4", change: "+850K", startPct: "92%" },
-    { name: "Florian Wirtz", role: "FLX • Leverkusen", wif: "20.1", change: "+620K", startPct: "87%" }
+  const topSlate = [
+    { rank: "01", name: "Lionel Messi", pos: "QB", club: "Inter Miami", stats: "2 G | 3 Key Passes", wif: "31.4", tier: "MVP" },
+    { rank: "02", name: "Kevin De Bruyne", pos: "QB", club: "Man City", stats: "1 G | 5 Key Passes", wif: "27.6", tier: "ELITE" },
+    { rank: "03", name: "Erling Haaland", pos: "RB", club: "Man City", stats: "3 G | 4 Box Touches", wif: "26.2", tier: "ELITE" },
+    { rank: "04", name: "Vinícius Júnior", pos: "WR", club: "Real Madrid", stats: "1 G | 6 Take-ons", wif: "24.8", tier: "STARTER" },
+    { rank: "05", name: "Jude Bellingham", pos: "TE", club: "Real Madrid", stats: "1 G | 2 Tackles Won", wif: "23.2", tier: "STARTER" }
   ];
 
-  const trendingDown = [
-    { name: "Bruno Fernandes", role: "QB • Man United", wif: "11.2", change: "-740K", startPct: "64%" },
-    { name: "Darwin Núñez", role: "RB • Liverpool", wif: "9.8", change: "-510K", startPct: "48%" },
-    { name: "Rafael Leão", role: "WR • AC Milan", wif: "12.5", change: "-380K", startPct: "71%" },
-    { name: "Kingsley Coman", role: "WR • Bayern", wif: "8.4", change: "-290K", startPct: "32%" }
-  ];
+  const getPosBadge = (pos) => {
+    switch (pos) {
+      case 'QB': return 'bg-red-500/20 text-red-400 border-red-500/40';
+      case 'RB': return 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40';
+      case 'WR': return 'bg-blue-500/20 text-blue-400 border-blue-500/40';
+      case 'TE': return 'bg-amber-500/20 text-amber-400 border-amber-500/40';
+      default: return 'bg-purple-500/20 text-purple-400 border-purple-500/40';
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-24">
       
-      {/* HERO SECTION EQUILIBRADA */}
+      {/* HERO SECTION */}
       <section className="relative w-full pt-16 pb-16 border-b border-zinc-800/80 px-4 sm:px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           
-          {/* LADO ESQUERDO: VALOR DIRETO */}
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border-l-2 border-orange-500 text-orange-400 font-mono text-xs font-bold tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-              WIF Engine • Cross-Sport Standard
+              WIF Engine • Universal Language
             </div>
             
             <h1 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter text-white leading-[0.92]">
@@ -35,174 +38,84 @@ export default function HomePage() {
             </h1>
             
             <p className="text-base sm:text-lg text-zinc-300 font-light leading-relaxed max-w-xl">
-              We convert soccer pitch stats into NFL fantasy points. The <strong className="text-white font-semibold">WIF Score</strong> values passing volume, ball progression, and red zone impact on a single universal scale.
+              Elite athletic dominance is a universal language. We translate global soccer telemetry—key passes, take-ons, and territory leverage—into the exact scoring format of NFL Fantasy Football.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
-              <Link 
-                href="/methodology" 
-                className="bg-orange-500 hover:bg-orange-600 text-white font-black uppercase tracking-widest px-7 py-3.5 rounded-lg text-xs transition-all shadow-lg hover:shadow-orange-500/20"
-              >
-                📐 View Formula & PPR
+              <Link href="/rankings" className="bg-orange-500 hover:bg-orange-600 text-white font-black uppercase tracking-widest px-7 py-3.5 rounded-lg text-xs transition-all shadow-lg">
+                Enter War Room 📊
               </Link>
-              <Link 
-                href="/scouting" 
-                className="border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-black uppercase tracking-widest px-7 py-3.5 rounded-lg text-xs transition-all"
-              >
-                🔍 Scouting Breakdown →
-              </Link>
-            </div>
-
-            {/* FÓRMULA RESUMIDA NO HERO */}
-            <div className="pt-6 border-t border-zinc-800/80">
-              <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">
-                Core Algorithm Formula
-              </span>
-              <div className="bg-zinc-950 border border-zinc-800 p-3 rounded-lg font-mono text-xs text-orange-400 flex flex-wrap items-center gap-2">
-                <span className="text-white font-bold">WIF SCORE =</span>
-                <span>Base Volume</span>
-                <span className="text-zinc-600">+</span>
-                <span>Red Zone (1.5x)</span>
-                <span className="text-zinc-600">−</span>
-                <span className="text-red-400">Turnovers</span>
-              </div>
-            </div>
-          </div>
-
-          {/* LADO DIREITO: SCOUTING CARD EM DESTAQUE */}
-          <div className="lg:col-span-5 bg-[#14161B] border border-zinc-800 rounded-2xl shadow-2xl p-6 space-y-6">
-            <div className="flex items-center justify-between border-b border-zinc-800 pb-4">
-              <div>
-                <span className="text-[9px] font-mono text-orange-400 uppercase tracking-widest font-bold block">
-                  Scouting Live Sample
-                </span>
-                <h3 className="text-xl font-black text-white uppercase tracking-tight">Vinícius Júnior</h3>
-              </div>
-              <span className="bg-blue-500/20 text-blue-400 border border-blue-500/40 text-xs font-mono font-black px-2.5 py-1 rounded">
-                WR1 • ELITE
-              </span>
-            </div>
-
-            {/* BREAKDOWN DA PONTUAÇÃO */}
-            <div className="space-y-3 font-mono text-xs">
-              <div className="flex justify-between items-center bg-zinc-900/60 p-2.5 rounded border border-zinc-800/80">
-                <span className="text-zinc-400">1 Goal Scored (Touchdown)</span>
-                <span className="text-white font-bold">+6.0 pts</span>
-              </div>
-              <div className="flex justify-between items-center bg-zinc-900/60 p-2.5 rounded border border-zinc-800/80">
-                <span className="text-zinc-400">6 Take-ons (Broken Tackles/YAC)</span>
-                <span className="text-white font-bold">+9.0 pts</span>
-              </div>
-              <div className="flex justify-between items-center bg-zinc-900/60 p-2.5 rounded border border-zinc-800/80">
-                <span className="text-zinc-400">5 Box Touches (Red Zone Multiplier)</span>
-                <span className="text-white font-bold">+7.5 pts</span>
-              </div>
-              <div className="flex justify-between items-center bg-zinc-900/60 p-2.5 rounded border border-zinc-800/80">
-                <span className="text-zinc-400">1 Loss in Defensive Half (Turnover)</span>
-                <span className="text-red-400 font-bold">−2.0 pts</span>
-              </div>
-            </div>
-
-            {/* RESULTADO WIF */}
-            <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800 flex justify-between items-center">
-              <div>
-                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block">Final WIF Value</span>
-                <span className="text-xs text-zinc-400 font-light">Role: Primary Target Wide Receiver</span>
-              </div>
-              <span className="text-3xl font-black text-orange-400 font-mono">
-                20.5 <span className="text-xs text-zinc-500">PTS</span>
-              </span>
-            </div>
-
-            <div className="flex justify-between items-center pt-2">
-              <Link href="/scouting" className="text-xs font-mono uppercase tracking-widest text-zinc-400 hover:text-white transition-colors">
-                All Scout Reports →
-              </Link>
-              <Link href="/methodology" className="text-xs font-mono uppercase tracking-widest text-orange-400 hover:text-orange-300 font-bold transition-colors">
-                Full Point Matrix →
+              <Link href="/games" className="border border-zinc-700 hover:border-zinc-500 text-zinc-300 hover:text-white font-black uppercase tracking-widest px-7 py-3.5 rounded-lg text-xs transition-all">
+                Play 17-0 Game 🎲
               </Link>
             </div>
           </div>
 
+          <div className="lg:col-span-5 bg-[#14161B] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
+            <div className="bg-zinc-900/90 px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
+              <div>
+                <span className="text-[9px] font-mono text-orange-400 uppercase tracking-widest font-bold block">Top Performances</span>
+                <h3 className="text-base font-black text-white uppercase tracking-tight">Week Slate Leaders</h3>
+              </div>
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded">LIVE WIF</span>
+            </div>
+
+            <div className="divide-y divide-zinc-800/60">
+              {topSlate.map((item, idx) => (
+                <div key={idx} className="p-3.5 flex items-center justify-between hover:bg-zinc-900/40 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <span className="font-mono text-xs font-bold text-zinc-600 w-5">{item.rank}</span>
+                    <span className={`w-8 text-center py-0.5 rounded text-[9px] font-black font-mono border ${getPosBadge(item.pos)}`}>{item.pos}</span>
+                    <div>
+                      <h4 className="font-bold text-white text-xs tracking-wide">{item.name}</h4>
+                      <p className="text-zinc-500 font-mono text-[10px]">{item.club} • {item.stats}</p>
+                    </div>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-orange-400 font-mono font-bold text-sm block">{item.wif}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
-      {/* TRENDING PLAYERS SECTION */}
+      {/* DUAL ENGINE BANNER - THE CORE OF OUR PLATFORM */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div className="border-b border-zinc-800 pb-4 mb-8 flex flex-col sm:flex-row justify-between sm:items-end gap-2">
-          <div>
-            <span className="text-[10px] font-mono text-orange-400 uppercase tracking-widest font-bold block">
-              Market Activity
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-black uppercase text-white tracking-tight">
-              Trending Players
-            </h2>
-          </div>
-          <span className="text-zinc-500 font-mono text-xs uppercase tracking-wider">
-            Volume Change Over Last 7 Days
-          </span>
+        <div className="text-center mb-12">
+          <h2 className="text-3xl sm:text-4xl font-black uppercase text-white tracking-tight mb-3">Two Engines. One Ecosystem.</h2>
+          <p className="text-zinc-400 font-light max-w-2xl mx-auto">
+            Traditional fantasy relies on execution. Advanced scouting relies on projection. We built dedicated algorithms for both.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
-          {/* TRENDING UP */}
-          <div className="bg-[#14161B] border border-zinc-800 rounded-xl overflow-hidden shadow-xl">
-            <div className="bg-zinc-900/80 px-5 py-3 border-b border-zinc-800 flex justify-between items-center">
-              <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-emerald-400 flex items-center gap-2">
-                ▲ Trending Up
-              </h3>
-              <span className="text-[10px] font-mono text-zinc-500 uppercase">Waiver Adds</span>
-            </div>
-
-            <div className="divide-y divide-zinc-800/60">
-              {trendingUp.map((item, i) => (
-                <div key={i} className="p-4 flex items-center justify-between hover:bg-zinc-900/40 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono font-bold text-zinc-600 text-sm w-4">{i + 1}</span>
-                    <div>
-                      <h4 className="font-black text-white text-sm tracking-wide">{item.name}</h4>
-                      <p className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{item.role}</p>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <span className="text-emerald-400 font-mono font-bold text-xs block">{item.change}</span>
-                    <span className="text-zinc-500 font-mono text-[10px] uppercase">Rostered: {item.startPct}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* THE WIF MATRIX CARD */}
+          <div className="bg-[#14161B] border border-orange-500/20 hover:border-orange-500/50 p-8 rounded-2xl transition-all group">
+            <span className="text-4xl mb-4 block">📈</span>
+            <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-orange-400 transition-colors">The WIF Matrix v1.0</h3>
+            <span className="text-xs font-mono text-orange-400 uppercase tracking-widest block mb-4">Official Standard Scoring</span>
+            <p className="text-zinc-400 font-light text-sm leading-relaxed mb-8">
+              The locked historical algorithm. We map Key Passes to PPR receptions, Take-ons to Yards After Catch (YAC), and punish only true Turnovers to generate the official Fantasy Output.
+            </p>
+            <Link href="/methodology" className="inline-block border border-zinc-700 hover:border-orange-500 text-zinc-300 hover:text-white font-mono text-xs uppercase font-bold tracking-widest px-6 py-3 rounded transition-colors">
+              Read the Rulebook →
+            </Link>
           </div>
 
-          {/* TRENDING DOWN */}
-          <div className="bg-[#14161B] border border-zinc-800 rounded-xl overflow-hidden shadow-xl">
-            <div className="bg-zinc-900/80 px-5 py-3 border-b border-zinc-800 flex justify-between items-center">
-              <h3 className="font-mono text-xs font-bold uppercase tracking-widest text-red-400 flex items-center gap-2">
-                ▼ Trending Down
-              </h3>
-              <span className="text-[10px] font-mono text-zinc-500 uppercase">Waiver Drops</span>
-            </div>
-
-            <div className="divide-y divide-zinc-800/60">
-              {trendingDown.map((item, i) => (
-                <div key={i} className="p-4 flex items-center justify-between hover:bg-zinc-900/40 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <span className="font-mono font-bold text-zinc-600 text-sm w-4">{i + 1}</span>
-                    <div>
-                      <h4 className="font-black text-white text-sm tracking-wide">{item.name}</h4>
-                      <p className="text-zinc-500 font-mono text-[10px] uppercase tracking-widest">{item.role}</p>
-                    </div>
-                  </div>
-
-                  <div className="text-right">
-                    <span className="text-red-400 font-mono font-bold text-xs block">{item.change}</span>
-                    <span className="text-zinc-500 font-mono text-[10px] uppercase">Rostered: {item.startPct}</span>
-                  </div>
-                </div>
-              ))}
-            </div>
+          {/* THE xWIF ENGINE CARD */}
+          <div className="bg-[#14161B] border border-purple-500/20 hover:border-purple-500/50 p-8 rounded-2xl transition-all group">
+            <span className="text-4xl mb-4 block">🔮</span>
+            <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-purple-400 transition-colors">The xWIF Engine</h3>
+            <span className="text-xs font-mono text-purple-400 uppercase tracking-widest block mb-4">Predictive Analytics</span>
+            <p className="text-zinc-400 font-light text-sm leading-relaxed mb-8">
+              The War Room crystal ball. We utilize npxG, xAG, xT, and xGOT to strip away the noise and project future offensive dominance before the breakout happens.
+            </p>
+            <Link href="/xwif" className="inline-block border border-zinc-700 hover:border-purple-500 text-zinc-300 hover:text-white font-mono text-xs uppercase font-bold tracking-widest px-6 py-3 rounded transition-colors">
+              Open the Crystal Ball →
+            </Link>
           </div>
-
         </div>
       </section>
 

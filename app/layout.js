@@ -3,8 +3,8 @@ import Link from 'next/link';
 import './globals.css';
 
 export const metadata = {
-  title: 'Multiverse Football',
-  description: 'The Cross-Sport Fantasy Engine',
+  title: 'Multiverse Football | The Cross-Sport Engine',
+  description: 'Converting soccer stats into NFL fantasy points.',
 };
 
 export default function RootLayout({ children }) {
@@ -25,7 +25,7 @@ export default function RootLayout({ children }) {
                 <span className="text-white">MULTIVERSE</span> <span className="text-orange-500">FOOTBALL</span>
               </div>
               <p className="text-zinc-500 text-sm font-light leading-relaxed">
-                Converting soccer stats into NFL fantasy points. Clear metrics, cross-sport scoring.
+                Converting soccer stats into NFL fantasy points. Clear metrics, cross-sport scoring, and predictive scouting.
               </p>
             </div>
 
@@ -38,12 +38,11 @@ export default function RootLayout({ children }) {
             </div>
 
             <div>
-              <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">Knowledge</h4>
+              <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">The Engines</h4>
               <ul className="space-y-2 font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                <li><Link href="/playbook" className="hover:text-orange-400 transition-colors">Playbook (Archetypes)</Link></li>
+                <li><Link href="/methodology" className="hover:text-orange-400 transition-colors">WIF Matrix (Scoring)</Link></li>
+                <li><Link href="/xwif" className="hover:text-orange-400 transition-colors">xWIF (Predictive Model)</Link></li>
                 <li><Link href="/scouting" className="hover:text-orange-400 transition-colors">Scouting Reports</Link></li>
-                <li><Link href="/methodology" className="hover:text-orange-400 transition-colors">Methodology (PPR Standard)</Link></li>
-                <li><Link href="/glossary" className="hover:text-orange-400 transition-colors">Glossary</Link></li>
               </ul>
             </div>
 
@@ -61,7 +60,7 @@ export default function RootLayout({ children }) {
               © {new Date().getFullYear()} Multiverse Football. All rights reserved.
             </p>
             <p className="text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
-              STATUS: READY | WIF ENGINE
+              SYS.STATUS: ONLINE | WIF ENGINE v1.0
             </p>
           </div>
         </footer>
