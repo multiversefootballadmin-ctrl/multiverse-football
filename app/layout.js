@@ -51,6 +51,7 @@ export default function RootLayout({ children }) {
               <ul className="space-y-2 font-mono text-xs text-zinc-500 uppercase tracking-wider">
                 <li><Link href="/about" className="hover:text-orange-400 transition-colors">Origin</Link></li>
                 <li><Link href="/whitepaper" className="hover:text-orange-400 transition-colors">Whitepaper</Link></li>
+                <li><Link href="/changelog" className="hover:text-orange-400 transition-colors">Changelog & Versions</Link></li>
               </ul>
             </div>
           </div>
@@ -59,9 +60,10 @@ export default function RootLayout({ children }) {
             <p className="text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
               © {new Date().getFullYear()} Multiverse Football. All rights reserved.
             </p>
-            <p className="text-zinc-600 font-mono text-[10px] uppercase tracking-widest">
-              SYS.STATUS: ONLINE | WIF ENGINE v1.0
-            </p>
+            <Link href="/changelog" className="text-zinc-500 hover:text-orange-400 font-mono text-[10px] uppercase tracking-widest transition-colors flex items-center gap-2 bg-zinc-900/50 px-3 py-1.5 rounded border border-zinc-800">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              PLATFORM v1.2.0 | WIF ENGINE v1.0
+            </Link>
           </div>
         </footer>
       </body>
