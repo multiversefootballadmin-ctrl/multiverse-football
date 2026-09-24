@@ -54,25 +54,29 @@ export default function Navbar() {
             onMouseEnter={() => setIsPlaybookOpen(true)}
             onMouseLeave={() => setIsPlaybookOpen(false)}
           >
-            <button className={`flex items-center gap-1.5 transition-colors uppercase ${
+            <button className={`flex items-center gap-1.5 transition-colors uppercase py-2 ${
                 isPlaybookActive ? 'text-orange-400 font-black border-b border-orange-400 pb-0.5' : 'text-zinc-400 group-hover:text-zinc-100 font-medium'
               }`}>
               <span>📖</span>
               <span>PLAYBOOK ▾</span>
             </button>
             
+            {/* PONT INVISIBLE (pt-2) POUR ÉVITER LE BUG DE SURVOL */}
             {isPlaybookOpen && (
-              <div className="absolute top-full right-0 mt-2 w-56 bg-[#14161B] border border-zinc-800 rounded-lg shadow-2xl py-2 overflow-hidden">
-                {playbookLinks.map((item) => (
-                  <Link 
-                    key={item.href} 
-                    href={item.href}
-                    className="block px-4 py-3 hover:bg-zinc-800/60 transition-colors"
-                  >
-                    <span className="block text-white font-bold mb-0.5">{item.name}</span>
-                    <span className="block text-[9px] text-zinc-500 uppercase tracking-widest">{item.desc}</span>
-                  </Link>
-                ))}
+              <div className="absolute top-full left-1/2 -translate-x-1/2 pt-2 w-64 z-50">
+                <div className="bg-[#14161B] border border-zinc-800 rounded-lg shadow-2xl py-2 overflow-hidden">
+                  {playbookLinks.map((item) => (
+                    <Link 
+                      key={item.href} 
+                      href={item.href}
+                      className="block px-4 py-3 hover:bg-zinc-800/60 transition-colors"
+                      onClick={() => setIsPlaybookOpen(false)}
+                    >
+                      <span className="block text-white font-bold mb-0.5">{item.name}</span>
+                      <span className="block text-[9px] text-zinc-500 uppercase tracking-widest">{item.desc}</span>
+                    </Link>
+                  ))}
+                </div>
               </div>
             )}
           </div>
