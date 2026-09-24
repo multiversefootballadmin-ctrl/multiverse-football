@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export const metadata = {
   title: 'Methodology | WIF Matrix v1.0',
-  description: 'The official standard scoring system connecting soccer and NFL fantasy.',
+  description: 'The official standard scoring system and position classifier.',
 };
 
 export default function MethodologyPage() {
@@ -18,42 +18,78 @@ export default function MethodologyPage() {
           THE WIF MATRIX v1.0
         </h1>
         <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-3xl">
-          Elite athletic dominance is a universal language. The WIF Engine translates global soccer telemetry into the exact scoring format of traditional NFL Fantasy Football.
+          Elite athletic dominance is a universal language. The WHAT IF Engine translates global soccer telemetry into the exact scoring format of traditional NFL Fantasy Football.
         </p>
       </div>
 
-      {/* SECÇÃO 1: AS ANALOGIAS (MASTIGADO) */}
+      {/* SECÇÃO 1: O CLASSIFICADOR DE POSIÇÕES (O CHAPÉU SELETOR) */}
       <section className="space-y-8 mb-20">
         <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-white flex items-center gap-3">
-          <span className="text-orange-500 font-mono text-lg">01.</span> Cross-Sport Translations
+          <span className="text-orange-500 font-mono text-lg">01.</span> Position Classifier
         </h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* O MOTOR DO PPR */}
-          <div className="bg-[#14161B] border border-zinc-800 p-6 rounded-xl space-y-3">
-            <span className="text-2xl block mb-2">🏈</span>
-            <h3 className="font-black text-white text-lg uppercase tracking-wide">The PPR Engine (Key Passes)</h3>
-            <p className="text-sm text-zinc-400 font-light leading-relaxed">
-              In the NFL, a reception moves the chains and scores 1.0 PPR point, even if it doesn't end in the endzone. In soccer, a <strong className="text-orange-400 font-medium">Key Pass</strong> does exactly the same. It breaks defensive lines and drives the offense forward. We reward this creative volume the exact same way.
-            </p>
+        <p className="text-zinc-400 font-light leading-relaxed mb-6">
+          A player’s traditional lineup spot is irrelevant. Our algorithm parses the telemetry to assign an NFL archetype based purely on statistical volume. If a player fights through the trenches for gritty yards like Isiah Pacheco, they are categorized as a Running Back, regardless of the jersey number they wear on the soccer pitch.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* QB */}
+          <div className="bg-[#14161B] border border-red-500/30 p-6 rounded-xl relative overflow-hidden group hover:border-red-500/60 transition-colors">
+            <div className="absolute top-0 right-0 p-16 bg-red-500/5 rounded-full blur-2xl"></div>
+            <div className="relative z-10">
+              <span className="bg-red-500/20 text-red-400 border border-red-500/40 text-[10px] font-black font-mono px-3 py-1 rounded mb-4 inline-block">QB (QUARTERBACK)</span>
+              <h3 className="font-black text-white text-lg uppercase tracking-wide mb-2">The Field General</h3>
+              <p className="text-sm text-zinc-400 font-light mb-4">
+                The heartbeat of the drive. They read defenses, move the chains, and dictate the tempo.
+              </p>
+              <div className="pt-4 border-t border-zinc-800/80">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">Trigger Metrics</span>
+                <ul className="text-xs font-mono text-zinc-300 space-y-1">
+                  <li>• High xAG (Expected Assisted Goals)</li>
+                  <li>• Elite Final Third Passing Volume</li>
+                  <li>• Progressive Passing Dominance</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          {/* O MONSTRO DO YAC */}
-          <div className="bg-[#14161B] border border-zinc-800 p-6 rounded-xl space-y-3">
-            <span className="text-2xl block mb-2">⚡</span>
-            <h3 className="font-black text-white text-lg uppercase tracking-wide">The YAC Monster (Take-ons)</h3>
-            <p className="text-sm text-zinc-400 font-light leading-relaxed">
-              A Wide Receiver catching a screen pass and breaking two tackles for extra yards is peak athletic dominance. We translate this through <strong className="text-blue-400 font-medium">Successful Take-ons (Dribbles)</strong> and <strong className="text-blue-400 font-medium">Progressive Carries</strong>, rewarding players who conquer territory with the ball at their feet.
-            </p>
+          {/* RB */}
+          <div className="bg-[#14161B] border border-emerald-500/30 p-6 rounded-xl relative overflow-hidden group hover:border-emerald-500/60 transition-colors">
+            <div className="absolute top-0 right-0 p-16 bg-emerald-500/5 rounded-full blur-2xl"></div>
+            <div className="relative z-10">
+              <span className="bg-emerald-500/20 text-emerald-400 border border-emerald-500/40 text-[10px] font-black font-mono px-3 py-1 rounded mb-4 inline-block">RB (RUNNING BACK)</span>
+              <h3 className="font-black text-white text-lg uppercase tracking-wide mb-2">The Power & PPR Engine</h3>
+              <p className="text-sm text-zinc-400 font-light mb-4">
+                Physical forces demanding red-zone touches and establishing the floor through reliable pass-catching.
+              </p>
+              <div className="pt-4 border-t border-zinc-800/80">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">Trigger Metrics</span>
+                <ul className="text-xs font-mono text-zinc-300 space-y-1">
+                  <li>• Penalty Box Touch Dominance</li>
+                  <li>• High xGOT (Finishing execution)</li>
+                  <li>• Short-range Key Passes (PPR)</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
-          {/* O VERDADEIRO TURNOVER */}
-          <div className="bg-[#14161B] border border-zinc-800 p-6 rounded-xl space-y-3 md:col-span-2">
-            <span className="text-2xl block mb-2">🛑</span>
-            <h3 className="font-black text-white text-lg uppercase tracking-wide">The True Turnover Penalty</h3>
-            <p className="text-sm text-zinc-400 font-light leading-relaxed">
-              Losing possession in the midfield is common attrition—like an incomplete pass. But an NFL interception or a lost fumble is a catastrophic event that flips the field. Therefore, the WIF Engine only applies severe negative points (-2.0) to <strong className="text-red-400 font-medium">Critical Errors leading to opponent shots</strong> or <strong className="text-red-400 font-medium">Red Cards</strong>, protecting aggressive playmakers from unfair punishment.
-            </p>
+          {/* WR */}
+          <div className="bg-[#14161B] border border-blue-500/30 p-6 rounded-xl relative overflow-hidden group hover:border-blue-500/60 transition-colors">
+            <div className="absolute top-0 right-0 p-16 bg-blue-500/5 rounded-full blur-2xl"></div>
+            <div className="relative z-10">
+              <span className="bg-blue-500/20 text-blue-400 border border-blue-500/40 text-[10px] font-black font-mono px-3 py-1 rounded mb-4 inline-block">WR (WIDE RECEIVER)</span>
+              <h3 className="font-black text-white text-lg uppercase tracking-wide mb-2">The YAC Monster</h3>
+              <p className="text-sm text-zinc-400 font-light mb-4">
+                Electric in open space. They catch the ball and immediately break tackles to conquer massive yardage.
+              </p>
+              <div className="pt-4 border-t border-zinc-800/80">
+                <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest block mb-2">Trigger Metrics</span>
+                <ul className="text-xs font-mono text-zinc-300 space-y-1">
+                  <li>• High Take-on Success (Broken Tackles)</li>
+                  <li>• Massive Progressive Carry Volume</li>
+                  <li>• Elite Wing/Flank Penetration</li>
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -128,17 +164,8 @@ export default function MethodologyPage() {
               </tbody>
             </table>
           </div>
-          <div className="bg-zinc-950 p-4 border-t border-zinc-800 text-[10px] font-mono text-zinc-500 uppercase tracking-widest text-center">
-            Sys Note: V1.0 is locked for historical consistency. Predictive metrics (xG, xA) are isolated in the xWIF Engine.
-          </div>
         </div>
       </section>
-
-      <div className="text-center pt-8 border-t border-zinc-800">
-        <Link href="/xwif" className="bg-zinc-800 hover:bg-orange-500 text-white font-black uppercase tracking-widest px-8 py-4 rounded-lg text-xs transition-all shadow-lg">
-          Explore the xWIF Predictive Engine 🔮
-        </Link>
-      </div>
     </div>
   );
 }

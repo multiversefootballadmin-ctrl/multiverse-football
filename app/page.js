@@ -22,23 +22,26 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-24">
       
-      {/* HERO SECTION */}
-      <section className="relative w-full pt-16 pb-16 border-b border-zinc-800/80 px-4 sm:px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      {/* HERO SECTION: THE WHAT IF MANIFESTO */}
+      <section className="relative w-full pt-20 pb-16 border-b border-zinc-800/80 px-4 sm:px-6 overflow-hidden">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-white/[0.02] tracking-tighter pointer-events-none uppercase whitespace-nowrap">
+          What If
+        </div>
+
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
           
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border-l-2 border-orange-500 text-orange-400 font-mono text-xs font-bold tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
-              WIF Engine • Universal Language
+              The WHAT IF Engine
             </div>
             
             <h1 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter text-white leading-[0.92]">
-              THE CROSS-SPORT <br />
-              <span className="text-orange-500">FANTASY ENGINE.</span>
+              WHAT IF <span className="text-orange-500">HAALAND</span> <br /> WAS YOUR RB1?
             </h1>
             
             <p className="text-base sm:text-lg text-zinc-300 font-light leading-relaxed max-w-xl">
-              Elite athletic dominance is a universal language. We translate global soccer telemetry—key passes, take-ons, and territory leverage—into the exact scoring format of NFL Fantasy Football.
+              A perfectly weighted through-ball splitting two center-backs isn't just a pass. It's Patrick Mahomes stepping up in the pocket on 3rd-and-12 to move the chains. Elite athletic dominance is a universal language. We translate global soccer telemetry into standard NFL Fantasy scoring.
             </p>
 
             <div className="flex flex-wrap gap-4 pt-2">
@@ -81,36 +84,35 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* DUAL ENGINE BANNER - THE CORE OF OUR PLATFORM */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl sm:text-4xl font-black uppercase text-white tracking-tight mb-3">Two Engines. One Ecosystem.</h2>
-          <p className="text-zinc-400 font-light max-w-2xl mx-auto">
-            Traditional fantasy relies on execution. Advanced scouting relies on projection. We built dedicated algorithms for both.
-          </p>
-        </div>
+      {/* STORYTELLING INTERLUDE */}
+      <section className="max-w-4xl mx-auto px-6 py-20 text-center space-y-6">
+        <h2 className="text-2xl sm:text-4xl font-black uppercase text-white tracking-tight">Numbers Without Context Are Just Math.</h2>
+        <p className="text-zinc-400 font-light leading-relaxed text-lg">
+          We don't care where a player is listed on a traditional lineup sheet. We care about the gravity they command on the pitch. When a winger takes on a defender at full speed, breaking tackles to conquer territory, you're not just watching a dribble—you're watching a YAC monster out in the flat. The WIF (What If Football) Engine reads the raw telemetry of the game and assigns positions based on true offensive identity.
+        </p>
+      </section>
 
+      {/* DUAL ENGINE BANNER */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-16">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* THE WIF MATRIX CARD */}
           <div className="bg-[#14161B] border border-orange-500/20 hover:border-orange-500/50 p-8 rounded-2xl transition-all group">
             <span className="text-4xl mb-4 block">📈</span>
-            <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-orange-400 transition-colors">The WIF Matrix v1.0</h3>
-            <span className="text-xs font-mono text-orange-400 uppercase tracking-widest block mb-4">Official Standard Scoring</span>
+            <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-orange-400 transition-colors">The WIF Matrix</h3>
+            <span className="text-xs font-mono text-orange-400 uppercase tracking-widest block mb-4">Execution (Real Points)</span>
             <p className="text-zinc-400 font-light text-sm leading-relaxed mb-8">
-              The locked historical algorithm. We map Key Passes to PPR receptions, Take-ons to Yards After Catch (YAC), and punish only true Turnovers to generate the official Fantasy Output.
+              The locked historical algorithm. We map Key Passes to PPR receptions, Take-ons to Yards After Catch (YAC), and punish only true Turnovers.
             </p>
             <Link href="/methodology" className="inline-block border border-zinc-700 hover:border-orange-500 text-zinc-300 hover:text-white font-mono text-xs uppercase font-bold tracking-widest px-6 py-3 rounded transition-colors">
               Read the Rulebook →
             </Link>
           </div>
 
-          {/* THE xWIF ENGINE CARD */}
           <div className="bg-[#14161B] border border-purple-500/20 hover:border-purple-500/50 p-8 rounded-2xl transition-all group">
             <span className="text-4xl mb-4 block">🔮</span>
             <h3 className="text-2xl font-black text-white uppercase tracking-tight mb-2 group-hover:text-purple-400 transition-colors">The xWIF Engine</h3>
-            <span className="text-xs font-mono text-purple-400 uppercase tracking-widest block mb-4">Predictive Analytics</span>
+            <span className="text-xs font-mono text-purple-400 uppercase tracking-widest block mb-4">Prediction (Scouting)</span>
             <p className="text-zinc-400 font-light text-sm leading-relaxed mb-8">
-              The War Room crystal ball. We utilize npxG, xAG, xT, and xGOT to strip away the noise and project future offensive dominance before the breakout happens.
+              The crystal ball. We utilize npxG, xAG, xT, and xGOT to strip away the noise and project future offensive dominance before the breakout happens.
             </p>
             <Link href="/xwif" className="inline-block border border-zinc-700 hover:border-purple-500 text-zinc-300 hover:text-white font-mono text-xs uppercase font-bold tracking-widest px-6 py-3 rounded transition-colors">
               Open the Crystal Ball →

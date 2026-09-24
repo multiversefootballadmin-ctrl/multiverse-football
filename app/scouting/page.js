@@ -15,7 +15,8 @@ export default function ScoutingPage() {
       xWif: "14.5",
       verdict: "BUY / HOLD",
       verdictColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
-      analysis: "Lino is producing elite PPR numbers with 2.46 Key Passes per 90. His 9.80 npxG perfectly aligns with his 9 actual goals. He commands a massive target share in the final third. Elite floor.",
+      story: "Lino isn't just playing on the wing; he's running routes like a seasoned wideout on a game-winning drive. He demands the ball in space, turning standard possessions into massive territory gains.",
+      analysis: "Producing elite PPR numbers with 2.46 Key Passes per 90. His 9.80 npxG perfectly aligns with his actual goals, proving his red-zone efficiency is real. Like a reliable target who catches everything thrown his way, his floor is rock solid.",
     },
     {
       name: "Darwin Núñez",
@@ -25,7 +26,8 @@ export default function ScoutingPage() {
       xWif: "16.2",
       verdict: "BUY LOW",
       verdictColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
-      analysis: "Massive positive regression incoming. Darwin has an elite xGOT and xT profile, but poor immediate execution has tanked his current WIF. The volume is there; the breakout is imminent.",
+      story: "He has the raw, terrifying athletic profile of a bruising power back fighting through the trenches, but right now, he's fumbling at the goal line. The eye test is chaotic, but the telemetry screams dominance.",
+      analysis: "Massive positive regression incoming. Darwin commands an elite xGOT and xT profile, but poor immediate execution has tanked his current WIF. He is getting elite volume inside the 20-yard line. The touchdowns are coming.",
     },
     {
       name: "Bruno Fernandes",
@@ -35,7 +37,8 @@ export default function ScoutingPage() {
       xWif: "10.1",
       verdict: "SELL HIGH",
       verdictColor: "text-red-400 bg-red-500/10 border-red-500/30",
-      analysis: "Overperforming his underlying metrics. His xAG (Expected Assisted Goals) does not support his current assist rate. Expect a drop in passing touchdown equivalents in the coming weeks.",
+      story: "A gunslinger forcing deep throws into double coverage. When it connects, it's a highlight reel, but the underlying mechanics show a quarterback whose receivers are bailing out bad decisions.",
+      analysis: "Overperforming his underlying metrics. His xAG (Expected Assisted Goals) does not support his current assist rate. Expect a steep drop in passing touchdown equivalents in the coming weeks. Cash out while his value is inflated.",
     }
   ];
 
@@ -50,7 +53,7 @@ export default function ScoutingPage() {
           SCOUTING REPORTS
         </h1>
         <p className="text-zinc-400 text-lg font-light leading-relaxed max-w-3xl">
-          We compare actual fantasy output (WIF) against predictive underlying metrics (xWIF) to find market inefficiencies. Identify breakouts before they happen.
+          We compare actual fantasy output (WIF) against predictive underlying metrics (xWIF). Numbers without context are just math. Read the room, understand the narrative, and exploit the inefficiencies.
         </p>
       </div>
 
@@ -70,14 +73,22 @@ export default function ScoutingPage() {
             </div>
 
             <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="md:col-span-2 space-y-4">
-                <h4 className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">Advanced Analysis</h4>
-                <p className="text-sm text-zinc-300 font-light leading-relaxed">
-                  {report.analysis}
-                </p>
+              <div className="md:col-span-2 space-y-5">
+                <div>
+                  <h4 className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-2">The Narrative</h4>
+                  <p className="text-sm text-zinc-300 font-medium italic border-l-2 border-blue-500/50 pl-4 py-1 leading-relaxed">
+                    "{report.story}"
+                  </p>
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-2">Telemetry Analysis</h4>
+                  <p className="text-sm text-zinc-400 font-light leading-relaxed">
+                    {report.analysis}
+                  </p>
+                </div>
               </div>
 
-              <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800/80 space-y-3 font-mono text-xs">
+              <div className="bg-zinc-950 p-4 rounded-xl border border-zinc-800/80 space-y-3 font-mono text-xs self-start">
                 <div className="flex justify-between items-center">
                   <span className="text-zinc-500 uppercase">Real WIF</span>
                   <span className="text-white font-bold text-base">{report.realWif}</span>
