@@ -62,7 +62,7 @@ export default function RootLayout({ children }) {
             </p>
             <Link href="/changelog" className="text-zinc-500 hover:text-orange-400 font-mono text-[10px] uppercase tracking-widest transition-colors flex items-center gap-2 bg-zinc-900/50 px-3 py-1.5 rounded border border-zinc-800">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              PLATFORM v1.2.0 | WIF ENGINE v1.0
+              PLATFORM v1.3.0 | WIF ENGINE v1.0
             </Link>
           </div>
         </footer>

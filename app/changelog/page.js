@@ -8,6 +8,17 @@ export const metadata = {
 export default function ChangelogPage() {
   const versions = [
     {
+      version: "v1.3.0",
+      date: "September 2026",
+      title: "The Narrative & Identity Update",
+      changes: [
+        "The WHAT IF Manifesto: Rebranded the Home Page to emphasize the narrative core of the platform.",
+        "Position Classifier: Added the 'Sorting Hat' visual breakdown to the Methodology page.",
+        "Glossary 101: Added a 'Back to Basics' section explaining fundamental NFL and Soccer mechanics.",
+        "Scouting Storytelling: Revamped the War Room reports with narrative-driven analysis and context."
+      ]
+    },
+    {
       version: "v1.2.0",
       date: "September 2026",
       title: "The Dual-Engine Architecture",
@@ -60,18 +71,15 @@ export default function ChangelogPage() {
       <div className="space-y-12">
         {versions.map((release, idx) => (
           <div key={idx} className="relative pl-8 md:pl-0">
-            {/* Timeline Line (Hidden on mobile for cleaner look, visible on desktop) */}
             <div className="hidden md:block absolute left-[119px] top-2 bottom-[-48px] w-px bg-zinc-800"></div>
             
             <div className="flex flex-col md:flex-row gap-4 md:gap-12 items-start">
-              {/* Version & Date */}
               <div className="md:w-[100px] shrink-0 text-left md:text-right relative">
                 <div className="hidden md:block absolute right-[-29px] top-1.5 w-3 h-3 rounded-full bg-orange-500 ring-4 ring-[#0E0F12]"></div>
                 <h3 className="font-mono text-xl font-black text-orange-400">{release.version}</h3>
                 <span className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest">{release.date}</span>
               </div>
 
-              {/* Content */}
               <div className="bg-[#14161B] border border-zinc-800 p-6 rounded-xl flex-grow shadow-lg">
                 <h4 className="text-lg font-black text-white uppercase tracking-tight mb-4">{release.title}</h4>
                 <ul className="space-y-3">
