@@ -9,6 +9,21 @@ export default function HomePage() {
     { rank: "05", name: "Jude Bellingham", pos: "TE", club: "Real Madrid", stats: "1 G | 2 Tackles Won", wif: "23.2", tier: "STARTER" }
   ];
 
+  const reports = [
+    {
+      name: "Samuel Lino", club: "Flamengo", role: "RB2 / WR2 Hybrid", realWif: "13.3", xWif: "14.5", verdict: "BUY / HOLD",
+      verdictColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+      story: "Lino isn't just playing on the wing; he's running routes like a seasoned wideout on a game-winning drive. He demands the ball in space, turning standard possessions into massive territory gains.",
+      analysis: "Producing elite PPR numbers with 2.46 Key Passes per 90. His 9.80 npxG perfectly aligns with his actual goals, proving his red-zone efficiency is real. Like a reliable target who catches everything thrown his way, his floor is rock solid."
+    },
+    {
+      name: "Darwin Núñez", club: "Liverpool", role: "RB1 (High Variance)", realWif: "9.8", xWif: "16.2", verdict: "BUY LOW",
+      verdictColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
+      story: "He has the raw, terrifying athletic profile of a bruising power back fighting through the trenches, but right now, he's fumbling at the goal line. The eye test is chaotic, but the telemetry screams dominance.",
+      analysis: "Massive positive regression incoming. Darwin commands an elite xGOT and xT profile, but poor immediate execution has tanked his current WIF. He is getting elite volume inside the 20-yard line. The touchdowns are coming."
+    }
+  ];
+
   const getPosBadge = (pos) => {
     switch (pos) {
       case 'QB': return 'bg-red-500/20 text-red-400 border-red-500/40';
@@ -22,14 +37,13 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-[#0E0F12] text-zinc-100 font-sans pb-24">
       
-      {/* HERO SECTION: THE WHAT IF MANIFESTO */}
+      {/* HERO SECTION */}
       <section className="relative w-full pt-20 pb-16 border-b border-zinc-800/80 px-4 sm:px-6 overflow-hidden">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black text-white/[0.02] tracking-tighter pointer-events-none uppercase whitespace-nowrap">
           What If
         </div>
 
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-          
           <div className="lg:col-span-7 space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-orange-500/10 border-l-2 border-orange-500 text-orange-400 font-mono text-xs font-bold tracking-widest uppercase">
               <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse"></span>
@@ -88,8 +102,60 @@ export default function HomePage() {
       <section className="max-w-4xl mx-auto px-6 py-20 text-center space-y-6">
         <h2 className="text-2xl sm:text-4xl font-black uppercase text-white tracking-tight">Numbers Without Context Are Just Math.</h2>
         <p className="text-zinc-400 font-light leading-relaxed text-lg">
-          We don't care where a player is listed on a traditional lineup sheet. We care about the gravity they command on the pitch. When a winger takes on a defender at full speed, breaking tackles to conquer territory, you're not just watching a dribble—you're watching a YAC monster out in the flat. The WIF (What If Football) Engine reads the raw telemetry of the game and assigns positions based on true offensive identity.
+          We don't care where a player is listed on a traditional lineup sheet. We care about the gravity they command on the pitch. When a winger takes on a defender at full speed, breaking tackles to conquer territory, you're not just watching a dribble—you're watching a YAC monster out in the flat. The WIF Engine reads the raw telemetry of the game and assigns positions based on true offensive identity.
         </p>
+      </section>
+
+      {/* SCOUTING SECTION MOVED TO HOME */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
+        <div className="mb-10">
+          <h2 className="text-2xl font-black uppercase tracking-tight text-white border-b border-zinc-800 pb-2">War Room Scouting (Buy/Sell)</h2>
+          <p className="text-zinc-500 font-light mt-2 text-sm">Identifying market inefficiencies by comparing real WIF execution with xWIF projections.</p>
+        </div>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {reports.map((report, idx) => (
+            <div key={idx} className="bg-[#14161B] border border-zinc-800 rounded-xl overflow-hidden shadow-xl flex flex-col">
+              <div className="bg-zinc-900/90 px-6 py-4 border-b border-zinc-800 flex items-center justify-between">
+                <div>
+                  <h3 className="text-xl font-black text-white uppercase tracking-tight">{report.name}</h3>
+                  <span className="text-[10px] font-mono text-zinc-400 uppercase tracking-widest block mt-1">
+                    {report.club} • <span className="text-orange-400 font-bold">{report.role}</span>
+                  </span>
+                </div>
+                <span className={`text-[9px] font-mono font-bold uppercase tracking-widest px-2 py-1 rounded border ${report.verdictColor}`}>
+                  {report.verdict}
+                </span>
+              </div>
+              <div className="p-6 flex-grow space-y-4">
+                <div>
+                  <h4 className="text-[10px] font-mono text-blue-400 uppercase tracking-widest mb-1">The Narrative</h4>
+                  <p className="text-xs text-zinc-300 font-medium italic border-l-2 border-blue-500/50 pl-3 leading-relaxed">"{report.story}"</p>
+                </div>
+                <div>
+                  <h4 className="text-[10px] font-mono text-zinc-500 uppercase tracking-widest mb-1">Telemetry</h4>
+                  <p className="text-xs text-zinc-400 font-light leading-relaxed">{report.analysis}</p>
+                </div>
+              </div>
+              <div className="bg-zinc-950 p-4 border-t border-zinc-800 flex justify-between items-center font-mono text-xs">
+                <div>
+                  <span className="text-zinc-500 uppercase block text-[9px]">Real WIF</span>
+                  <span className="text-white font-bold">{report.realWif}</span>
+                </div>
+                <div>
+                  <span className="text-purple-400 uppercase block text-[9px]">xWIF (Projected)</span>
+                  <span className="text-purple-400 font-bold">{report.xWif}</span>
+                </div>
+                <div className="text-right">
+                  <span className="text-zinc-600 uppercase block text-[9px]">Delta</span>
+                  <span className={`font-bold ${parseFloat(report.xWif) > parseFloat(report.realWif) ? 'text-emerald-400' : 'text-red-400'}`}>
+                    {(parseFloat(report.xWif) - parseFloat(report.realWif)).toFixed(1)} PTS
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
       {/* DUAL ENGINE BANNER */}

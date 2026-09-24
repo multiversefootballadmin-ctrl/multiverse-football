@@ -13,10 +13,7 @@ export default function RootLayout({ children }) {
       <body className="bg-[#0E0F12] text-zinc-100 font-sans selection:bg-orange-500 selection:text-white flex flex-col min-h-screen">
         
         <Navbar />
-
-        <main className="flex-grow">
-          {children}
-        </main>
+        <main className="flex-grow">{children}</main>
 
         <footer className="bg-[#0a0b0d] border-t border-zinc-900 pt-16 pb-8 px-6 mt-20">
           <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
@@ -38,19 +35,18 @@ export default function RootLayout({ children }) {
             </div>
 
             <div>
-              <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">The Engines</h4>
+              <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">The Playbook</h4>
               <ul className="space-y-2 font-mono text-xs text-zinc-500 uppercase tracking-wider">
                 <li><Link href="/methodology" className="hover:text-orange-400 transition-colors">WIF Matrix (Scoring)</Link></li>
                 <li><Link href="/xwif" className="hover:text-orange-400 transition-colors">xWIF (Predictive Model)</Link></li>
-                <li><Link href="/scouting" className="hover:text-orange-400 transition-colors">Scouting Reports</Link></li>
+                <li><Link href="/glossary" className="hover:text-orange-400 transition-colors">Glossary 101</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="text-white font-black uppercase tracking-widest text-sm mb-4">Project</h4>
               <ul className="space-y-2 font-mono text-xs text-zinc-500 uppercase tracking-wider">
-                <li><Link href="/about" className="hover:text-orange-400 transition-colors">Origin</Link></li>
-                <li><Link href="/whitepaper" className="hover:text-orange-400 transition-colors">Whitepaper</Link></li>
+                <li><Link href="/about" className="hover:text-orange-400 transition-colors">Origin & Whitepaper</Link></li>
                 <li><Link href="/changelog" className="hover:text-orange-400 transition-colors">Changelog & Versions</Link></li>
               </ul>
             </div>
@@ -62,7 +58,7 @@ export default function RootLayout({ children }) {
             </p>
             <Link href="/changelog" className="text-zinc-500 hover:text-orange-400 font-mono text-[10px] uppercase tracking-widest transition-colors flex items-center gap-2 bg-zinc-900/50 px-3 py-1.5 rounded border border-zinc-800">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-              PLATFORM v1.3.0 | WIF ENGINE v1.0
+              PLATFORM v1.4.0 | WIF ENGINE v1.0
             </Link>
           </div>
         </footer>
