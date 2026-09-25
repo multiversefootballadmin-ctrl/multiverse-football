@@ -1,26 +1,27 @@
 import Link from 'next/link';
 
 export default function HomePage() {
+  // DADOS REAIS EXTRAÍDOS DA API DO FOOTYSTATS (TEMPORADA 25/26)
   const topSlate = [
-    { rank: "01", name: "Lionel Messi", pos: "QB", club: "Inter Miami", stats: "2 G | 3 Key Passes", wif: "31.4", tier: "MVP" },
-    { rank: "02", name: "Kevin De Bruyne", pos: "QB", club: "Man City", stats: "1 G | 5 Key Passes", wif: "27.6", tier: "ELITE" },
-    { rank: "03", name: "Erling Haaland", pos: "RB", club: "Man City", stats: "3 G | 4 Box Touches", wif: "26.2", tier: "ELITE" },
-    { rank: "04", name: "Vinícius Júnior", pos: "WR", club: "Real Madrid", stats: "1 G | 6 Take-ons", wif: "24.8", tier: "STARTER" },
-    { rank: "05", name: "Jude Bellingham", pos: "TE", club: "Real Madrid", stats: "1 G | 2 Tackles Won", wif: "23.2", tier: "STARTER" }
+    { rank: "01", name: "Michael Olise", pos: "QB", club: "Bayern München", stats: "15 G | 19 Ast", wif: "19.6", tier: "MVP" },
+    { rank: "02", name: "Lamine Yamal", pos: "WR", club: "FC Barcelona", stats: "16 G | 11 Ast", wif: "19.5", tier: "MVP" },
+    { rank: "03", name: "Harry Kane", pos: "RB", club: "Bayern München", stats: "36 G | 5 Ast", wif: "16.3", tier: "ELITE" },
+    { rank: "04", name: "Kylian Mbappé", pos: "RB", club: "Real Madrid CF", stats: "25 G | 5 Ast", wif: "15.7", tier: "ELITE" },
+    { rank: "05", name: "Bruno Fernandes", pos: "QB", club: "Man United", stats: "9 G | 21 Ast", wif: "14.1", tier: "STARTER" }
   ];
 
   const reports = [
     {
-      name: "Samuel Lino", club: "Flamengo", role: "RB2 / WR2 Hybrid", realWif: "13.3", xWif: "14.5", verdict: "BUY / HOLD",
+      name: "Aleix García", club: "Leverkusen", role: "QB1 (Buy Low)", realWif: "13.3", xWif: "14.1", verdict: "BUY LOW",
       verdictColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
-      story: "Lino isn't just playing on the wing; he's running routes like a seasoned wideout on a game-winning drive. He demands the ball in space, turning standard possessions into massive territory gains.",
-      analysis: "Producing elite PPR numbers with 2.46 Key Passes per 90. His 9.80 npxG perfectly aligns with his actual goals, proving his red-zone efficiency is real. Like a reliable target who catches everything thrown his way, his floor is rock solid."
+      story: "Operating out of the pocket with surgical precision. García isn't flashy, but he's consistently moving the chains. His receivers are dropping perfectly placed deep balls.",
+      analysis: "Underperforming his underlying telemetry. Generating a massive 14.1 xWIF/90 driven by elite xA (Expected Assists) and passing volume, but his real output is capped at 13.3 FPPG. The touchdowns will come. Buy now."
     },
     {
-      name: "Darwin Núñez", club: "Liverpool", role: "RB1 (High Variance)", realWif: "9.8", xWif: "16.2", verdict: "BUY LOW",
-      verdictColor: "text-emerald-400 bg-emerald-500/10 border-emerald-500/30",
-      story: "He has the raw, terrifying athletic profile of a bruising power back fighting through the trenches, but right now, he's fumbling at the goal line. The eye test is chaotic, but the telemetry screams dominance.",
-      analysis: "Massive positive regression incoming. Darwin commands an elite xGOT and xT profile, but poor immediate execution has tanked his current WIF. He is getting elite volume inside the 20-yard line. The touchdowns are coming."
+      name: "Harry Kane", club: "Bayern München", role: "RB1 (High Variance)", realWif: "16.3", xWif: "13.7", verdict: "SELL HIGH",
+      verdictColor: "text-red-400 bg-red-500/10 border-red-500/30",
+      story: "A bruising goal-line back scoring on almost every touch inside the 20. It's a historic run, but eventually, the defense stacks the box and the efficiency drops.",
+      analysis: "Massively overperforming his npxG. Kane is converting half-chances into 6.0 WIF points at an unsustainable rate (16.3 Real vs 13.7 xWIF). His volume is elite, but a regression to the mean is mathematically inevitable. Cash out for a haul."
     }
   ];
 
@@ -51,7 +52,7 @@ export default function HomePage() {
             </div>
             
             <h1 className="text-5xl sm:text-7xl font-black uppercase tracking-tighter text-white leading-[0.92]">
-              WHAT IF <span className="text-orange-500">HAALAND</span> <br /> WAS YOUR RB1?
+              WHAT IF <span className="text-orange-500">YAMAL</span> <br /> WAS YOUR WR1?
             </h1>
             
             <p className="text-base sm:text-lg text-zinc-300 font-light leading-relaxed max-w-xl">
@@ -71,10 +72,10 @@ export default function HomePage() {
           <div className="lg:col-span-5 bg-[#14161B] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden">
             <div className="bg-zinc-900/90 px-5 py-4 border-b border-zinc-800 flex items-center justify-between">
               <div>
-                <span className="text-[9px] font-mono text-orange-400 uppercase tracking-widest font-bold block">Top Performances</span>
+                <span className="text-[9px] font-mono text-orange-400 uppercase tracking-widest font-bold block">FootyStats API (Sample)</span>
                 <h3 className="text-base font-black text-white uppercase tracking-tight">Week Slate Leaders</h3>
               </div>
-              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded">LIVE WIF</span>
+              <span className="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 border border-emerald-500/30 px-2 py-0.5 rounded">LIVE WIF / 90</span>
             </div>
 
             <div className="divide-y divide-zinc-800/60">
@@ -106,10 +107,10 @@ export default function HomePage() {
         </p>
       </section>
 
-      {/* SCOUTING SECTION MOVED TO HOME */}
+      {/* REAL DATA SCOUTING SECTION */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-20">
         <div className="mb-10">
-          <h2 className="text-2xl font-black uppercase tracking-tight text-white border-b border-zinc-800 pb-2">War Room Scouting (Buy/Sell)</h2>
+          <h2 className="text-2xl font-black uppercase tracking-tight text-white border-b border-zinc-800 pb-2">War Room Scouting (Live Data)</h2>
           <p className="text-zinc-500 font-light mt-2 text-sm">Identifying market inefficiencies by comparing real WIF execution with xWIF projections.</p>
         </div>
         
@@ -139,7 +140,7 @@ export default function HomePage() {
               </div>
               <div className="bg-zinc-950 p-4 border-t border-zinc-800 flex justify-between items-center font-mono text-xs">
                 <div>
-                  <span className="text-zinc-500 uppercase block text-[9px]">Real WIF</span>
+                  <span className="text-zinc-500 uppercase block text-[9px]">Real WIF / 90</span>
                   <span className="text-white font-bold">{report.realWif}</span>
                 </div>
                 <div>
